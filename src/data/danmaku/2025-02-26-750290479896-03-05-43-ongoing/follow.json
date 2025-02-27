@@ -1,0 +1,38 @@
+[
+    {
+        "message_id": "fcb0df86-63c7-489c-813e-4b738150ee8a",
+        "type": "follow",
+        "user": {
+            "id": 972400525849815,
+            "name": "大鲨鱼"
+        },
+        "timestamp": "2025-02-26 03:08:22"
+    },
+    {
+        "message_id": "a63a2d1e-04cf-43c3-b4ad-bd611e82941c",
+        "type": "follow",
+        "user": {
+            "id": 3491666497120589,
+            "name": "鞠"
+        },
+        "timestamp": "2025-02-26 03:10:02"
+    },
+    {
+        "message_id": "d988494e-c6ca-417a-8589-1f5aa542a478",
+        "type": "follow",
+        "user": {
+            "id": 60012963725,
+            "name": "oioi"
+        },
+        "timestamp": "2025-02-26 03:10:06"
+    },
+    {
+        "message_id": "da63b404-a592-442f-b314-121e6ab5b1c2",
+        "type": "follow",
+        "user": {
+            "id": 23451968599,
+            "name": "我不是啊皮."
+        },
+        "timestamp": "2025-02-26 03:10:47"
+    }
+]

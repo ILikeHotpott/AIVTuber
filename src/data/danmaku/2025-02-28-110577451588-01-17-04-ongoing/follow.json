@@ -1,0 +1,38 @@
+[
+    {
+        "message_id": "ae3fd807-1b38-4167-a27b-a3ff9ffb3456",
+        "type": "follow",
+        "user": {
+            "id": 82123865821,
+            "name": "watermelon"
+        },
+        "timestamp": "2025-02-28 01:20:59"
+    },
+    {
+        "message_id": "7c574711-85cb-4aa3-ac5b-bfbd08f92c06",
+        "type": "follow",
+        "user": {
+            "id": 1731092463493723,
+            "name": "叹风尘"
+        },
+        "timestamp": "2025-02-28 01:23:30"
+    },
+    {
+        "message_id": "1e57fae4-09a9-4872-80af-04536f9f77e3",
+        "type": "follow",
+        "user": {
+            "id": 2348150539683879,
+            "name": "帅"
+        },
+        "timestamp": "2025-02-28 01:31:04"
+    },
+    {
+        "message_id": "c8efbf2a-8737-4c6f-8e96-ca14d0e3fde3",
+        "type": "follow",
+        "user": {
+            "id": 102552328429,
+            "name": "陆离"
+        },
+        "timestamp": "2025-02-28 01:34:42"
+    }
+]

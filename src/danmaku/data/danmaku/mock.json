@@ -1,0 +1,11 @@
+[
+  {
+  "danmu_id": 1,
+  "content": "Hello, world!",
+  "user": {
+    "id": 1,
+    "name": "Alice",
+    "time": "2025-02-10 12:00:00"
+    }
+  }
+]

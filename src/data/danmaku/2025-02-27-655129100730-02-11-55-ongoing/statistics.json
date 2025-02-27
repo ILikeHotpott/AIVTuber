@@ -1,0 +1,51 @@
+[
+    {
+        "message_id": "3eac274a-3406-447f-a66e-70dc88aacfe1",
+        "type": "statistics",
+        "current_viewers": 9,
+        "total_viewers": "1158",
+        "timestamp": "2025-02-27 02:11:58"
+    },
+    {
+        "message_id": "2e999c1b-4b59-4b17-86cb-f8b3e37db979",
+        "type": "statistics",
+        "current_viewers": 9,
+        "total_viewers": "1162",
+        "timestamp": "2025-02-27 02:12:08"
+    },
+    {
+        "message_id": "7707aa45-5acd-4e7c-9af5-c13a1cd05502",
+        "type": "statistics",
+        "current_viewers": 9,
+        "total_viewers": "1167",
+        "timestamp": "2025-02-27 02:12:33"
+    },
+    {
+        "message_id": "1afb2e18-b2c8-4b8c-a390-73b642aead00",
+        "type": "statistics",
+        "current_viewers": 8,
+        "total_viewers": "1165",
+        "timestamp": "2025-02-27 02:12:36"
+    },
+    {
+        "message_id": "94d33186-7a0c-4835-a367-95fa4601d92d",
+        "type": "statistics",
+        "current_viewers": 9,
+        "total_viewers": "1169",
+        "timestamp": "2025-02-27 02:12:44"
+    },
+    {
+        "message_id": "01d585ad-3f59-4951-906b-49fc4a0db4fd",
+        "type": "statistics",
+        "current_viewers": 7,
+        "total_viewers": "1172",
+        "timestamp": "2025-02-27 02:12:50"
+    },
+    {
+        "message_id": "8c7a60fe-f5a7-4df1-ab74-ebf0e80e38c0",
+        "type": "statistics",
+        "current_viewers": 7,
+        "total_viewers": "1172",
+        "timestamp": "2025-02-27 02:12:54"
+    }
+]

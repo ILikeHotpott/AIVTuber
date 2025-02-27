@@ -1,0 +1,3732 @@
+[
+    {
+        "message_id": "df1a50d2-ee71-4d31-af8e-c293d6b91b95",
+        "type": "join",
+        "user": {
+            "id": 1684054186920420,
+            "name": "卧龙",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:12:40"
+    },
+    {
+        "message_id": "29e1ed0e-74f5-495a-89f5-95f8f9d43c41",
+        "type": "join",
+        "user": {
+            "id": 3569431669637289,
+            "name": "kkkkkkk",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:12:40"
+    },
+    {
+        "message_id": "23fda143-3368-4905-a1e9-f4a1dcc1ca9e",
+        "type": "join",
+        "user": {
+            "id": 2896539852750570,
+            "name": "岛上书店",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:12:40"
+    },
+    {
+        "message_id": "6c5d95fa-d788-40ec-9c7e-b5db4174c530",
+        "type": "join",
+        "user": {
+            "id": 3883943164394775,
+            "name": ".",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:12:40"
+    },
+    {
+        "message_id": "d18d19c8-e006-48b5-8913-e509bc30c89b",
+        "type": "join",
+        "user": {
+            "id": 106663119803,
+            "name": "悟不了",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:12:40"
+    },
+    {
+        "message_id": "8893715d-66e0-464d-9474-b281eae3a456",
+        "type": "join",
+        "user": {
+            "id": 523822818407831,
+            "name": "『「醉辞」』",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:12:40"
+    },
+    {
+        "message_id": "a2c669ff-2085-4e61-9b07-918c8c20c9f3",
+        "type": "join",
+        "user": {
+            "id": 93219630364,
+            "name": "hxl",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:12:40"
+    },
+    {
+        "message_id": "4e565e13-710a-47ad-bbfc-e4a3b6883070",
+        "type": "join",
+        "user": {
+            "id": 3430117137721357,
+            "name": "迟·遇",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:12:40"
+    },
+    {
+        "message_id": "5fb4583c-1d4e-443b-b184-269711e3b6c7",
+        "type": "join",
+        "user": {
+            "id": 101834793658,
+            "name": "farewell",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:12:40"
+    },
+    {
+        "message_id": "38ea0208-3384-4b53-b8a9-6862e24c07d5",
+        "type": "join",
+        "user": {
+            "id": 88352225159,
+            "name": "Tri.CK",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:12:43"
+    },
+    {
+        "message_id": "0855adf9-f08f-4b0c-bba7-e2d9895ca705",
+        "type": "join",
+        "user": {
+            "id": 2440518843774136,
+            "name": "春风十里",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:12:43"
+    },
+    {
+        "message_id": "fb3c51e3-45ca-4812-9735-aab2006e977c",
+        "type": "join",
+        "user": {
+            "id": 101862538272,
+            "name": "1013",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:12:45"
+    },
+    {
+        "message_id": "8026fa65-8da9-47c8-9750-0e185b234115",
+        "type": "join",
+        "user": {
+            "id": 93793069944,
+            "name": "p",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:12:49"
+    },
+    {
+        "message_id": "4bf7208c-67f0-4c1c-a8f9-755071185b5f",
+        "type": "join",
+        "user": {
+            "id": 2441376719704979,
+            "name": "༺༂小杰ꦿ༻",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:12:49"
+    },
+    {
+        "message_id": "340b8a82-34e8-42b4-80f0-95da09159e14",
+        "type": "join",
+        "user": {
+            "id": 103821260000,
+            "name": "章北海",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:12:51"
+    },
+    {
+        "message_id": "43c68282-3286-4cc3-8f31-eb2d3fef7a13",
+        "type": "join",
+        "user": {
+            "id": 967163268309342,
+            "name": "三步上篮",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:12:51"
+    },
+    {
+        "message_id": "a576ea66-cbd2-4f0e-af17-4e1b7213ba62",
+        "type": "join",
+        "user": {
+            "id": 1590333329655779,
+            "name": "宇智波萨斯给（期末裸考版）",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:12:52"
+    },
+    {
+        "message_id": "0bc7f5b9-8285-4980-a55b-d6a17619ed93",
+        "type": "join",
+        "user": {
+            "id": 75636711674,
+            "name": "染汐想喝旺仔",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:12:52"
+    },
+    {
+        "message_id": "4d763955-e6c9-428b-8c79-4dc157b2e99e",
+        "type": "join",
+        "user": {
+            "id": 2317377935780269,
+            "name": "人生何时醉",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:12:52"
+    },
+    {
+        "message_id": "2e38ee1b-5f23-4f18-a7c1-a4eaf70a0b83",
+        "type": "join",
+        "user": {
+            "id": 2154676305017175,
+            "name": "淡染墨迹",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:12:52"
+    },
+    {
+        "message_id": "0b39c6a6-d955-4f7a-be45-025d97ec1ae2",
+        "type": "join",
+        "user": {
+            "id": 2678869285943315,
+            "name": "🐟🐠🐟🐠🐟🐠🐟🐠🐟",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:12:53"
+    },
+    {
+        "message_id": "2425bfc9-554d-4b74-aca2-a1e6bcdecc56",
+        "type": "join",
+        "user": {
+            "id": 681324429707820,
+            "name": "脸圆怕什么",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:12:54"
+    },
+    {
+        "message_id": "a8d263a9-8911-4a51-a2b1-521066a173a7",
+        "type": "join",
+        "user": {
+            "id": 3227775588372503,
+            "name": "十里故清风",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:12:54"
+    },
+    {
+        "message_id": "dd7a69c7-6280-4fa7-befc-8bf2c8056c26",
+        "type": "join",
+        "user": {
+            "id": 1009769615206211,
+            "name": "…",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:12:55"
+    },
+    {
+        "message_id": "0338affa-0d9b-4a52-bed9-b747e1335147",
+        "type": "join",
+        "user": {
+            "id": 2544731020069146,
+            "name": "jjs",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:12:55"
+    },
+    {
+        "message_id": "3d21722a-4401-4f6e-ab9b-c5c775cbc4ee",
+        "type": "join",
+        "user": {
+            "id": 4361083095092218,
+            "name": "沐曦",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:12:55"
+    },
+    {
+        "message_id": "6081f83b-dbd4-4066-9808-7e6079fa55b1",
+        "type": "join",
+        "user": {
+            "id": 60725579827,
+            "name": "zero",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:12:57"
+    },
+    {
+        "message_id": "d5ff9e1a-9de0-4e73-b7a5-7fec42c53a27",
+        "type": "join",
+        "user": {
+            "id": 3460883077661598,
+            "name": "GL 丶",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:12:59"
+    },
+    {
+        "message_id": "6e62b2fd-3c4a-4bd4-9d86-9fbc97eb18fc",
+        "type": "join",
+        "user": {
+            "id": 65770048320,
+            "name": "雨下",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:12:59"
+    },
+    {
+        "message_id": "c1ed9e3e-91f6-4dea-9139-296f80e81dd0",
+        "type": "join",
+        "user": {
+            "id": 3430099472100980,
+            "name": "0.178162882",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:12:59"
+    },
+    {
+        "message_id": "5e779d9b-3f59-43ce-ad02-2f770ea914bc",
+        "type": "join",
+        "user": {
+            "id": 24210980804,
+            "name": "呵呵侠",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:12:59"
+    },
+    {
+        "message_id": "1f254ffd-2a0b-407b-9c99-2b22d007dbac",
+        "type": "join",
+        "user": {
+            "id": 103253611264,
+            "name": "REI",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:01"
+    },
+    {
+        "message_id": "0dc0a0d8-bd0b-4101-a47f-fe3c5ba1a61a",
+        "type": "join",
+        "user": {
+            "id": 105790125430,
+            "name": "Srok",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:03"
+    },
+    {
+        "message_id": "9b3df25a-7f1c-49b6-af1a-db1e5f1b04ee",
+        "type": "join",
+        "user": {
+            "id": 4173374030615464,
+            "name": "雨落渐停",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:03"
+    },
+    {
+        "message_id": "9fc90fa7-8dba-46e9-bad3-98d832d86185",
+        "type": "join",
+        "user": {
+            "id": 1854219242973867,
+            "name": "Oo。",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:03"
+    },
+    {
+        "message_id": "d4958a03-91e0-4120-b1f6-36f413fb0e51",
+        "type": "join",
+        "user": {
+            "id": 1455347850030484,
+            "name": "喙",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:04"
+    },
+    {
+        "message_id": "0bd93355-1c87-4b94-850b-4158e0a6c1b8",
+        "type": "join",
+        "user": {
+            "id": 97343717071,
+            "name": "抽象世界",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:05"
+    },
+    {
+        "message_id": "6fbe671a-b74e-43db-ba4e-452a5f77f425",
+        "type": "join",
+        "user": {
+            "id": 3125281300175392,
+            "name": "༒",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:05"
+    },
+    {
+        "message_id": "349fa4ba-d3a2-4a1f-b71a-ada484367d89",
+        "type": "join",
+        "user": {
+            "id": 616151135302888,
+            "name": "铁蛋老狗",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:05"
+    },
+    {
+        "message_id": "14a4d2db-525a-4af9-9c9d-f1dd482314fc",
+        "type": "join",
+        "user": {
+            "id": 75380714039,
+            "name": "郝三悟",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:05"
+    },
+    {
+        "message_id": "e09c6316-f866-44b1-8a52-37b40631e3b4",
+        "type": "join",
+        "user": {
+            "id": 84786177322,
+            "name": "不上自习",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:06"
+    },
+    {
+        "message_id": "2430d2fe-f538-405d-896a-5c1847e41d2e",
+        "type": "join",
+        "user": {
+            "id": 3711550959398472,
+            "name": "🐟宇",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:06"
+    },
+    {
+        "message_id": "f20a3c4c-5526-470d-ad3b-3f912f530a74",
+        "type": "join",
+        "user": {
+            "id": 109876178816,
+            "name": "LN",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:07"
+    },
+    {
+        "message_id": "b110d4be-fbd4-4761-98dd-0bfd27bc88fa",
+        "type": "join",
+        "user": {
+            "id": 106730296431,
+            "name": "Pho3nix",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:07"
+    },
+    {
+        "message_id": "732bec0d-1684-42fa-bd76-e66aa85c8c67",
+        "type": "join",
+        "user": {
+            "id": 2704399920530291,
+            "name": "想曜清醒点",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:09"
+    },
+    {
+        "message_id": "86a8f9eb-9efc-437a-9658-edd24cef3ee4",
+        "type": "join",
+        "user": {
+            "id": 104313722933,
+            "name": "lmissyou",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:11"
+    },
+    {
+        "message_id": "0956717e-e994-40e2-9eb7-9147fa335e15",
+        "type": "join",
+        "user": {
+            "id": 100497770664,
+            "name": "Chem&Luve-aholic",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:12"
+    },
+    {
+        "message_id": "5f301843-76cd-48da-b71e-afd0f6e10ec5",
+        "type": "join",
+        "user": {
+            "id": 1613712712020871,
+            "name": "人爱吃饭",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:13"
+    },
+    {
+        "message_id": "6fd18307-f4cb-455d-98a1-c929cf0f9b8d",
+        "type": "join",
+        "user": {
+            "id": 101128210533,
+            "name": "乐小迪",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:13"
+    },
+    {
+        "message_id": "48e5b256-bb19-4616-a269-7bc7d065f7f5",
+        "type": "join",
+        "user": {
+            "id": 22819111767,
+            "name": "摄影师游航",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:15"
+    },
+    {
+        "message_id": "b60ab646-3574-40df-b592-b5e110cc06b8",
+        "type": "join",
+        "user": {
+            "id": 93418586921,
+            "name": "不要翘二郎腿",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:16"
+    },
+    {
+        "message_id": "eb918807-f55c-40fd-97f3-d2af304d2990",
+        "type": "join",
+        "user": {
+            "id": 3507878230492889,
+            "name": "我老婆是湘",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:19"
+    },
+    {
+        "message_id": "989d0d5f-5e02-4041-924f-b9ee5993be37",
+        "type": "join",
+        "user": {
+            "id": 2752816503608567,
+            "name": "小耶龙",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:21"
+    },
+    {
+        "message_id": "13432ecf-60a0-40c2-9766-90ed34cc257b",
+        "type": "join",
+        "user": {
+            "id": 3737981212440999,
+            "name": "🕊&❤️🌎",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:21"
+    },
+    {
+        "message_id": "3e1a8b1c-d61d-44ee-8fa3-f4002ded64ec",
+        "type": "join",
+        "user": {
+            "id": 1289040898299224,
+            "name": "明心灵竹",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:21"
+    },
+    {
+        "message_id": "3ce2a06a-19e1-45c5-b95e-84a66d39546d",
+        "type": "join",
+        "user": {
+            "id": 1468556658349822,
+            "name": "QQQ",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:22"
+    },
+    {
+        "message_id": "88519b14-f953-43bf-86da-a482308a221f",
+        "type": "join",
+        "user": {
+            "id": 627177188769275,
+            "name": "雪落时又忆起",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:23"
+    },
+    {
+        "message_id": "69fce527-50ef-4b95-86c7-7245b9cc2576",
+        "type": "join",
+        "user": {
+            "id": 4454850818745539,
+            "name": "传于墨",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:23"
+    },
+    {
+        "message_id": "03fbc5f0-4159-4af0-b013-1fd2c4130652",
+        "type": "join",
+        "user": {
+            "id": 92479809369,
+            "name": "lalaBULA",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:23"
+    },
+    {
+        "message_id": "aa705b0e-2245-413c-8af3-cbd10f5145a4",
+        "type": "join",
+        "user": {
+            "id": 2343801327992909,
+            "name": "乔巴桑",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:23"
+    },
+    {
+        "message_id": "491a6b48-383d-4958-b8bf-bef84ffef8ed",
+        "type": "join",
+        "user": {
+            "id": 857222232941736,
+            "name": "天书",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:24"
+    },
+    {
+        "message_id": "4b74c5b5-da8e-4d06-9695-e09ad66fda8d",
+        "type": "join",
+        "user": {
+            "id": 3686026100637191,
+            "name": "格局小",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:24"
+    },
+    {
+        "message_id": "f85c310d-2dd5-4b0d-9779-c2ed61befc24",
+        "type": "join",
+        "user": {
+            "id": 1350613795605847,
+            "name": "忙着耍酷😎",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:25"
+    },
+    {
+        "message_id": "1857b211-7dde-4c72-8c09-4eb5ff70d4aa",
+        "type": "join",
+        "user": {
+            "id": 651386475784624,
+            "name": "Giggity",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:25"
+    },
+    {
+        "message_id": "85e9cdc7-4357-4c22-8ef3-4cf8676898f7",
+        "type": "join",
+        "user": {
+            "id": 88638742081,
+            "name": "是相赫啊",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:25"
+    },
+    {
+        "message_id": "16394280-6153-46f3-a20e-b5f45160e859",
+        "type": "join",
+        "user": {
+            "id": 2035885569213852,
+            "name": "腼腆的熊猫",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:26"
+    },
+    {
+        "message_id": "26084bdc-eaa2-40ca-98a0-a83b742a55b8",
+        "type": "join",
+        "user": {
+            "id": 3450715932993310,
+            "name": "cypher",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:27"
+    },
+    {
+        "message_id": "2e0833d4-e325-4366-8ba7-b06851f70a10",
+        "type": "join",
+        "user": {
+            "id": 527368567655919,
+            "name": "光明三天给我假如",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:28"
+    },
+    {
+        "message_id": "07f0906e-0568-41d2-8969-ab8d945653bc",
+        "type": "join",
+        "user": {
+            "id": 479035227645758,
+            "name": "不乐观",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:28"
+    },
+    {
+        "message_id": "a3484b2e-640f-48a1-b18e-592be8f32bb5",
+        "type": "join",
+        "user": {
+            "id": 365507603608205,
+            "name": "苏G",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:31"
+    },
+    {
+        "message_id": "3c4b1f7a-4a3a-4cf6-bbc0-976227909430",
+        "type": "join",
+        "user": {
+            "id": 1383641172674804,
+            "name": "金",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:35"
+    },
+    {
+        "message_id": "c3db2f60-7d53-4583-a3e5-06bd9a4b46a3",
+        "type": "join",
+        "user": {
+            "id": 3173648430534554,
+            "name": "意齐朋渔山",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:36"
+    },
+    {
+        "message_id": "7ab2bb7f-a6c1-4827-b1cf-d97d00fb9157",
+        "type": "join",
+        "user": {
+            "id": 4112650021656892,
+            "name": "闲云0335",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:36"
+    },
+    {
+        "message_id": "881ba38b-d2b1-4224-b64f-4b29b8d2251e",
+        "type": "join",
+        "user": {
+            "id": 2665684948497879,
+            "name": "嘉御",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:37"
+    },
+    {
+        "message_id": "f550e12d-ae7c-43de-bd10-924bf51de2fc",
+        "type": "join",
+        "user": {
+            "id": 3448542632092493,
+            "name": "狗屎",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:37"
+    },
+    {
+        "message_id": "d875842a-8a07-4d50-8cf1-86e8a3489de3",
+        "type": "join",
+        "user": {
+            "id": 101227918939,
+            "name": "星辰",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:38"
+    },
+    {
+        "message_id": "feb29c48-bc4f-4125-a6f3-45f160f25408",
+        "type": "join",
+        "user": {
+            "id": 106747800981,
+            "name": "羊是阳",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:38"
+    },
+    {
+        "message_id": "fe59e242-9497-47d3-ba60-7afb0c3a6eb7",
+        "type": "join",
+        "user": {
+            "id": 60689694798,
+            "name": "sura",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:39"
+    },
+    {
+        "message_id": "a215cd40-53ad-4361-94c3-0156d38a1761",
+        "type": "join",
+        "user": {
+            "id": 82186456462,
+            "name": "︻柟︼",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:39"
+    },
+    {
+        "message_id": "ea45a73f-5ccf-42c2-a204-921ad0df36c1",
+        "type": "join",
+        "user": {
+            "id": 76506717918,
+            "name": "🌈Bo良ki影",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:42"
+    },
+    {
+        "message_id": "8f35b5d5-9619-4ed1-993d-c40447d27abd",
+        "type": "join",
+        "user": {
+            "id": 1675304033081287,
+            "name": "渍饰子丶",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:42"
+    },
+    {
+        "message_id": "5cc2f404-8669-4990-9f33-f0267d5da644",
+        "type": "join",
+        "user": {
+            "id": 93211687462,
+            "name": "我们都笑了",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:43"
+    },
+    {
+        "message_id": "3ac28de4-4fcf-4a02-b542-bcbfdf1fa181",
+        "type": "join",
+        "user": {
+            "id": 200527694539507,
+            "name": "三言语",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:44"
+    },
+    {
+        "message_id": "765f920f-da70-4e1a-a6bb-385cbc1a3aa9",
+        "type": "join",
+        "user": {
+            "id": 64224165377708,
+            "name": "保护小猫",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:44"
+    },
+    {
+        "message_id": "b65e0f8d-8aaa-44ff-b7af-e68e9d7618e6",
+        "type": "join",
+        "user": {
+            "id": 122793049205504,
+            "name": "碎个回笼觉🥹",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:45"
+    },
+    {
+        "message_id": "43c8df2c-6629-4206-a72e-7eaeb93af921",
+        "type": "join",
+        "user": {
+            "id": 98357600954,
+            "name": "我要再减10KG",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:47"
+    },
+    {
+        "message_id": "9aeb18e7-beac-4156-878a-572a4611eaee",
+        "type": "join",
+        "user": {
+            "id": 62677111823,
+            "name": "羊咩咩",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:51"
+    },
+    {
+        "message_id": "92431c17-c708-4539-a3ae-daabaa0c1477",
+        "type": "join",
+        "user": {
+            "id": 2298420200242484,
+            "name": "驴道",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:51"
+    },
+    {
+        "message_id": "9d0cba64-19cd-414e-8378-223b4bc39ab9",
+        "type": "join",
+        "user": {
+            "id": 773695913329880,
+            "name": "蜡比小新君",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:51"
+    },
+    {
+        "message_id": "55461e77-54b7-48db-b1a8-4e792866d5f6",
+        "type": "join",
+        "user": {
+            "id": 1326463320340083,
+            "name": "XiaoYyueS",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:53"
+    },
+    {
+        "message_id": "bc303072-3847-4a58-b92a-022dbbdfe8d7",
+        "type": "join",
+        "user": {
+            "id": 1737693102879134,
+            "name": "2L84U",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:54"
+    },
+    {
+        "message_id": "6f7c2b78-55d7-4941-86a5-c0ea5fc162aa",
+        "type": "join",
+        "user": {
+            "id": 1948775327729815,
+            "name": "IKUN",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:55"
+    },
+    {
+        "message_id": "fd5088b9-29d6-4dbe-8fe2-f1a84405baef",
+        "type": "join",
+        "user": {
+            "id": 4336595442,
+            "name": "এ᭄心有所属ོꦿృ༊",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:56"
+    },
+    {
+        "message_id": "8b244946-a46a-44da-b4d7-72fa19d815e1",
+        "type": "join",
+        "user": {
+            "id": 904245619987083,
+            "name": "kkkg",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:13:56"
+    },
+    {
+        "message_id": "9ab59bc4-bc7f-4c1a-8c07-8d13ddd5477e",
+        "type": "join",
+        "user": {
+            "id": 1151934032775328,
+            "name": "小陆",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:57"
+    },
+    {
+        "message_id": "58cf8dbb-eb05-4f4d-b890-84907a3106fc",
+        "type": "join",
+        "user": {
+            "id": 1257469770732184,
+            "name": "某人。",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:58"
+    },
+    {
+        "message_id": "c745aa65-87f8-4e3e-a1f9-b36d6f2d13db",
+        "type": "join",
+        "user": {
+            "id": 67550459457,
+            "name": "睡不够的J（i佳版）",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:59"
+    },
+    {
+        "message_id": "e1107fd3-100f-4036-b4bd-554ebdf63b15",
+        "type": "join",
+        "user": {
+            "id": 81040262468,
+            "name": "x7777_",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:59"
+    },
+    {
+        "message_id": "640bdf15-fbae-4b82-9a8c-4d874cd2f105",
+        "type": "join",
+        "user": {
+            "id": 3811374840426212,
+            "name": "帅帅（增肌版）",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:13:59"
+    },
+    {
+        "message_id": "8b29c7e0-a0c8-4fa4-ba0a-95058dad9d80",
+        "type": "join",
+        "user": {
+            "id": 3360572188142631,
+            "name": "Decolas Malfoy",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:00"
+    },
+    {
+        "message_id": "a7dd770e-6c2d-48a7-959b-68a06d8ef4bd",
+        "type": "join",
+        "user": {
+            "id": 167546811333901,
+            "name": "762",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:00"
+    },
+    {
+        "message_id": "9b177ffe-3355-49df-aa47-bc0b5c44d665",
+        "type": "join",
+        "user": {
+            "id": 904245619987083,
+            "name": "kkkg",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:00"
+    },
+    {
+        "message_id": "9ee7735d-54c7-435e-a10f-b92c17a41008",
+        "type": "join",
+        "user": {
+            "id": 2698623723246659,
+            "name": "冥王星",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:00"
+    },
+    {
+        "message_id": "811ccf60-cb39-4c38-b747-fe95504cda69",
+        "type": "join",
+        "user": {
+            "id": 102267746922,
+            "name": "黑手",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:01"
+    },
+    {
+        "message_id": "4a63b9c1-b00b-43fc-aaa9-0340686dad3a",
+        "type": "join",
+        "user": {
+            "id": 1146140015207704,
+            "name": "青川",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:02"
+    },
+    {
+        "message_id": "ef2830a8-39ba-4d2a-ae42-ff11fad18f62",
+        "type": "join",
+        "user": {
+            "id": 773652386159341,
+            "name": "ice day",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:02"
+    },
+    {
+        "message_id": "aedf0840-1162-4283-93ea-f080c81ac2be",
+        "type": "join",
+        "user": {
+            "id": 3894949962583449,
+            "name": "，，，",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:02"
+    },
+    {
+        "message_id": "71910a91-0463-4a1c-b2ce-02c54b7d46dd",
+        "type": "join",
+        "user": {
+            "id": 253356166886409,
+            "name": "啊杰",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:02"
+    },
+    {
+        "message_id": "23db894f-6225-47f4-9695-e4b2c417a22c",
+        "type": "join",
+        "user": {
+            "id": 157977310670056,
+            "name": "春去",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:02"
+    },
+    {
+        "message_id": "916f2b66-3859-4639-828d-174eaa6f3227",
+        "type": "join",
+        "user": {
+            "id": 3468325780724924,
+            "name": "山🌈",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:03"
+    },
+    {
+        "message_id": "6ad3ab5b-4c01-4c76-b62f-233e5419839c",
+        "type": "join",
+        "user": {
+            "id": 1550746864322477,
+            "name": "黄金回旋旋旋",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:04"
+    },
+    {
+        "message_id": "8ab25eff-456d-412d-baf0-5f8126fd8245",
+        "type": "join",
+        "user": {
+            "id": 1824837466851774,
+            "name": "Simohu02",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:04"
+    },
+    {
+        "message_id": "b63a969d-13bf-4c56-ba6b-b1164b172ce7",
+        "type": "join",
+        "user": {
+            "id": 2348180632778824,
+            "name": "爱鲍鱼",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:06"
+    },
+    {
+        "message_id": "2f751ac3-e15f-48e6-8180-8ca4bc74f4c1",
+        "type": "join",
+        "user": {
+            "id": 96920708727,
+            "name": "绝味酱鸭脖",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:06"
+    },
+    {
+        "message_id": "c9335980-ba41-4adc-9372-704c7dd60fc5",
+        "type": "join",
+        "user": {
+            "id": 2381971835855514,
+            "name": "安于晚枫（天天被cky零汝压迫版）",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:07"
+    },
+    {
+        "message_id": "225fcb16-eb9d-472c-abc7-a868a00769d5",
+        "type": "join",
+        "user": {
+            "id": 93467724286,
+            "name": "讨厌生鱼片s",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:08"
+    },
+    {
+        "message_id": "a136c044-4228-4c0a-ad95-7d7c7c396337",
+        "type": "join",
+        "user": {
+            "id": 2013941112517742,
+            "name": "菅",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:08"
+    },
+    {
+        "message_id": "3c6c142a-f2b4-4830-823d-b51c1a859f4b",
+        "type": "join",
+        "user": {
+            "id": 93736244532,
+            "name": "绪山小侯",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:11"
+    },
+    {
+        "message_id": "d8999fdf-4118-4cef-b207-aa3dae5da287",
+        "type": "join",
+        "user": {
+            "id": 3790713939823040,
+            "name": "。。",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:12"
+    },
+    {
+        "message_id": "186ee206-1215-44a9-a2dc-66cf8a3a88b7",
+        "type": "join",
+        "user": {
+            "id": 51509085026,
+            "name": "波风水门【青年】",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:13"
+    },
+    {
+        "message_id": "8675be55-9925-498a-bbf7-d1ca409d483a",
+        "type": "join",
+        "user": {
+            "id": 83732600689,
+            "name": "Gemini🎩",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:13"
+    },
+    {
+        "message_id": "4546a920-c7f3-488d-ab6b-ae7881ca3fed",
+        "type": "join",
+        "user": {
+            "id": 86805514077,
+            "name": "要珍惜",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:13"
+    },
+    {
+        "message_id": "f6e5059e-2ef7-4d38-a127-71e283847b52",
+        "type": "join",
+        "user": {
+            "id": 1420993621139255,
+            "name": "愛終成枷鎖",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:14"
+    },
+    {
+        "message_id": "965c91c1-962b-46ee-99cd-c514d95f0c78",
+        "type": "join",
+        "user": {
+            "id": 1402568670191780,
+            "name": "香草杯",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:15"
+    },
+    {
+        "message_id": "c480e843-75a4-4029-99d3-48c3d14eb451",
+        "type": "join",
+        "user": {
+            "id": 2757206523521319,
+            "name": "TEKKEN       EMPEROR",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:15"
+    },
+    {
+        "message_id": "6cdea629-db34-41b9-adc4-01e3797559dd",
+        "type": "join",
+        "user": {
+            "id": 3579654287140864,
+            "name": "柳叶洺（补药连赞我视频啊！）",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:17"
+    },
+    {
+        "message_id": "e86347fe-59a4-4035-a255-6b94a9bd1520",
+        "type": "join",
+        "user": {
+            "id": 499627321984464,
+            "name": "小宸不吃橙",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:18"
+    },
+    {
+        "message_id": "9c68b035-5e23-43ed-aa5d-8fbaf72dda5b",
+        "type": "join",
+        "user": {
+            "id": 2356980751021159,
+            "name": "航迹云",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:18"
+    },
+    {
+        "message_id": "a70ae956-d7a6-48ee-a439-1c8cd86ebb0c",
+        "type": "join",
+        "user": {
+            "id": 3272567065157182,
+            "name": "恒",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:18"
+    },
+    {
+        "message_id": "540b5d94-ab72-42ba-8c15-c4d634122a11",
+        "type": "join",
+        "user": {
+            "id": 1163714012653004,
+            "name": "达达",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:18"
+    },
+    {
+        "message_id": "12c7c322-7fcf-43a1-b0ef-4bb116eccd6c",
+        "type": "join",
+        "user": {
+            "id": 783265185931975,
+            "name": "用户4186006162491",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:20"
+    },
+    {
+        "message_id": "380567e7-8260-4d09-8978-bd80aef2dcf7",
+        "type": "join",
+        "user": {
+            "id": 4270917169979901,
+            "name": "***",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:21"
+    },
+    {
+        "message_id": "6dcd62b9-eb5f-439b-ac6f-338c334ea1d5",
+        "type": "join",
+        "user": {
+            "id": 87009683146,
+            "name": "🌧️",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:21"
+    },
+    {
+        "message_id": "34be16c7-2128-4192-8069-b83a36869c57",
+        "type": "join",
+        "user": {
+            "id": 70642098971,
+            "name": "老气却八角",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:21"
+    },
+    {
+        "message_id": "8228caa7-efab-4989-90ae-dbfbaa38f046",
+        "type": "join",
+        "user": {
+            "id": 58455352481,
+            "name": "不爱吃早餐",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:21"
+    },
+    {
+        "message_id": "4a8149f7-418b-4806-87de-df6e07cbd152",
+        "type": "join",
+        "user": {
+            "id": 97891484121,
+            "name": "咻咻一",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:22"
+    },
+    {
+        "message_id": "52cdeb3f-8191-43f5-8fe4-28eb094f60d7",
+        "type": "join",
+        "user": {
+            "id": 2466934588443716,
+            "name": "熏鱼",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:26"
+    },
+    {
+        "message_id": "caa27040-28f3-45bc-bcd3-fa0998c4a4c5",
+        "type": "join",
+        "user": {
+            "id": 943834711467507,
+            "name": "审轩",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:26"
+    },
+    {
+        "message_id": "ee5333a5-c1b5-4061-96ce-c617901d8b05",
+        "type": "join",
+        "user": {
+            "id": 106019988222797,
+            "name": "jdjjdkd",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:27"
+    },
+    {
+        "message_id": "9e10d43d-a770-4d41-9e22-2cb4700aad24",
+        "type": "join",
+        "user": {
+            "id": 20726814451,
+            "name": "夜夜",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:28"
+    },
+    {
+        "message_id": "9495ca65-e217-4a21-b8c0-ce6486e1bade",
+        "type": "join",
+        "user": {
+            "id": 101570062221,
+            "name": "serendipity",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:28"
+    },
+    {
+        "message_id": "60f857e5-8d72-498d-b8e8-108cb5e86787",
+        "type": "join",
+        "user": {
+            "id": 2334986277498136,
+            "name": "念想",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:29"
+    },
+    {
+        "message_id": "e97eae38-6811-433c-b8c6-6d4c0a527816",
+        "type": "join",
+        "user": {
+            "id": 87850565526,
+            "name": "Amy",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:29"
+    },
+    {
+        "message_id": "5cf8ed77-9dc2-4a20-93fe-050330ddb4f6",
+        "type": "join",
+        "user": {
+            "id": 4473274642996605,
+            "name": "清 风",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:30"
+    },
+    {
+        "message_id": "ca99dae8-48bf-4e8f-b75d-3e1b27c336f4",
+        "type": "join",
+        "user": {
+            "id": 131540799982040,
+            "name": "张萌",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:31"
+    },
+    {
+        "message_id": "9805f43c-863a-480c-88b1-db9a23efbe61",
+        "type": "join",
+        "user": {
+            "id": 3078234461713223,
+            "name": "超级酒精",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:31"
+    },
+    {
+        "message_id": "dfcf456c-899f-4b37-80cb-f54c4176be01",
+        "type": "join",
+        "user": {
+            "id": 3702753682262279,
+            "name": "埃癸斯",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:31"
+    },
+    {
+        "message_id": "6b4d61ab-d72c-496b-b84f-2dd6683e2c07",
+        "type": "join",
+        "user": {
+            "id": 2694243395843388,
+            "name": "我是贝利亚",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:31"
+    },
+    {
+        "message_id": "53a8c5b1-45b0-4231-8fb9-add115ef946a",
+        "type": "join",
+        "user": {
+            "id": 1146125560325838,
+            "name": "雨伞",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:32"
+    },
+    {
+        "message_id": "e36f4c9c-cef6-4926-ab38-9522ff1bf0e9",
+        "type": "join",
+        "user": {
+            "id": 3820164387964669,
+            "name": "饭特稀同学",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:33"
+    },
+    {
+        "message_id": "042c7cf2-54fc-401d-bc44-adf92d4c7a41",
+        "type": "join",
+        "user": {
+            "id": 1203293319334388,
+            "name": "嘻嘻",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:35"
+    },
+    {
+        "message_id": "e7c18874-ba9f-4583-b112-3828396a63b5",
+        "type": "join",
+        "user": {
+            "id": 1471613458451804,
+            "name": "€",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:35"
+    },
+    {
+        "message_id": "59199afa-0ac2-4f92-b1be-e2926e2a75cf",
+        "type": "join",
+        "user": {
+            "id": 4106042928271244,
+            "name": "坏情绪",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:35"
+    },
+    {
+        "message_id": "d63534ba-ed3a-4472-888f-187e75ac7982",
+        "type": "join",
+        "user": {
+            "id": 1238492098596252,
+            "name": "墨玄",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:36"
+    },
+    {
+        "message_id": "77b0a3d6-61fd-4462-a2c8-2747852e469f",
+        "type": "join",
+        "user": {
+            "id": 3186850527457068,
+            "name": "。。。？。",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:39"
+    },
+    {
+        "message_id": "e2d12709-2d5d-44cc-af59-14c3dbb1c725",
+        "type": "join",
+        "user": {
+            "id": 67803520768,
+            "name": "祺",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:39"
+    },
+    {
+        "message_id": "5c9bad92-e389-4ea2-be14-0bca620160cb",
+        "type": "join",
+        "user": {
+            "id": 3321002967706900,
+            "name": "王者荣耀兮兮",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:40"
+    },
+    {
+        "message_id": "10b6ce49-def3-4bf9-9a9d-91eb188235de",
+        "type": "join",
+        "user": {
+            "id": 87375186553,
+            "name": "🎴Neilyo🃏",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:41"
+    },
+    {
+        "message_id": "32d288fa-f3a0-46a5-9be9-e23de85e2d38",
+        "type": "join",
+        "user": {
+            "id": 1876227743296624,
+            "name": "墨屿",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:43"
+    },
+    {
+        "message_id": "1336caa6-b99d-42ba-ac0b-9425fea94e80",
+        "type": "join",
+        "user": {
+            "id": 3158242506313869,
+            "name": "冷冽谷的伊鲁席尔",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:43"
+    },
+    {
+        "message_id": "329f6c52-1cb3-402b-9860-7513b8eeda28",
+        "type": "join",
+        "user": {
+            "id": 4476847633209406,
+            "name": "丁大宝的大兔子",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:43"
+    },
+    {
+        "message_id": "97f471dd-1e78-44e2-9d11-73003c8b19cb",
+        "type": "join",
+        "user": {
+            "id": 71395080739,
+            "name": "孩子气",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:43"
+    },
+    {
+        "message_id": "d184ed62-fa2d-4fa2-b7cf-a0a73170da1c",
+        "type": "join",
+        "user": {
+            "id": 103616101270,
+            "name": "草东也有派对",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:44"
+    },
+    {
+        "message_id": "5f1a382d-606c-41b8-924c-303c93344309",
+        "type": "join",
+        "user": {
+            "id": 162380486024619,
+            "name": "星期日",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:45"
+    },
+    {
+        "message_id": "6a9b84c6-9264-409f-b62f-783b0dd5dd3e",
+        "type": "join",
+        "user": {
+            "id": 105180814161,
+            "name": "用户4282341991611",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:45"
+    },
+    {
+        "message_id": "239dd84f-ac36-4bd5-912a-d0d211d7a4c3",
+        "type": "join",
+        "user": {
+            "id": 102532268732,
+            "name": "い诺尘ゝ",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:45"
+    },
+    {
+        "message_id": "ccf347e1-aecd-4e82-ab9f-a66d2a949edb",
+        "type": "join",
+        "user": {
+            "id": 708503731182439,
+            "name": "晓姜",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:45"
+    },
+    {
+        "message_id": "12ac6e62-ecfd-4e48-97a5-ce501230346d",
+        "type": "join",
+        "user": {
+            "id": 83478533951,
+            "name": "( •͈ᴗ⁃͈)",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:47"
+    },
+    {
+        "message_id": "1f154fac-c6d4-4289-818f-067747823d6f",
+        "type": "join",
+        "user": {
+            "id": 321491792306016,
+            "name": "Yzs",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:47"
+    },
+    {
+        "message_id": "c704d0c3-2411-47ca-a14b-3f5e959b8a68",
+        "type": "join",
+        "user": {
+            "id": 4037045049367303,
+            "name": "空白",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:48"
+    },
+    {
+        "message_id": "93966fce-989a-4151-ab3b-a1b3f1987fff",
+        "type": "join",
+        "user": {
+            "id": 4244559993778343,
+            "name": "思临",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:48"
+    },
+    {
+        "message_id": "f145e528-b77b-49cb-81d5-a79417a3325b",
+        "type": "join",
+        "user": {
+            "id": 67170819492,
+            "name": "要去拯救世界了",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:48"
+    },
+    {
+        "message_id": "2f51ca69-1fbe-4798-93ef-7a6f5878fa33",
+        "type": "join",
+        "user": {
+            "id": 3416917213457255,
+            "name": "cullen",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:50"
+    },
+    {
+        "message_id": "70bba792-77d4-4e48-aaef-b59b9f51f5b2",
+        "type": "join",
+        "user": {
+            "id": 102065841215,
+            "name": "心瘾",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:50"
+    },
+    {
+        "message_id": "3681171e-75e8-4efc-a73d-e4e0f8853a88",
+        "type": "join",
+        "user": {
+            "id": 3905933230483309,
+            "name": "阿浩不吃姜",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:51"
+    },
+    {
+        "message_id": "d9c7c536-dc2f-4e60-8e76-25067db9877f",
+        "type": "join",
+        "user": {
+            "id": 495228479880183,
+            "name": "Q.凪",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:51"
+    },
+    {
+        "message_id": "660c8df0-b14f-4a67-a4e6-cd62630c8739",
+        "type": "join",
+        "user": {
+            "id": 1266287101884400,
+            "name": "懿场雨.",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:51"
+    },
+    {
+        "message_id": "9ce8ff94-018a-4fda-9790-d8e0333ad2fe",
+        "type": "join",
+        "user": {
+            "id": 1170298740153175,
+            "name": "-Yoiu",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:51"
+    },
+    {
+        "message_id": "dca17c15-5bef-4a0f-a1c9-91ef4f59f9a9",
+        "type": "join",
+        "user": {
+            "id": 1025182100359069,
+            "name": "*）%",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:52"
+    },
+    {
+        "message_id": "8abd7f37-6580-4705-8804-f17b4099dc10",
+        "type": "join",
+        "user": {
+            "id": 2434771654033097,
+            "name": "无有",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:52"
+    },
+    {
+        "message_id": "c91d2765-201e-4b4b-ac2d-48d639c60dfc",
+        "type": "join",
+        "user": {
+            "id": 97839888383,
+            "name": "清",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:52"
+    },
+    {
+        "message_id": "1234e47f-e8b2-40a6-b571-6cc8b9159d3a",
+        "type": "join",
+        "user": {
+            "id": 654961137954972,
+            "name": "延长线",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:53"
+    },
+    {
+        "message_id": "d9b2eb23-6568-42f5-a04a-d4409fa9ce20",
+        "type": "join",
+        "user": {
+            "id": 2025780120916924,
+            "name": "月光手写信",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:53"
+    },
+    {
+        "message_id": "097b2d64-34c5-49c1-8a44-f3e53ab1d342",
+        "type": "join",
+        "user": {
+            "id": 98030912148,
+            "name": "这么英俊的吗",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:54"
+    },
+    {
+        "message_id": "6aa35256-09d6-4ff0-83c3-cefb004fc54f",
+        "type": "join",
+        "user": {
+            "id": 399876005304702,
+            "name": "我是死神",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:54"
+    },
+    {
+        "message_id": "8101bae9-3d42-45bd-9da5-0afddbe827b6",
+        "type": "join",
+        "user": {
+            "id": 1357258699309524,
+            "name": "传奇海帕杰顿",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:54"
+    },
+    {
+        "message_id": "e51065bb-54b5-480b-8e96-982aea6ea20a",
+        "type": "join",
+        "user": {
+            "id": 1377051090107815,
+            "name": "Klay Thompson",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:55"
+    },
+    {
+        "message_id": "517ff95a-72d4-4e65-bdaf-9f67dfcc67e5",
+        "type": "join",
+        "user": {
+            "id": 984762620577847,
+            "name": "@远方的网友",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:56"
+    },
+    {
+        "message_id": "5af9cb33-baa3-46b9-8f47-fef3c2112ebb",
+        "type": "join",
+        "user": {
+            "id": 640351994914796,
+            "name": "晚过",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:56"
+    },
+    {
+        "message_id": "a29161fd-ceee-47e0-ba32-f24b6ae9b89a",
+        "type": "join",
+        "user": {
+            "id": 94113708218,
+            "name": "刘硬盘",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:56"
+    },
+    {
+        "message_id": "90e93bfe-fc4f-4ba0-9cf9-e42941c0ff2d",
+        "type": "join",
+        "user": {
+            "id": 81797734555,
+            "name": "立刻有",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:58"
+    },
+    {
+        "message_id": "3180424f-bb3d-48fc-918d-89032c192c79",
+        "type": "join",
+        "user": {
+            "id": 95065480299,
+            "name": "橘子皮（狂暴版）",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:59"
+    },
+    {
+        "message_id": "72e752c3-ac56-423e-ab16-15483fff6373",
+        "type": "join",
+        "user": {
+            "id": 698918207764679,
+            "name": "翊.",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:14:59"
+    },
+    {
+        "message_id": "847c958e-e806-4cb6-805f-bdd755b2e3f8",
+        "type": "join",
+        "user": {
+            "id": 563397577948792,
+            "name": "60s",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:14:59"
+    },
+    {
+        "message_id": "5a8cb6f2-f730-4bc7-a7b4-a5e82bca617b",
+        "type": "join",
+        "user": {
+            "id": 3755558084286589,
+            "name": "阿斯巴甜",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:00"
+    },
+    {
+        "message_id": "303b1f92-c0c5-404b-8d38-e0030a853e51",
+        "type": "join",
+        "user": {
+            "id": 1005410693424584,
+            "name": "好好喝酒",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:02"
+    },
+    {
+        "message_id": "1088ddf5-a329-4cd9-8085-a6411364eebc",
+        "type": "join",
+        "user": {
+            "id": 399876005304702,
+            "name": "我是死神",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:02"
+    },
+    {
+        "message_id": "e2a75f09-59f6-4b21-9cd8-a36b29ed4c39",
+        "type": "join",
+        "user": {
+            "id": 2761575131528875,
+            "name": "散漫",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:04"
+    },
+    {
+        "message_id": "0ae40899-6a52-472b-b3a0-09275d3608ef",
+        "type": "join",
+        "user": {
+            "id": 93412275170,
+            "name": "123456~",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:04"
+    },
+    {
+        "message_id": "2bd8cf95-7cf9-4f17-b4e8-eebbe622aa86",
+        "type": "join",
+        "user": {
+            "id": 56643601146,
+            "name": "咬要药",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:06"
+    },
+    {
+        "message_id": "26d0e0ce-8325-485e-976a-cefd01446172",
+        "type": "join",
+        "user": {
+            "id": 4485651903037112,
+            "name": "余念难安",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:08"
+    },
+    {
+        "message_id": "e6437b40-8436-43ee-bbdc-a62c666739d5",
+        "type": "join",
+        "user": {
+            "id": 4124965641922304,
+            "name": "今天吃点莫斯",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:08"
+    },
+    {
+        "message_id": "7b0dcb33-c437-411e-acca-384034fa1571",
+        "type": "join",
+        "user": {
+            "id": 855883361298595,
+            "name": "本浊",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:08"
+    },
+    {
+        "message_id": "cd07ad69-6fe4-4cd8-bbb2-92fdd14700ed",
+        "type": "join",
+        "user": {
+            "id": 4322904792113747,
+            "name": "像我这么牛逼的还有六个",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:10"
+    },
+    {
+        "message_id": "9ee7aa2d-c5c8-434b-be98-2f8ba88e628e",
+        "type": "join",
+        "user": {
+            "id": 61856681744,
+            "name": "迟迟",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:10"
+    },
+    {
+        "message_id": "07fe6b30-0b52-48d3-9f6f-bd4a80a900f4",
+        "type": "join",
+        "user": {
+            "id": 68097477812,
+            "name": "福瑞斯戴尔",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:12"
+    },
+    {
+        "message_id": "86272237-8110-45d8-81d7-7d8b7775bf45",
+        "type": "join",
+        "user": {
+            "id": 4284149198763022,
+            "name": "留白",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:12"
+    },
+    {
+        "message_id": "09771b56-46b1-4dec-8e23-e7252156e521",
+        "type": "join",
+        "user": {
+            "id": 102593790748,
+            "name": "呼你盼头子",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:12"
+    },
+    {
+        "message_id": "f39698ee-909b-4d25-8855-46db5b6b97cc",
+        "type": "join",
+        "user": {
+            "id": 106284783887,
+            "name": "—.",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:12"
+    },
+    {
+        "message_id": "e281c609-4c3a-4a59-acfb-b3424c36c99a",
+        "type": "join",
+        "user": {
+            "id": 4334699457548780,
+            "name": "用户2022446940546",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:13"
+    },
+    {
+        "message_id": "5f713be4-1d24-4c42-b39e-5739b6c0b501",
+        "type": "join",
+        "user": {
+            "id": 110194248623,
+            "name": "准透明少年",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:13"
+    },
+    {
+        "message_id": "d5d783ef-9175-4b58-9420-c602e9091924",
+        "type": "join",
+        "user": {
+            "id": 80546430155,
+            "name": "KD2425",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:17"
+    },
+    {
+        "message_id": "ac609168-1b35-4bb6-bf6c-4a2e22b563d4",
+        "type": "join",
+        "user": {
+            "id": 997986910083667,
+            "name": "盗梦",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:18"
+    },
+    {
+        "message_id": "500e66a0-f315-41e3-b91d-0fc037b85ce6",
+        "type": "join",
+        "user": {
+            "id": 106112219914,
+            "name": "🌈可大",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:18"
+    },
+    {
+        "message_id": "ddb91b12-e1d8-4317-88d3-124d13c5c24e",
+        "type": "join",
+        "user": {
+            "id": 774528875897005,
+            "name": "Echowhispery",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:18"
+    },
+    {
+        "message_id": "2779dc10-a21b-497f-a6d2-aa6cab595c8c",
+        "type": "join",
+        "user": {
+            "id": 4048814310163212,
+            "name": "Qt",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:19"
+    },
+    {
+        "message_id": "22710211-7fb6-4af2-8fc3-2933f788b50d",
+        "type": "join",
+        "user": {
+            "id": 91618537012,
+            "name": "沉梦昂志",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:19"
+    },
+    {
+        "message_id": "a1a96db5-683d-411d-9fdf-6c39643a83b8",
+        "type": "join",
+        "user": {
+            "id": 97082557329,
+            "name": "神说的我不信",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:19"
+    },
+    {
+        "message_id": "c38bdc1d-8b78-4545-804c-279db820490c",
+        "type": "join",
+        "user": {
+            "id": 1895177145034600,
+            "name": "宇智波的拽比",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:21"
+    },
+    {
+        "message_id": "ce6c9ab3-a760-4173-9f2b-bedc71d17a6f",
+        "type": "join",
+        "user": {
+            "id": 998807529068621,
+            "name": "zyx",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:21"
+    },
+    {
+        "message_id": "a03851ab-2863-4519-a279-7069ce991c48",
+        "type": "join",
+        "user": {
+            "id": 95757361133,
+            "name": "庭思泽",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:21"
+    },
+    {
+        "message_id": "a3cca1e4-e962-4cb3-88df-69844a9686fc",
+        "type": "join",
+        "user": {
+            "id": 61948498188,
+            "name": "起名嘎嘎重复",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:22"
+    },
+    {
+        "message_id": "538b0110-e7be-401e-8487-54fdad276323",
+        "type": "join",
+        "user": {
+            "id": 2576843479974812,
+            "name": "祯",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:23"
+    },
+    {
+        "message_id": "e985b87e-b0bd-4e24-b3b8-0b3a6f69bbba",
+        "type": "join",
+        "user": {
+            "id": 106019988222797,
+            "name": "jdjjdkd",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:23"
+    },
+    {
+        "message_id": "ef27d51f-382c-450e-842d-679f9dfd2ab2",
+        "type": "join",
+        "user": {
+            "id": 91673112810,
+            "name": "hie",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:23"
+    },
+    {
+        "message_id": "76ef8858-fe09-48a4-8c2b-1477b1a93816",
+        "type": "join",
+        "user": {
+            "id": 96874803397,
+            "name": "南寒",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:23"
+    },
+    {
+        "message_id": "42daaf32-a6a1-4840-ac15-a053e332265a",
+        "type": "join",
+        "user": {
+            "id": 3491648859281079,
+            "name": "✨✨",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:24"
+    },
+    {
+        "message_id": "7428f3c4-44e4-4093-a511-1ebc378552fc",
+        "type": "join",
+        "user": {
+            "id": 1143127657430203,
+            "name": "a",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:25"
+    },
+    {
+        "message_id": "2bde07ca-c181-4ff4-95c8-d2c7d434ab52",
+        "type": "join",
+        "user": {
+            "id": 102575482357,
+            "name": "糖果🍬",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:25"
+    },
+    {
+        "message_id": "9ca89cf3-a05f-4926-99aa-a7bf36403b7c",
+        "type": "join",
+        "user": {
+            "id": 1770640674404603,
+            "name": "心要碎掉咯",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:25"
+    },
+    {
+        "message_id": "4e201b07-f8d2-4043-ac61-7ea5f73d9543",
+        "type": "join",
+        "user": {
+            "id": 2383338942508047,
+            "name": "猪大肠",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:25"
+    },
+    {
+        "message_id": "183d9b91-2cc3-4c50-ba4d-551bda4568a5",
+        "type": "join",
+        "user": {
+            "id": 3529849002796893,
+            "name": "我栽了个跟头",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:25"
+    },
+    {
+        "message_id": "8d793f5e-5add-4fdc-8bbb-e119370624dd",
+        "type": "join",
+        "user": {
+            "id": 2698645013538684,
+            "name": "阳光青提",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:27"
+    },
+    {
+        "message_id": "262656f3-0150-4ab6-aa25-12610b1a2078",
+        "type": "join",
+        "user": {
+            "id": 1599102810333419,
+            "name": "令夏",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:27"
+    },
+    {
+        "message_id": "4714c3b9-7c25-4841-80fc-b3293c8c8ae0",
+        "type": "join",
+        "user": {
+            "id": 102051297909,
+            "name": "记得喊我吃饭",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:28"
+    },
+    {
+        "message_id": "609b42bd-fbca-4583-be4d-d449224b0d67",
+        "type": "join",
+        "user": {
+            "id": 110843771825,
+            "name": "桐黎",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:30"
+    },
+    {
+        "message_id": "c448c143-9a76-439e-8d10-bee3be91043b",
+        "type": "join",
+        "user": {
+            "id": 1055999729612807,
+            "name": "智慧大脑袋",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:30"
+    },
+    {
+        "message_id": "dfad2034-22cb-4c20-bd8d-5e202a7465b3",
+        "type": "join",
+        "user": {
+            "id": 111525987323,
+            "name": "Noctis",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:30"
+    },
+    {
+        "message_id": "360e59d1-df4c-4ac0-a4c7-e3b3f62f9e53",
+        "type": "join",
+        "user": {
+            "id": 105230133932,
+            "name": "Fallen god",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:31"
+    },
+    {
+        "message_id": "5baf3325-eaff-40ad-9ae9-a8fdc0f9cfcf",
+        "type": "join",
+        "user": {
+            "id": 871291643235102,
+            "name": "都会变",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:31"
+    },
+    {
+        "message_id": "5544c98f-d95f-4c5c-8d9c-94cef7e47c2c",
+        "type": "join",
+        "user": {
+            "id": 924002832092136,
+            "name": "希",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:31"
+    },
+    {
+        "message_id": "f3febdaa-389c-4d88-85c6-340047ef00cd",
+        "type": "join",
+        "user": {
+            "id": 479825170803871,
+            "name": "多喝水少吃饭",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:32"
+    },
+    {
+        "message_id": "2fd4df7c-3075-4f52-8af3-6894deb3fef0",
+        "type": "join",
+        "user": {
+            "id": 2395217298732636,
+            "name": "bôa",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:32"
+    },
+    {
+        "message_id": "363cab7f-c26c-4f52-962b-727c855da60b",
+        "type": "join",
+        "user": {
+            "id": 79967923620,
+            "name": "Prince Charming",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:33"
+    },
+    {
+        "message_id": "50c8ab75-eb7b-4e68-a34c-bc8e969155a5",
+        "type": "join",
+        "user": {
+            "id": 840488265189309,
+            "name": "鲍威尔",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:35"
+    },
+    {
+        "message_id": "a1abb2f8-e28c-43f5-aef5-e769fb1bbb94",
+        "type": "join",
+        "user": {
+            "id": 1684875213806797,
+            "name": "锦鲤抄",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:36"
+    },
+    {
+        "message_id": "8fe6f23e-2af5-4b31-b427-b5237b09fe21",
+        "type": "join",
+        "user": {
+            "id": 105912719830,
+            "name": "11年天才中单",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:37"
+    },
+    {
+        "message_id": "20710479-d030-48e1-8bcd-ebd09118eb13",
+        "type": "join",
+        "user": {
+            "id": 2164259792889395,
+            "name": "三只芦苇",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:37"
+    },
+    {
+        "message_id": "671ab6a0-23e2-41eb-ab18-afc95adc091d",
+        "type": "join",
+        "user": {
+            "id": 67519944670,
+            "name": "超级英雄鬼畜战士兰斯",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:37"
+    },
+    {
+        "message_id": "2545f3a8-94fe-41ee-a86c-b0e80d2d3d2b",
+        "type": "join",
+        "user": {
+            "id": 104939688001,
+            "name": "欢乐搞笑五排",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:37"
+    },
+    {
+        "message_id": "cc9ca00d-aaae-4ef8-a9e8-26d8c57412da",
+        "type": "join",
+        "user": {
+            "id": 92861824797,
+            "name": "空悲切",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:39"
+    },
+    {
+        "message_id": "bcddb252-74ac-4a4f-a57e-22536ef44be7",
+        "type": "join",
+        "user": {
+            "id": 1037578805198077,
+            "name": "111",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:41"
+    },
+    {
+        "message_id": "8efb6d7d-9325-43d5-872d-8c42e1a4d708",
+        "type": "join",
+        "user": {
+            "id": 272292844934216,
+            "name": "深蓝",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:41"
+    },
+    {
+        "message_id": "ce1b5280-f835-4da0-95ce-dae5b7eb8093",
+        "type": "join",
+        "user": {
+            "id": 1644485752947560,
+            "name": "国超的嘉人",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:43"
+    },
+    {
+        "message_id": "f8745b01-0749-4ea0-a8e4-ebf912eb1f9d",
+        "type": "join",
+        "user": {
+            "id": 92461769751,
+            "name": "李火旺",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:43"
+    },
+    {
+        "message_id": "eaaff30f-5269-4895-9b23-2daecb65b8da",
+        "type": "join",
+        "user": {
+            "id": 4488656570293488,
+            "name": "同圣宇",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:43"
+    },
+    {
+        "message_id": "051aaf9b-77ce-474b-889f-bcb513be32ef",
+        "type": "join",
+        "user": {
+            "id": 3416917213457255,
+            "name": "cullen",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:45"
+    },
+    {
+        "message_id": "8ef3c458-b5c0-49de-9cbb-87a1795745c2",
+        "type": "join",
+        "user": {
+            "id": 624120026643341,
+            "name": "FeignedSmile",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:45"
+    },
+    {
+        "message_id": "7ff6bde6-63ee-4290-ae72-2b63fa9a6891",
+        "type": "join",
+        "user": {
+            "id": 99159308413,
+            "name": "心上梦幻",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:46"
+    },
+    {
+        "message_id": "9f88646d-e46a-4a68-9a91-c01e5799b538",
+        "type": "join",
+        "user": {
+            "id": 2963878973546680,
+            "name": "倾国之举",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:47"
+    },
+    {
+        "message_id": "f27599c4-921c-47f9-b103-71d6cc37eec5",
+        "type": "join",
+        "user": {
+            "id": 1302240174307863,
+            "name": "无欲则刚",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:47"
+    },
+    {
+        "message_id": "95b87278-4d6a-4fd1-8102-6c137f2e8df5",
+        "type": "join",
+        "user": {
+            "id": 4226980975752264,
+            "name": "第一半截篮",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:47"
+    },
+    {
+        "message_id": "841c3d1c-a7de-484f-9d6c-37bf2f11bfbd",
+        "type": "join",
+        "user": {
+            "id": 4028200113675805,
+            "name": "ymz",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:47"
+    },
+    {
+        "message_id": "3a369fc7-1437-4579-9972-fa420f7c5fa2",
+        "type": "join",
+        "user": {
+            "id": 107792513260,
+            "name": "❓",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:47"
+    },
+    {
+        "message_id": "afeebee3-d316-46cb-9aee-731b148b608d",
+        "type": "join",
+        "user": {
+            "id": 80599644880,
+            "name": "罗田郭伟手机",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:49"
+    },
+    {
+        "message_id": "73d0a87c-15e4-4bfa-b8f2-f8b7d4747ef7",
+        "type": "join",
+        "user": {
+            "id": 3208848856594523,
+            "name": "78",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:49"
+    },
+    {
+        "message_id": "a9448577-a71f-40f8-9027-32f6dc316be9",
+        "type": "join",
+        "user": {
+            "id": 3993040103942654,
+            "name": "溯",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:50"
+    },
+    {
+        "message_id": "d9424c7c-a32f-4862-943f-3ca10d042c5c",
+        "type": "join",
+        "user": {
+            "id": 1437789030720348,
+            "name": "张无忌",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:52"
+    },
+    {
+        "message_id": "2316e1b9-5a7c-42de-a1bd-920b9776b430",
+        "type": "join",
+        "user": {
+            "id": 2598846176700268,
+            "name": "✅",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:55"
+    },
+    {
+        "message_id": "7666c938-b006-4382-880d-89abf8bbd0dd",
+        "type": "join",
+        "user": {
+            "id": 2432533965049228,
+            "name": "马也",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:55"
+    },
+    {
+        "message_id": "a5ef02fa-da64-4835-9b6c-28756589fb30",
+        "type": "join",
+        "user": {
+            "id": 3443275672069963,
+            "name": "y1z",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:56"
+    },
+    {
+        "message_id": "25c612e7-9af8-43f5-ba13-000479b71063",
+        "type": "join",
+        "user": {
+            "id": 105970717286568,
+            "name": "🔥别打瞌睡了⁶⁸¹",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:56"
+    },
+    {
+        "message_id": "00169cc4-8cbc-41f2-9626-78568eeb325a",
+        "type": "join",
+        "user": {
+            "id": 59829094642,
+            "name": "麦斯>_<",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:57"
+    },
+    {
+        "message_id": "e079ea5b-2359-4f5d-8210-3691ebedb367",
+        "type": "join",
+        "user": {
+            "id": 110923850740,
+            "name": "😂😂",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:57"
+    },
+    {
+        "message_id": "7cbe1ad9-a302-4b99-be6c-290ecdd50f28",
+        "type": "join",
+        "user": {
+            "id": 98656394384,
+            "name": "小屁孩",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:58"
+    },
+    {
+        "message_id": "87894717-08a9-4d65-8814-0de28ad39e8e",
+        "type": "join",
+        "user": {
+            "id": 3692606906199145,
+            "name": "千寻",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:59"
+    },
+    {
+        "message_id": "cd86f7ea-70a6-4d8b-ae31-c325b7351f08",
+        "type": "join",
+        "user": {
+            "id": 2219263102552231,
+            "name": "无年",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:15:59"
+    },
+    {
+        "message_id": "102951fa-af6e-4406-b15d-2f74d02644f4",
+        "type": "join",
+        "user": {
+            "id": 111548781265,
+            "name": "未写完的诗☘",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:15:59"
+    },
+    {
+        "message_id": "8cb22ed8-963b-4188-8928-6595ca855699",
+        "type": "join",
+        "user": {
+            "id": 60494228939,
+            "name": "小心我超人",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:00"
+    },
+    {
+        "message_id": "48b08db4-fcb7-4a67-a550-b45601a514da",
+        "type": "join",
+        "user": {
+            "id": 748148383299293,
+            "name": "屋里头丶",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:00"
+    },
+    {
+        "message_id": "b2938b9c-7c3c-4093-b04f-2f6418c0fe2e",
+        "type": "join",
+        "user": {
+            "id": 3592848146962685,
+            "name": "用户3906542111348",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:01"
+    },
+    {
+        "message_id": "49c4e98b-8c84-43aa-a30b-32d73d79db69",
+        "type": "join",
+        "user": {
+            "id": 3671982622920948,
+            "name": "照耀✨南旭",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:01"
+    },
+    {
+        "message_id": "0cad6954-0258-453e-b1c1-4ec75d6980ea",
+        "type": "join",
+        "user": {
+            "id": 809668333809886,
+            "name": "如果",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:03"
+    },
+    {
+        "message_id": "6d894260-2e6e-4436-a238-ff6d601fcf27",
+        "type": "join",
+        "user": {
+            "id": 998807529068621,
+            "name": "zyx",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:03"
+    },
+    {
+        "message_id": "5de62e5e-e46b-459c-84ee-bb87495e24e4",
+        "type": "join",
+        "user": {
+            "id": 1759693597577607,
+            "name": "闲云野鹤",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:03"
+    },
+    {
+        "message_id": "9096507b-26d7-43b7-82e2-e722a5eb73ee",
+        "type": "join",
+        "user": {
+            "id": 2462511802089607,
+            "name": "料廖",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:04"
+    },
+    {
+        "message_id": "9273698e-b36f-421b-9b39-69db77ff0029",
+        "type": "join",
+        "user": {
+            "id": 111548781265,
+            "name": "未写完的诗☘",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:04"
+    },
+    {
+        "message_id": "7b87f92d-dae2-45b7-95df-dac3811219a5",
+        "type": "join",
+        "user": {
+            "id": 3186824407949639,
+            "name": "用户5455875737916",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:04"
+    },
+    {
+        "message_id": "68eb68cd-dfa7-4d49-b310-582410176883",
+        "type": "join",
+        "user": {
+            "id": 2568107912081095,
+            "name": "丢了号的nico",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:04"
+    },
+    {
+        "message_id": "e377c57d-0cd7-48f4-926a-dad0c3173528",
+        "type": "join",
+        "user": {
+            "id": 2041168744426109,
+            "name": "沫轩",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:04"
+    },
+    {
+        "message_id": "43523acd-03fb-415a-9eba-3bbae170ae20",
+        "type": "join",
+        "user": {
+            "id": 3346541095697479,
+            "name": "Yan富贵",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:05"
+    },
+    {
+        "message_id": "19a69d3f-f30e-4d55-b812-204fb8094759",
+        "type": "join",
+        "user": {
+            "id": 2485342526254221,
+            "name": "嘿",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:07"
+    },
+    {
+        "message_id": "5a04fe9b-5540-4ff0-b9a7-44a96e11056e",
+        "type": "join",
+        "user": {
+            "id": 2005115272170895,
+            "name": "Btwdd",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:07"
+    },
+    {
+        "message_id": "78262e94-e517-404b-9877-b181ac02bda1",
+        "type": "join",
+        "user": {
+            "id": 104273913813,
+            "name": "古月阴荒",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:07"
+    },
+    {
+        "message_id": "583a002f-edc7-43f8-9a4c-7ca7a61050fa",
+        "type": "join",
+        "user": {
+            "id": 57802142410,
+            "name": "热忱丶",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:10"
+    },
+    {
+        "message_id": "1d29bfef-8930-4129-a5c0-4a44da316ea4",
+        "type": "join",
+        "user": {
+            "id": 3079071079860654,
+            "name": "彻友彻行",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:10"
+    },
+    {
+        "message_id": "9956f68a-7de6-46c1-86bb-80895c7c5887",
+        "type": "join",
+        "user": {
+            "id": 105468490300,
+            "name": "海天石家庄小吴同学",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:10"
+    },
+    {
+        "message_id": "70c25566-74a9-4992-be40-4b0657d5fce4",
+        "type": "join",
+        "user": {
+            "id": 869062932184132,
+            "name": "轩辕皇帝",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:11"
+    },
+    {
+        "message_id": "24bd568d-8b7b-4a94-a972-b34154b8548b",
+        "type": "join",
+        "user": {
+            "id": 1719264123828168,
+            "name": "S🐟Q",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:12"
+    },
+    {
+        "message_id": "5df25307-384f-4462-9418-bed382bf99c8",
+        "type": "join",
+        "user": {
+            "id": 3468325780724924,
+            "name": "山🌈",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:13"
+    },
+    {
+        "message_id": "b8a3c297-4797-4af3-9f14-7917bb70583b",
+        "type": "join",
+        "user": {
+            "id": 84713679684,
+            "name": "李师长",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:13"
+    },
+    {
+        "message_id": "951f56ad-4729-4ce2-ba34-bfa5fed4b42f",
+        "type": "join",
+        "user": {
+            "id": 1823424962625868,
+            "name": "莫青天河",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:13"
+    },
+    {
+        "message_id": "fb534f64-ec9b-4447-b2be-e2c458544ac8",
+        "type": "join",
+        "user": {
+            "id": 81789448738,
+            "name": "向南SOHO（翻转棋）",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:14"
+    },
+    {
+        "message_id": "227548d1-d33b-403c-8c8f-31fa5eb8a5e9",
+        "type": "join",
+        "user": {
+            "id": 3589224492177694,
+            "name": "五六六( っ'-')╮ 顶尖哈迪",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:14"
+    },
+    {
+        "message_id": "7455223d-5370-4053-ab40-ce3dca065af8",
+        "type": "join",
+        "user": {
+            "id": 1717862502238896,
+            "name": "Rᴇsᴛᴀʀᴛ🐑",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:15"
+    },
+    {
+        "message_id": "62ee8383-ee78-4081-b6dc-198437f5adca",
+        "type": "join",
+        "user": {
+            "id": 2963872900981920,
+            "name": "小德:)河南分德",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:15"
+    },
+    {
+        "message_id": "19b34410-7f06-4675-b828-2de8411530b5",
+        "type": "join",
+        "user": {
+            "id": 2854793608693911,
+            "name": "🌈有道大虾",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:15"
+    },
+    {
+        "message_id": "8a23aa66-993c-48d1-ad75-2636f2b84d71",
+        "type": "join",
+        "user": {
+            "id": 101878292481,
+            "name": "三玖天下第一",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:16"
+    },
+    {
+        "message_id": "99d8fc23-f67d-4675-9003-7931b4b4a046",
+        "type": "join",
+        "user": {
+            "id": 102380622997,
+            "name": "zakky",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:16"
+    },
+    {
+        "message_id": "c3e46815-ff07-4ec7-adcb-c80b472cdca3",
+        "type": "join",
+        "user": {
+            "id": 1497966713767907,
+            "name": "Peace平安-",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:17"
+    },
+    {
+        "message_id": "fc789ab1-a62d-43d6-aa17-b6a9ff1ced3f",
+        "type": "join",
+        "user": {
+            "id": 4476818304277144,
+            "name": "一个景元厨",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:17"
+    },
+    {
+        "message_id": "60bacfe6-4b43-4c27-8a1d-75020a8a024b",
+        "type": "join",
+        "user": {
+            "id": 1548589106987629,
+            "name": "陈合生",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:19"
+    },
+    {
+        "message_id": "f1687127-fe9a-4ca7-b7a3-c432b6440fb4",
+        "type": "join",
+        "user": {
+            "id": 105998946824,
+            "name": "🔱L🔱",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:20"
+    },
+    {
+        "message_id": "80ee74fc-4348-4479-b772-fe2bdb33677d",
+        "type": "join",
+        "user": {
+            "id": 1709059196589795,
+            "name": "离岸",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:20"
+    },
+    {
+        "message_id": "becdf287-817e-45d0-91ed-7a2af2ca3460",
+        "type": "join",
+        "user": {
+            "id": 4264350257527811,
+            "name": "糖",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:20"
+    },
+    {
+        "message_id": "b29c1771-f9ff-4bc2-aeff-952d064c1c23",
+        "type": "join",
+        "user": {
+            "id": 83565542171,
+            "name": "养只帕萨特",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:21"
+    },
+    {
+        "message_id": "02486442-6884-4a1b-a37a-9093f93beca5",
+        "type": "join",
+        "user": {
+            "id": 101192843231,
+            "name": "小梁无忧愁",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:23"
+    },
+    {
+        "message_id": "d85a63d6-075d-4620-b9e9-1d8e4150cb4b",
+        "type": "join",
+        "user": {
+            "id": 1684080045076824,
+            "name": "NV",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:23"
+    },
+    {
+        "message_id": "f548324b-f2d6-4df7-9d92-de60d32762b6",
+        "type": "join",
+        "user": {
+            "id": 1169511386979731,
+            "name": "见字如面",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:24"
+    },
+    {
+        "message_id": "43cd26ce-3685-415c-a1e8-f848dccd67b3",
+        "type": "join",
+        "user": {
+            "id": 93698281092,
+            "name": "执@念",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:24"
+    },
+    {
+        "message_id": "bd4ea5fb-2caa-4770-a268-4e7bef7ec55f",
+        "type": "join",
+        "user": {
+            "id": 74957446753,
+            "name": "梦龙",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:25"
+    },
+    {
+        "message_id": "19e8df9b-60d6-4e10-9812-57289e33f81f",
+        "type": "join",
+        "user": {
+            "id": 109180715757,
+            "name": "chill",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:25"
+    },
+    {
+        "message_id": "3f0a1fb5-6d89-4996-9f0b-28f6736f0930",
+        "type": "join",
+        "user": {
+            "id": 1526602265534894,
+            "name": "早点睡",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:26"
+    },
+    {
+        "message_id": "c9f0ddb3-be16-4ce8-9036-a7113e458b21",
+        "type": "join",
+        "user": {
+            "id": 4374315533631130,
+            "name": "用户7729581755061",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:28"
+    },
+    {
+        "message_id": "6a925b2a-c236-4243-a062-a36dea935b98",
+        "type": "join",
+        "user": {
+            "id": 3892703757608007,
+            "name": "已傻",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:28"
+    },
+    {
+        "message_id": "ce5d40c8-1fd5-4460-8a45-c026aa5f47c1",
+        "type": "join",
+        "user": {
+            "id": 83570560144,
+            "name": "🌈命定之人",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:30"
+    },
+    {
+        "message_id": "8f7f5e62-794e-4b97-ad24-c85ecdd7e66e",
+        "type": "join",
+        "user": {
+            "id": 1794020027151499,
+            "name": "CHS",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:30"
+    },
+    {
+        "message_id": "83d14c69-0825-4462-a5cd-5b3647e4aa65",
+        "type": "join",
+        "user": {
+            "id": 98068579978,
+            "name": "子꙲    星꙲",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:30"
+    },
+    {
+        "message_id": "69a08a25-6431-4b30-a9a7-67fa5e7dde82",
+        "type": "join",
+        "user": {
+            "id": 4045798445420558,
+            "name": "你别笑la",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:31"
+    },
+    {
+        "message_id": "c7ae8bf4-ce4f-4693-ab5b-83d2a247ddff",
+        "type": "join",
+        "user": {
+            "id": 1363040003697501,
+            "name": "中中中中中中",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:33"
+    },
+    {
+        "message_id": "d1d1ae22-fdd1-4e83-991c-7e8b84b65fc1",
+        "type": "join",
+        "user": {
+            "id": 1226652494859181,
+            "name": "会飞的八百万",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:35"
+    },
+    {
+        "message_id": "dc656092-e52b-4cc9-96fd-ee754dd9086c",
+        "type": "join",
+        "user": {
+            "id": 3615613523863068,
+            "name": "冷瞳",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:36"
+    },
+    {
+        "message_id": "5debce34-0cdb-4100-a3df-b8cf78473d8c",
+        "type": "join",
+        "user": {
+            "id": 3051888337235086,
+            "name": "风吹几何炎夏日",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:37"
+    },
+    {
+        "message_id": "e85759d6-10a7-407c-8dd5-cf3d568719ea",
+        "type": "join",
+        "user": {
+            "id": 68037196097,
+            "name": "a7",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:37"
+    },
+    {
+        "message_id": "6021755c-cc50-484a-995a-59b068f3754c",
+        "type": "join",
+        "user": {
+            "id": 4385324803033213,
+            "name": "g gu g",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:39"
+    },
+    {
+        "message_id": "cd56af9f-dfd0-4aaa-b44a-332847d57f6f",
+        "type": "join",
+        "user": {
+            "id": 1864380073906957,
+            "name": "老王不白给🌈🌈",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:39"
+    },
+    {
+        "message_id": "027fa815-8120-40e8-a0f3-1c9e75ab8d62",
+        "type": "join",
+        "user": {
+            "id": 2060940378377118,
+            "name": "雾...",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:40"
+    },
+    {
+        "message_id": "642d63d9-f5fb-47e2-9007-099bdc5b5c31",
+        "type": "join",
+        "user": {
+            "id": 756096551105912,
+            "name": "秋尽",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:41"
+    },
+    {
+        "message_id": "d6e28df7-b6b9-40b7-adc7-e00c79b8d250",
+        "type": "join",
+        "user": {
+            "id": 102454923471,
+            "name": "欢…😷",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:43"
+    },
+    {
+        "message_id": "721d954f-5058-4834-a53d-d79bb9d0c131",
+        "type": "join",
+        "user": {
+            "id": 427071899174424,
+            "name": "plouth",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:43"
+    },
+    {
+        "message_id": "6553cbc8-7d81-4ab0-be7a-97e8a0414ee9",
+        "type": "join",
+        "user": {
+            "id": 3232179016180840,
+            "name": "色彩太难了",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:43"
+    },
+    {
+        "message_id": "89e0ad13-9847-48f5-a9e0-af4aa343c7e6",
+        "type": "join",
+        "user": {
+            "id": 106774994998,
+            "name": "好想睡觉",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:43"
+    },
+    {
+        "message_id": "17e34673-533d-4cd0-b6cb-2cdaf1c08ee3",
+        "type": "join",
+        "user": {
+            "id": 628520275682861,
+            "name": "星云kl",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:44"
+    },
+    {
+        "message_id": "acef05d7-4584-4824-86c6-72175b2dc3d1",
+        "type": "join",
+        "user": {
+            "id": 68324862735,
+            "name": "我女朋友是大美女！",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:44"
+    },
+    {
+        "message_id": "5f458fc0-9bdf-4a78-9e4f-3cf7eecaff2f",
+        "type": "join",
+        "user": {
+            "id": 1385815573540700,
+            "name": "冬夜白",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:45"
+    },
+    {
+        "message_id": "be41ca0e-b41f-44ae-8ac0-8c84f4420c7e",
+        "type": "join",
+        "user": {
+            "id": 82352374447,
+            "name": "平安喜乐.",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:46"
+    },
+    {
+        "message_id": "27b5bfa8-3dd8-43dc-aa14-c4b7fd923137",
+        "type": "join",
+        "user": {
+            "id": 3074695127111044,
+            "name": "宏· 展",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:46"
+    },
+    {
+        "message_id": "db802d9c-253c-4ae3-8077-3a78b47f9b3a",
+        "type": "join",
+        "user": {
+            "id": 4033455557972647,
+            "name": "C,",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:47"
+    },
+    {
+        "message_id": "886e6c2e-870c-4d32-9b56-f0cd22cce02c",
+        "type": "join",
+        "user": {
+            "id": 93422129850,
+            "name": "无欲无求.",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:47"
+    },
+    {
+        "message_id": "50cc82da-708b-484d-8f76-0fba03f377dc",
+        "type": "join",
+        "user": {
+            "id": 97019887544,
+            "name": "哦喽叽嘛路",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:47"
+    },
+    {
+        "message_id": "1bf2d1c0-e8be-4a61-8e43-94b11c230c66",
+        "type": "join",
+        "user": {
+            "id": 3980647192340878,
+            "name": "杰杰丶",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:47"
+    },
+    {
+        "message_id": "d92e6bfd-6ef5-412b-9c89-6e51018a3594",
+        "type": "join",
+        "user": {
+            "id": 3659650381385437,
+            "name": "💦💦💦",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:48"
+    },
+    {
+        "message_id": "f12caa7e-96f0-40b7-96f4-9ae055dcd867",
+        "type": "join",
+        "user": {
+            "id": 68384678864,
+            "name": "LIUYUFENG",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:49"
+    },
+    {
+        "message_id": "d3f9733a-d089-4dc8-86fd-17d0ee6b4774",
+        "type": "join",
+        "user": {
+            "id": 106706733119,
+            "name": "🏸蓬蓬朱古力",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:50"
+    },
+    {
+        "message_id": "a71aaf3c-6e76-438c-8a9e-ba0d79a1bfc6",
+        "type": "join",
+        "user": {
+            "id": 2047731481975404,
+            "name": "mingM.",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:51"
+    },
+    {
+        "message_id": "fbe63c8d-4b1f-447b-8383-97f5d99404c2",
+        "type": "join",
+        "user": {
+            "id": 2642870581081283,
+            "name": "逆💤",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:52"
+    },
+    {
+        "message_id": "89e4e4cb-f810-4f48-bd0e-26a4d3fbc2fd",
+        "type": "join",
+        "user": {
+            "id": 62719628804,
+            "name": "乐一昂",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:53"
+    },
+    {
+        "message_id": "07412a37-836d-4c4d-aec2-cfde41f3c337",
+        "type": "join",
+        "user": {
+            "id": 2154693261302237,
+            "name": "旧城以西",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:53"
+    },
+    {
+        "message_id": "965e8c60-14fa-44aa-a5ca-57948d834dc2",
+        "type": "join",
+        "user": {
+            "id": 1077156753455053,
+            "name": "初仙",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:54"
+    },
+    {
+        "message_id": "88db1cf1-a689-481f-b59d-f4764528684b",
+        "type": "join",
+        "user": {
+            "id": 3777524350589643,
+            "name": "极品男模",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:55"
+    },
+    {
+        "message_id": "0970ceb7-5552-4b09-b8b6-50fb73b25120",
+        "type": "join",
+        "user": {
+            "id": 158750587521661,
+            "name": "TAIZI",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:55"
+    },
+    {
+        "message_id": "d8f8def9-5274-4653-82c8-38393ed8d1a0",
+        "type": "join",
+        "user": {
+            "id": 66869685018,
+            "name": "浮世英寿",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:56"
+    },
+    {
+        "message_id": "59ab0ffe-b956-4471-b02f-525105e43b30",
+        "type": "join",
+        "user": {
+            "id": 60335399540,
+            "name": "心恰好动了",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:57"
+    },
+    {
+        "message_id": "2734823f-4153-49c8-9863-d312d094b120",
+        "type": "join",
+        "user": {
+            "id": 97896006246,
+            "name": "愿·",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:57"
+    },
+    {
+        "message_id": "f2fb1584-15b1-4b11-ad6a-eeedff0ce229",
+        "type": "join",
+        "user": {
+            "id": 1330865965368700,
+            "name": "智⫍ ⃢⃢👁━👁⃢ ⫎慧",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:57"
+    },
+    {
+        "message_id": "30b54700-dac0-443c-a543-4cad088493cb",
+        "type": "join",
+        "user": {
+            "id": 95095432891,
+            "name": "milo",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:16:57"
+    },
+    {
+        "message_id": "3d52158f-6254-4036-b126-904393d44090",
+        "type": "join",
+        "user": {
+            "id": 110071560760,
+            "name": "咕咕哒.",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:58"
+    },
+    {
+        "message_id": "820a88e1-672f-42d2-a32a-da6664ea5ea8",
+        "type": "join",
+        "user": {
+            "id": 82378729865,
+            "name": "我是牛马大王",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:16:59"
+    },
+    {
+        "message_id": "36dda29c-f52a-4359-9e13-dcc74b08eafd",
+        "type": "join",
+        "user": {
+            "id": 993611723312653,
+            "name": "发财富贵健康幸福",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:17:00"
+    },
+    {
+        "message_id": "82f19ee1-e77a-4c4c-925e-a49ed64872b2",
+        "type": "join",
+        "user": {
+            "id": 796500760989294,
+            "name": "耍小朋友嘛",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:17:00"
+    },
+    {
+        "message_id": "f0779f4a-ebcb-4e36-bf03-569aa56d0f59",
+        "type": "join",
+        "user": {
+            "id": 673381668895335,
+            "name": "gg爆不是jj爆",
+            "gender": "女"
+        },
+        "timestamp": "2025-02-28 01:17:00"
+    },
+    {
+        "message_id": "36435260-49a3-42cd-b5ec-2b8e1a4e4263",
+        "type": "join",
+        "user": {
+            "id": 2682407199441295,
+            "name": "溜了",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:17:01"
+    },
+    {
+        "message_id": "1aec8af0-0e2b-4e05-a762-72fc0c56fd9c",
+        "type": "join",
+        "user": {
+            "id": 111234303645,
+            "name": "冷静珍珠",
+            "gender": "男"
+        },
+        "timestamp": "2025-02-28 01:17:01"
+    }
+]

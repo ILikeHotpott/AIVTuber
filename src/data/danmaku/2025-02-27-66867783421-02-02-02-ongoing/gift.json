@@ -1,0 +1,268 @@
+[
+    {
+        "message_id": "ee6c4323-fb04-435d-841f-355fdf09884f",
+        "type": "gift",
+        "user": {
+            "id": 96331631318,
+            "name": "QQQ",
+            "gender": "女"
+        },
+        "gift": {
+            "name": "入团卡",
+            "count": 1
+        },
+        "timestamp": "2025-02-27 02:02:05"
+    },
+    {
+        "message_id": "f8e60262-d627-4903-b846-fd5d4d823dd3",
+        "type": "gift",
+        "user": {
+            "id": 96331631318,
+            "name": "QQQ",
+            "gender": "女"
+        },
+        "gift": {
+            "name": "入团卡",
+            "count": 1
+        },
+        "timestamp": "2025-02-27 02:02:06"
+    },
+    {
+        "message_id": "fa1d153a-f221-42f0-9b56-07bba2d9208c",
+        "type": "gift",
+        "user": {
+            "id": 311882375508456,
+            "name": "望江月",
+            "gender": "男"
+        },
+        "gift": {
+            "name": "粉丝团灯牌",
+            "count": 1
+        },
+        "timestamp": "2025-02-27 02:02:06"
+    },
+    {
+        "message_id": "c4659788-6641-488e-8286-7f3bc6d1ab7a",
+        "type": "gift",
+        "user": {
+            "id": 4286354012780793,
+            "name": "玖一    (沧海一舟)",
+            "gender": "男"
+        },
+        "gift": {
+            "name": "比心兔兔",
+            "count": 1
+        },
+        "timestamp": "2025-02-27 02:02:19"
+    },
+    {
+        "message_id": "9c57d9f5-83c8-4e8b-812c-53f7c3299da8",
+        "type": "gift",
+        "user": {
+            "id": 88330977264,
+            "name": "小念",
+            "gender": "男"
+        },
+        "gift": {
+            "name": "入团卡",
+            "count": 1
+        },
+        "timestamp": "2025-02-27 02:02:24"
+    },
+    {
+        "message_id": "627f3dca-cf43-4192-94b2-7af86d237b04",
+        "type": "gift",
+        "user": {
+            "id": 88330977264,
+            "name": "小念",
+            "gender": "男"
+        },
+        "gift": {
+            "name": "入团卡",
+            "count": 1
+        },
+        "timestamp": "2025-02-27 02:02:27"
+    },
+    {
+        "message_id": "1259368f-41a3-465e-94e9-3ade8cda7fd7",
+        "type": "gift",
+        "user": {
+            "id": 74924799816,
+            "name": "Cookie*",
+            "gender": "男"
+        },
+        "gift": {
+            "name": "粉丝团灯牌",
+            "count": 1
+        },
+        "timestamp": "2025-02-27 02:02:30"
+    },
+    {
+        "message_id": "ed9e080f-5cdf-46c6-b121-714d95472eae",
+        "type": "gift",
+        "user": {
+            "id": 91725871864,
+            "name": "徐咏琪也太丑了",
+            "gender": "男"
+        },
+        "gift": {
+            "name": "为你闪耀",
+            "count": 1
+        },
+        "timestamp": "2025-02-27 02:02:35"
+    },
+    {
+        "message_id": "8f5bb7f8-b8fc-4960-9ac7-6fa62f7226ec",
+        "type": "gift",
+        "user": {
+            "id": 101865772155,
+            "name": "愛兩",
+            "gender": "男"
+        },
+        "gift": {
+            "name": "点亮粉丝团",
+            "count": 1
+        },
+        "timestamp": "2025-02-27 02:02:35"
+    },
+    {
+        "message_id": "608ea75e-d8b8-4dde-93ef-afd947ab4305",
+        "type": "gift",
+        "user": {
+            "id": 91725871864,
+            "name": "徐咏琪也太丑了",
+            "gender": "男"
+        },
+        "gift": {
+            "name": "为你闪耀",
+            "count": 1
+        },
+        "timestamp": "2025-02-27 02:02:38"
+    },
+    {
+        "message_id": "ee650304-7b16-4d3c-9c49-4b3591529da3",
+        "type": "gift",
+        "user": {
+            "id": 101865772155,
+            "name": "愛兩",
+            "gender": "男"
+        },
+        "gift": {
+            "name": "点亮粉丝团",
+            "count": 1
+        },
+        "timestamp": "2025-02-27 02:02:38"
+    },
+    {
+        "message_id": "49027c86-3af1-4de8-92a9-43b7ca1b5f21",
+        "type": "gift",
+        "user": {
+            "id": 88330977264,
+            "name": "小念",
+            "gender": "男"
+        },
+        "gift": {
+            "name": "大啤酒",
+            "count": 1
+        },
+        "timestamp": "2025-02-27 02:02:50"
+    },
+    {
+        "message_id": "453ac863-8f32-4b0c-8a56-9e8dd77a7dd3",
+        "type": "gift",
+        "user": {
+            "id": 88330977264,
+            "name": "小念",
+            "gender": "男"
+        },
+        "gift": {
+            "name": "大啤酒",
+            "count": 4
+        },
+        "timestamp": "2025-02-27 02:02:50"
+    },
+    {
+        "message_id": "d9303d66-2435-4e25-98b4-f5956e35b8c0",
+        "type": "gift",
+        "user": {
+            "id": 88330977264,
+            "name": "小念",
+            "gender": "男"
+        },
+        "gift": {
+            "name": "大啤酒",
+            "count": 4
+        },
+        "timestamp": "2025-02-27 02:02:53"
+    },
+    {
+        "message_id": "eecfa089-ee6e-4b81-b93e-c7da09249cbf",
+        "type": "gift",
+        "user": {
+            "id": 519402948146699,
+            "name": "xing qi 7",
+            "gender": "男"
+        },
+        "gift": {
+            "name": "粉丝团灯牌",
+            "count": 1
+        },
+        "timestamp": "2025-02-27 02:03:08"
+    },
+    {
+        "message_id": "951dc0b8-f300-4dca-8cbf-c98428d90bc5",
+        "type": "gift",
+        "user": {
+            "id": 519402948146699,
+            "name": "xing qi 7",
+            "gender": "男"
+        },
+        "gift": {
+            "name": "为你闪耀",
+            "count": 1
+        },
+        "timestamp": "2025-02-27 02:03:10"
+    },
+    {
+        "message_id": "2c866feb-3044-4559-9622-3c4777f9c9e5",
+        "type": "gift",
+        "user": {
+            "id": 519402948146699,
+            "name": "xing qi 7",
+            "gender": "男"
+        },
+        "gift": {
+            "name": "为你闪耀",
+            "count": 1
+        },
+        "timestamp": "2025-02-27 02:03:13"
+    },
+    {
+        "message_id": "c3145446-6e7d-4dfa-8567-29fc509605f5",
+        "type": "gift",
+        "user": {
+            "id": 66913150541,
+            "name": "难过就去看海",
+            "gender": "男"
+        },
+        "gift": {
+            "name": "点亮粉丝团",
+            "count": 1
+        },
+        "timestamp": "2025-02-27 02:03:24"
+    },
+    {
+        "message_id": "eaf81701-9522-4a2c-a859-ad77e0fb3677",
+        "type": "gift",
+        "user": {
+            "id": 4023828379086460,
+            "name": "pg.🚶🏼‍♂️",
+            "gender": "男"
+        },
+        "gift": {
+            "name": "亲吻",
+            "count": 1
+        },
+        "timestamp": "2025-02-27 02:03:24"
+    }
+]

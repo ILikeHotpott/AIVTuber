@@ -1,0 +1,1563 @@
+[
+    {
+        "message_id": "e78d5b11-224a-4109-9d9e-9a0999eb8715",
+        "type": "statistics",
+        "current_viewers": 1502,
+        "total_viewers": "12.5万",
+        "timestamp": "2025-02-27 02:13:01"
+    },
+    {
+        "message_id": "209a9524-edd0-40a1-9898-7124e1dddd26",
+        "type": "statistics",
+        "current_viewers": 1506,
+        "total_viewers": "12.5万",
+        "timestamp": "2025-02-27 02:13:02"
+    },
+    {
+        "message_id": "837c950c-4b92-4793-bf50-eb46e61f0b86",
+        "type": "statistics",
+        "current_viewers": 1495,
+        "total_viewers": "12.5万",
+        "timestamp": "2025-02-27 02:13:04"
+    },
+    {
+        "message_id": "1bae90c6-62fc-4147-825c-562a498490f5",
+        "type": "statistics",
+        "current_viewers": 1506,
+        "total_viewers": "12.5万",
+        "timestamp": "2025-02-27 02:13:06"
+    },
+    {
+        "message_id": "6afb7715-686a-41ba-b218-cfbe6f3b7c34",
+        "type": "statistics",
+        "current_viewers": 1500,
+        "total_viewers": "12.6万",
+        "timestamp": "2025-02-27 02:13:08"
+    },
+    {
+        "message_id": "bb7bfa47-daa6-4b1f-99e5-18bf8c4dfb9f",
+        "type": "statistics",
+        "current_viewers": 1490,
+        "total_viewers": "12.6万",
+        "timestamp": "2025-02-27 02:13:16"
+    },
+    {
+        "message_id": "74c9c673-bea9-4b44-a1bc-0465f20e3d6d",
+        "type": "statistics",
+        "current_viewers": 1511,
+        "total_viewers": "12.6万",
+        "timestamp": "2025-02-27 02:13:26"
+    },
+    {
+        "message_id": "3831e1c0-3f69-4552-b212-60f408374a13",
+        "type": "statistics",
+        "current_viewers": 1500,
+        "total_viewers": "12.6万",
+        "timestamp": "2025-02-27 02:13:28"
+    },
+    {
+        "message_id": "dcf4b654-9fd4-4cf9-a8ac-0ce17f5d4296",
+        "type": "statistics",
+        "current_viewers": 1489,
+        "total_viewers": "12.6万",
+        "timestamp": "2025-02-27 02:13:34"
+    },
+    {
+        "message_id": "1cfc8790-1309-4455-854a-a522e187e969",
+        "type": "statistics",
+        "current_viewers": 1503,
+        "total_viewers": "12.6万",
+        "timestamp": "2025-02-27 02:13:37"
+    },
+    {
+        "message_id": "ebfcc70a-390a-4d59-8d30-918f68a6b209",
+        "type": "statistics",
+        "current_viewers": 1526,
+        "total_viewers": "12.6万",
+        "timestamp": "2025-02-27 02:13:42"
+    },
+    {
+        "message_id": "1469bdcb-07e6-4824-8afd-34af082bac22",
+        "type": "statistics",
+        "current_viewers": 1526,
+        "total_viewers": "12.6万",
+        "timestamp": "2025-02-27 02:13:44"
+    },
+    {
+        "message_id": "7d888faf-dace-4cb1-88d1-44315132584a",
+        "type": "statistics",
+        "current_viewers": 1552,
+        "total_viewers": "12.6万",
+        "timestamp": "2025-02-27 02:13:52"
+    },
+    {
+        "message_id": "87548134-1c05-4e95-913f-df490302f60c",
+        "type": "statistics",
+        "current_viewers": 1583,
+        "total_viewers": "12.7万",
+        "timestamp": "2025-02-27 02:14:02"
+    },
+    {
+        "message_id": "4f1379a8-b878-4979-b0a8-99462b725745",
+        "type": "statistics",
+        "current_viewers": 1562,
+        "total_viewers": "12.7万",
+        "timestamp": "2025-02-27 02:14:14"
+    },
+    {
+        "message_id": "92f564ae-b1e6-42db-bec2-a533acd16225",
+        "type": "statistics",
+        "current_viewers": 1608,
+        "total_viewers": "12.7万",
+        "timestamp": "2025-02-27 02:14:22"
+    },
+    {
+        "message_id": "629808ee-36d6-42ee-b1e1-92e0e553ed1b",
+        "type": "statistics",
+        "current_viewers": 1604,
+        "total_viewers": "12.7万",
+        "timestamp": "2025-02-27 02:14:33"
+    },
+    {
+        "message_id": "d11c9834-f31b-45d9-8aef-69fac76d4375",
+        "type": "statistics",
+        "current_viewers": 1571,
+        "total_viewers": "12.7万",
+        "timestamp": "2025-02-27 02:14:42"
+    },
+    {
+        "message_id": "1395f453-af2b-494e-b5dc-5f120984c80d",
+        "type": "statistics",
+        "current_viewers": 1556,
+        "total_viewers": "12.7万",
+        "timestamp": "2025-02-27 02:14:48"
+    },
+    {
+        "message_id": "2fb34ed2-e188-4ada-a50d-f200a1e4a728",
+        "type": "statistics",
+        "current_viewers": 1556,
+        "total_viewers": "12.7万",
+        "timestamp": "2025-02-27 02:14:50"
+    },
+    {
+        "message_id": "00ea78bd-8fbe-4d96-961a-96b7e59ddcf0",
+        "type": "statistics",
+        "current_viewers": 1559,
+        "total_viewers": "12.7万",
+        "timestamp": "2025-02-27 02:14:55"
+    },
+    {
+        "message_id": "0177629b-0c01-4ac7-9cd7-002ad7cc76e3",
+        "type": "statistics",
+        "current_viewers": 1470,
+        "total_viewers": "12.8万",
+        "timestamp": "2025-02-27 02:15:03"
+    },
+    {
+        "message_id": "ca6ef14c-5ff3-45a4-b454-b38b3fc108c3",
+        "type": "statistics",
+        "current_viewers": 1471,
+        "total_viewers": "12.8万",
+        "timestamp": "2025-02-27 02:15:10"
+    },
+    {
+        "message_id": "c5edc93e-d93b-4345-a3bb-d6da0844f864",
+        "type": "statistics",
+        "current_viewers": 1442,
+        "total_viewers": "12.8万",
+        "timestamp": "2025-02-27 02:15:12"
+    },
+    {
+        "message_id": "2ad14540-ca6c-444c-bbf9-dabb8cded521",
+        "type": "statistics",
+        "current_viewers": 1423,
+        "total_viewers": "12.8万",
+        "timestamp": "2025-02-27 02:15:20"
+    },
+    {
+        "message_id": "d0132948-86e4-4a16-ac96-f89747bfe2ea",
+        "type": "statistics",
+        "current_viewers": 1431,
+        "total_viewers": "12.8万",
+        "timestamp": "2025-02-27 02:15:22"
+    },
+    {
+        "message_id": "edf50b28-8d49-4dc4-a225-5b9dbfa3c091",
+        "type": "statistics",
+        "current_viewers": 1414,
+        "total_viewers": "12.8万",
+        "timestamp": "2025-02-27 02:15:30"
+    },
+    {
+        "message_id": "e7021e3e-2d39-4aaf-99ed-631523b0fec7",
+        "type": "statistics",
+        "current_viewers": 1426,
+        "total_viewers": "12.8万",
+        "timestamp": "2025-02-27 02:15:33"
+    },
+    {
+        "message_id": "37298f23-1234-44e3-8f3b-c853a84e8f01",
+        "type": "statistics",
+        "current_viewers": 1401,
+        "total_viewers": "12.8万",
+        "timestamp": "2025-02-27 02:15:34"
+    },
+    {
+        "message_id": "3f0e61a2-8b58-41f1-92a5-658b23230410",
+        "type": "statistics",
+        "current_viewers": 1414,
+        "total_viewers": "12.8万",
+        "timestamp": "2025-02-27 02:15:36"
+    },
+    {
+        "message_id": "c21b6f1f-06ca-4a49-a4b0-33fa54acfd9d",
+        "type": "statistics",
+        "current_viewers": 1419,
+        "total_viewers": "12.8万",
+        "timestamp": "2025-02-27 02:15:38"
+    },
+    {
+        "message_id": "2138e5e7-fc4c-42e9-8594-42668aa8883e",
+        "type": "statistics",
+        "current_viewers": 1392,
+        "total_viewers": "12.8万",
+        "timestamp": "2025-02-27 02:15:42"
+    },
+    {
+        "message_id": "d1d1ebe7-0c42-444e-8553-a5c34c8aa3fc",
+        "type": "statistics",
+        "current_viewers": 1358,
+        "total_viewers": "12.8万",
+        "timestamp": "2025-02-27 02:15:52"
+    },
+    {
+        "message_id": "8fc67a57-0f7e-42e0-a377-819ddec2a13d",
+        "type": "statistics",
+        "current_viewers": 1358,
+        "total_viewers": "12.8万",
+        "timestamp": "2025-02-27 02:15:54"
+    },
+    {
+        "message_id": "b0d53e2b-19ca-493f-aaa8-7d36d7e2f751",
+        "type": "statistics",
+        "current_viewers": 1336,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:15:56"
+    },
+    {
+        "message_id": "795fe884-9235-4d55-8816-fda8bba0e48f",
+        "type": "statistics",
+        "current_viewers": 1336,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:15:58"
+    },
+    {
+        "message_id": "144b84d0-16eb-4fda-ad06-84b2550f723d",
+        "type": "statistics",
+        "current_viewers": 1351,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:04"
+    },
+    {
+        "message_id": "15cb23fd-373c-4b15-b263-61b50961c160",
+        "type": "statistics",
+        "current_viewers": 1326,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:06"
+    },
+    {
+        "message_id": "8ebd4e2b-3aba-4257-ae6b-bf1bd68faebb",
+        "type": "statistics",
+        "current_viewers": 1351,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:09"
+    },
+    {
+        "message_id": "51347bee-16ea-44aa-b082-5eed91f52903",
+        "type": "statistics",
+        "current_viewers": 1355,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:10"
+    },
+    {
+        "message_id": "7c158954-40ef-4a14-9dc0-e9c8ca8ebde6",
+        "type": "statistics",
+        "current_viewers": 1358,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:12"
+    },
+    {
+        "message_id": "2e4ca1cb-e044-4dba-9752-3130e66947b4",
+        "type": "statistics",
+        "current_viewers": 1348,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:14"
+    },
+    {
+        "message_id": "8f65af8e-7f60-4def-9cd6-7a9cbb0c4370",
+        "type": "statistics",
+        "current_viewers": 1355,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:16"
+    },
+    {
+        "message_id": "8fe65c9a-13ec-49b1-b7c4-4e9a392c4528",
+        "type": "statistics",
+        "current_viewers": 1326,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:18"
+    },
+    {
+        "message_id": "074a90ad-644e-43e9-a9ca-1812f4038c91",
+        "type": "statistics",
+        "current_viewers": 1359,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:20"
+    },
+    {
+        "message_id": "9d18ce4a-6ee5-48c3-b559-04dda28d2f00",
+        "type": "statistics",
+        "current_viewers": 1364,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:22"
+    },
+    {
+        "message_id": "f99d94bd-b156-485a-b763-3132d6f713db",
+        "type": "statistics",
+        "current_viewers": 1347,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:24"
+    },
+    {
+        "message_id": "51138d10-d042-46a7-af61-896680215041",
+        "type": "statistics",
+        "current_viewers": 1356,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:26"
+    },
+    {
+        "message_id": "fc1fb432-e02a-420d-b04c-28b3cc5a457b",
+        "type": "statistics",
+        "current_viewers": 1357,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:28"
+    },
+    {
+        "message_id": "e11db87a-ec90-4c95-a718-e8cb1b199913",
+        "type": "statistics",
+        "current_viewers": 1345,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:32"
+    },
+    {
+        "message_id": "c83a32be-3bb2-4e1a-baa2-16ede012b2ce",
+        "type": "statistics",
+        "current_viewers": 1334,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:34"
+    },
+    {
+        "message_id": "2c224083-3db0-4f0d-99f8-62483acd9034",
+        "type": "statistics",
+        "current_viewers": 1327,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:36"
+    },
+    {
+        "message_id": "61b78f6a-b086-42ae-9c5e-2cf4d05e67e2",
+        "type": "statistics",
+        "current_viewers": 1337,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:38"
+    },
+    {
+        "message_id": "ee179f80-2d85-452d-829d-9efb9d4df2ce",
+        "type": "statistics",
+        "current_viewers": 1345,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:40"
+    },
+    {
+        "message_id": "088a4c49-f0df-46fb-983c-81853ec5bfaf",
+        "type": "statistics",
+        "current_viewers": 1328,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:43"
+    },
+    {
+        "message_id": "ec017ac9-88bc-4948-8ce1-79ce69dcdc7f",
+        "type": "statistics",
+        "current_viewers": 1319,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:44"
+    },
+    {
+        "message_id": "94a4a323-eef3-4a11-8c77-eede5fd1a0a6",
+        "type": "statistics",
+        "current_viewers": 1345,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:47"
+    },
+    {
+        "message_id": "d50170f4-fd64-44e3-94af-0c6016b64f54",
+        "type": "statistics",
+        "current_viewers": 1325,
+        "total_viewers": "12.9万",
+        "timestamp": "2025-02-27 02:16:50"
+    },
+    {
+        "message_id": "1f539765-9ba6-4353-ba27-1b2d80e7b704",
+        "type": "statistics",
+        "current_viewers": 1331,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:16:54"
+    },
+    {
+        "message_id": "4eb39598-fbf3-4a82-bb8b-c33d214a85c7",
+        "type": "statistics",
+        "current_viewers": 1333,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:16:56"
+    },
+    {
+        "message_id": "3054ac79-9b80-428a-9cce-48a877ae41bf",
+        "type": "statistics",
+        "current_viewers": 1331,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:16:58"
+    },
+    {
+        "message_id": "693d4400-dc5d-4982-9ca2-d001040a38be",
+        "type": "statistics",
+        "current_viewers": 1324,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:17:04"
+    },
+    {
+        "message_id": "5ecd91e1-363b-43c2-b7d0-10ec0f5df049",
+        "type": "statistics",
+        "current_viewers": 1326,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:17:06"
+    },
+    {
+        "message_id": "90b6aca7-ac66-4b82-9cf9-c843da7c5dab",
+        "type": "statistics",
+        "current_viewers": 1330,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:17:08"
+    },
+    {
+        "message_id": "3389acbb-25c0-4003-8d52-2a67529fa343",
+        "type": "statistics",
+        "current_viewers": 1336,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:17:10"
+    },
+    {
+        "message_id": "159e24e0-2ac0-47c9-ba54-9458490d51b4",
+        "type": "statistics",
+        "current_viewers": 1331,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:17:12"
+    },
+    {
+        "message_id": "26497dc0-f8b4-4973-a51a-e8237e9e2c4b",
+        "type": "statistics",
+        "current_viewers": 1323,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:17:16"
+    },
+    {
+        "message_id": "11dc5c4d-9e38-4771-ab8a-4cf08c06d5e9",
+        "type": "statistics",
+        "current_viewers": 1323,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:17:18"
+    },
+    {
+        "message_id": "edd3d445-5210-4181-9a26-829b31a11678",
+        "type": "statistics",
+        "current_viewers": 1323,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:17:20"
+    },
+    {
+        "message_id": "e44420ad-cccd-4b21-9bd8-ef8707c3116b",
+        "type": "statistics",
+        "current_viewers": 1317,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:17:22"
+    },
+    {
+        "message_id": "7b2b6ddd-e8bb-4a25-9de3-ae9e0fc435eb",
+        "type": "statistics",
+        "current_viewers": 1332,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:17:24"
+    },
+    {
+        "message_id": "e2884d3f-a7de-408d-abb9-caa5df91a14e",
+        "type": "statistics",
+        "current_viewers": 1323,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:17:28"
+    },
+    {
+        "message_id": "0db8b7fa-10c8-4c6d-8a7c-68f145e37dbc",
+        "type": "statistics",
+        "current_viewers": 1352,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:17:30"
+    },
+    {
+        "message_id": "66465314-edd7-4a04-9f13-956adfb72b93",
+        "type": "statistics",
+        "current_viewers": 1398,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:17:32"
+    },
+    {
+        "message_id": "20f829cc-ff08-4741-80bb-bf477cee8675",
+        "type": "statistics",
+        "current_viewers": 1352,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:17:34"
+    },
+    {
+        "message_id": "1ffb021d-e0f4-496d-a7aa-de2a7ef5f652",
+        "type": "statistics",
+        "current_viewers": 1394,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:17:40"
+    },
+    {
+        "message_id": "d46cc7eb-e7dc-4ece-bbe5-2a081dc03fcd",
+        "type": "statistics",
+        "current_viewers": 1391,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:17:42"
+    },
+    {
+        "message_id": "2e715b49-f0f4-4457-a2e9-49f4046d2faa",
+        "type": "statistics",
+        "current_viewers": 1431,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:17:47"
+    },
+    {
+        "message_id": "be0d694e-6a7e-4e7d-ab35-25d28d6beacb",
+        "type": "statistics",
+        "current_viewers": 1483,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:17:50"
+    },
+    {
+        "message_id": "8f34993c-051a-443d-9b41-0fd9922f5d04",
+        "type": "statistics",
+        "current_viewers": 1408,
+        "total_viewers": "13.0万",
+        "timestamp": "2025-02-27 02:17:52"
+    },
+    {
+        "message_id": "12ab20cd-564f-4b1c-94e4-6637cf29dfda",
+        "type": "statistics",
+        "current_viewers": 1487,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:17:54"
+    },
+    {
+        "message_id": "c1471968-57d0-43e5-8905-1f344b459c8b",
+        "type": "statistics",
+        "current_viewers": 1431,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:17:56"
+    },
+    {
+        "message_id": "246217e9-750c-4d55-9148-53bf308f41b4",
+        "type": "statistics",
+        "current_viewers": 1432,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:17:58"
+    },
+    {
+        "message_id": "fd92836a-6972-497b-b222-4ba95954cb41",
+        "type": "statistics",
+        "current_viewers": 1497,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:18:00"
+    },
+    {
+        "message_id": "60e4a75e-5219-49bc-bcbd-c9fc0be2af7d",
+        "type": "statistics",
+        "current_viewers": 1501,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:18:02"
+    },
+    {
+        "message_id": "445ee3c7-1299-43c6-abcd-c4f5f677108e",
+        "type": "statistics",
+        "current_viewers": 1501,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:18:04"
+    },
+    {
+        "message_id": "92e6fc89-46f0-473e-a9d2-2b5af2a11da7",
+        "type": "statistics",
+        "current_viewers": 1501,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:18:06"
+    },
+    {
+        "message_id": "14349757-505b-4cff-8a70-dbd816c307fb",
+        "type": "statistics",
+        "current_viewers": 1504,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:18:08"
+    },
+    {
+        "message_id": "9f8f9868-4e2b-4dbe-9730-3e91cdfeed8d",
+        "type": "statistics",
+        "current_viewers": 1493,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:18:10"
+    },
+    {
+        "message_id": "0d416c38-8c88-431f-b8df-08db9755e63e",
+        "type": "statistics",
+        "current_viewers": 1509,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:18:12"
+    },
+    {
+        "message_id": "506d1c49-d31f-4f8f-939c-2035bc4bb8ad",
+        "type": "statistics",
+        "current_viewers": 1509,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:18:15"
+    },
+    {
+        "message_id": "0957ca53-1997-427f-8cf1-0e30ca5cfde5",
+        "type": "statistics",
+        "current_viewers": 1501,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:18:16"
+    },
+    {
+        "message_id": "43dc7ba0-36de-4075-a15a-c18d33ebffab",
+        "type": "statistics",
+        "current_viewers": 1495,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:18:19"
+    },
+    {
+        "message_id": "ce5e2429-de03-4e5b-8371-32ae477c7bb2",
+        "type": "statistics",
+        "current_viewers": 1495,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:18:20"
+    },
+    {
+        "message_id": "f6896517-894d-48ff-bb80-0859b5562fac",
+        "type": "statistics",
+        "current_viewers": 1495,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:18:23"
+    },
+    {
+        "message_id": "ae5d938b-6204-4fba-b86c-0996a6a30c5b",
+        "type": "statistics",
+        "current_viewers": 1467,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:18:24"
+    },
+    {
+        "message_id": "fa28526c-71de-4ec2-b1c2-b77e51df0d4c",
+        "type": "statistics",
+        "current_viewers": 1467,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:18:27"
+    },
+    {
+        "message_id": "a7eeeb3a-ed18-4f03-b2b3-ea1bb243ddbe",
+        "type": "statistics",
+        "current_viewers": 1467,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:18:28"
+    },
+    {
+        "message_id": "1f98fd5a-efc4-46ba-86ce-8ac4652b65d8",
+        "type": "statistics",
+        "current_viewers": 1468,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:18:30"
+    },
+    {
+        "message_id": "7bbf6eb3-4639-454d-8ee9-78c72456d25b",
+        "type": "statistics",
+        "current_viewers": 1414,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:18:32"
+    },
+    {
+        "message_id": "2f902988-ef54-42b8-ad80-92c0a02af665",
+        "type": "statistics",
+        "current_viewers": 1414,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:18:34"
+    },
+    {
+        "message_id": "3f91e824-1671-4231-8de9-d6b536c60c86",
+        "type": "statistics",
+        "current_viewers": 1467,
+        "total_viewers": "13.1万",
+        "timestamp": "2025-02-27 02:18:36"
+    },
+    {
+        "message_id": "37a7df68-3d61-457d-84f4-47cf9bf0fdf0",
+        "type": "statistics",
+        "current_viewers": 1399,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:18:38"
+    },
+    {
+        "message_id": "89999c87-5271-463b-bdda-38ebe1e658ba",
+        "type": "statistics",
+        "current_viewers": 1367,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:18:40"
+    },
+    {
+        "message_id": "80be94d0-7b85-42da-8435-ea8aac4f4e8f",
+        "type": "statistics",
+        "current_viewers": 1352,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:18:42"
+    },
+    {
+        "message_id": "c293c8a9-e27e-419e-9124-358e320c152e",
+        "type": "statistics",
+        "current_viewers": 1347,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:18:44"
+    },
+    {
+        "message_id": "a2568a00-5bf7-4d81-9522-979ab7ae2fb2",
+        "type": "statistics",
+        "current_viewers": 1414,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:18:47"
+    },
+    {
+        "message_id": "76f85f3c-5008-4408-b8a3-522da9835ac9",
+        "type": "statistics",
+        "current_viewers": 1417,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:18:48"
+    },
+    {
+        "message_id": "ab653a42-8d20-4c20-b748-d57d9671c977",
+        "type": "statistics",
+        "current_viewers": 1347,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:18:50"
+    },
+    {
+        "message_id": "1e9da594-f64d-453b-8289-e103add11ced",
+        "type": "statistics",
+        "current_viewers": 1352,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:18:57"
+    },
+    {
+        "message_id": "e60d1182-c1b4-470d-94b7-8e79a667c133",
+        "type": "statistics",
+        "current_viewers": 1352,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:18:57"
+    },
+    {
+        "message_id": "509e9f8e-20df-44cc-9ab6-8b92652ed50a",
+        "type": "statistics",
+        "current_viewers": 1341,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:18:57"
+    },
+    {
+        "message_id": "6cb16515-19f1-4aab-967d-8800f3d03062",
+        "type": "statistics",
+        "current_viewers": 1324,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:18:58"
+    },
+    {
+        "message_id": "4a77ef9c-b9be-4937-8110-dbe20d2da555",
+        "type": "statistics",
+        "current_viewers": 1316,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:19:00"
+    },
+    {
+        "message_id": "20b77dd0-18b6-472b-bbf9-3cf2433b668c",
+        "type": "statistics",
+        "current_viewers": 1327,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:19:04"
+    },
+    {
+        "message_id": "734ec3de-22f5-4ea0-9e59-0a54e4dd65c2",
+        "type": "statistics",
+        "current_viewers": 1331,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:19:06"
+    },
+    {
+        "message_id": "e27d2663-7ffb-4c46-9574-030d1b0d0645",
+        "type": "statistics",
+        "current_viewers": 1327,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:19:08"
+    },
+    {
+        "message_id": "ffb75426-ff00-4e56-a3cc-8a8ef99a44d1",
+        "type": "statistics",
+        "current_viewers": 1316,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:19:11"
+    },
+    {
+        "message_id": "02cb1364-f594-40d0-a486-44bbe8e831ac",
+        "type": "statistics",
+        "current_viewers": 1317,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:19:12"
+    },
+    {
+        "message_id": "e3fc868f-58e0-4342-8515-13ec4b61d221",
+        "type": "statistics",
+        "current_viewers": 1300,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:19:14"
+    },
+    {
+        "message_id": "e83f806a-b424-4d08-bb85-52b075f33494",
+        "type": "statistics",
+        "current_viewers": 1313,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:19:16"
+    },
+    {
+        "message_id": "7ddfe373-6553-4c7e-b86f-d596d55586e1",
+        "type": "statistics",
+        "current_viewers": 1313,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:19:20"
+    },
+    {
+        "message_id": "62eed6ed-6f27-429e-9eba-285974f93839",
+        "type": "statistics",
+        "current_viewers": 1300,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:19:22"
+    },
+    {
+        "message_id": "3ad60777-b3f6-430d-a88b-b30f0eebce35",
+        "type": "statistics",
+        "current_viewers": 1321,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:19:24"
+    },
+    {
+        "message_id": "7496c0e1-ba34-4a05-a5d8-cff66d9710b3",
+        "type": "statistics",
+        "current_viewers": 1313,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:19:26"
+    },
+    {
+        "message_id": "4249ea8e-d398-410f-b9ce-a1512a571153",
+        "type": "statistics",
+        "current_viewers": 1300,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:19:28"
+    },
+    {
+        "message_id": "75655da7-27ff-4ce9-bffd-ef5d519d29df",
+        "type": "statistics",
+        "current_viewers": 1286,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:19:30"
+    },
+    {
+        "message_id": "3e20dd26-2a8b-4374-acec-6d3fb0339843",
+        "type": "statistics",
+        "current_viewers": 1290,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:19:32"
+    },
+    {
+        "message_id": "1e052fcd-5de5-4ab9-9354-b0d024903ad3",
+        "type": "statistics",
+        "current_viewers": 1290,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:19:34"
+    },
+    {
+        "message_id": "c037d379-5390-47d4-9ec1-fee5cb442473",
+        "type": "statistics",
+        "current_viewers": 1309,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:19:36"
+    },
+    {
+        "message_id": "a74a05f2-9cce-4edc-852c-b4e2c31d7943",
+        "type": "statistics",
+        "current_viewers": 1306,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:19:38"
+    },
+    {
+        "message_id": "3d00a78b-e4e3-4db2-a5a5-bcf39ebb92b2",
+        "type": "statistics",
+        "current_viewers": 1290,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:19:40"
+    },
+    {
+        "message_id": "80d36788-d67a-488f-bf8e-a48302e2d296",
+        "type": "statistics",
+        "current_viewers": 1302,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:19:42"
+    },
+    {
+        "message_id": "741e6d68-6029-4b14-8760-e77a841d7094",
+        "type": "statistics",
+        "current_viewers": 1282,
+        "total_viewers": "13.2万",
+        "timestamp": "2025-02-27 02:19:44"
+    },
+    {
+        "message_id": "1d5d7b33-b394-44ee-857e-08a1c365509b",
+        "type": "statistics",
+        "current_viewers": 1301,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:19:46"
+    },
+    {
+        "message_id": "b07ea802-4a3e-4a02-83fd-94c6d2118336",
+        "type": "statistics",
+        "current_viewers": 1302,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:19:48"
+    },
+    {
+        "message_id": "29db5da1-2368-48c6-93e8-a653622aa1ab",
+        "type": "statistics",
+        "current_viewers": 1290,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:19:50"
+    },
+    {
+        "message_id": "45b7ab61-e206-481a-9d39-73d97b8f210e",
+        "type": "statistics",
+        "current_viewers": 1310,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:19:52"
+    },
+    {
+        "message_id": "6ac7b56d-cd41-41f8-ac02-c118ee713402",
+        "type": "statistics",
+        "current_viewers": 1290,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:19:54"
+    },
+    {
+        "message_id": "5c13a113-3e08-4a44-8f43-83a791a56606",
+        "type": "statistics",
+        "current_viewers": 1307,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:19:57"
+    },
+    {
+        "message_id": "bd8f880e-628a-4f2b-93a5-859b1a01df04",
+        "type": "statistics",
+        "current_viewers": 1291,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:00"
+    },
+    {
+        "message_id": "8b943137-9dfc-411d-a43a-48573cb2e725",
+        "type": "statistics",
+        "current_viewers": 1291,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:02"
+    },
+    {
+        "message_id": "2ca867e4-ddca-4286-b11c-e4d312da21cb",
+        "type": "statistics",
+        "current_viewers": 1263,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:08"
+    },
+    {
+        "message_id": "2ed68b2a-aee4-4359-a22d-f60e543495c1",
+        "type": "statistics",
+        "current_viewers": 1263,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:10"
+    },
+    {
+        "message_id": "4d7d79ed-3b3c-496f-b133-c60561530e8e",
+        "type": "statistics",
+        "current_viewers": 1263,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:12"
+    },
+    {
+        "message_id": "3b578ef6-38ca-4e6e-8986-a416ec224c6f",
+        "type": "statistics",
+        "current_viewers": 1271,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:15"
+    },
+    {
+        "message_id": "699869aa-a992-4ffa-bd6b-2e022b57a5ff",
+        "type": "statistics",
+        "current_viewers": 1256,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:16"
+    },
+    {
+        "message_id": "e5f025ab-31e0-4512-8035-24f2375a085c",
+        "type": "statistics",
+        "current_viewers": 1279,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:18"
+    },
+    {
+        "message_id": "0bad81b0-690f-4b4a-9e80-a481ead4af26",
+        "type": "statistics",
+        "current_viewers": 1264,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:22"
+    },
+    {
+        "message_id": "58f8cc43-0118-4bd9-910d-f290f6e84c9e",
+        "type": "statistics",
+        "current_viewers": 1262,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:25"
+    },
+    {
+        "message_id": "dd96ac7d-369e-4902-9ceb-8255c9505f34",
+        "type": "statistics",
+        "current_viewers": 1256,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:26"
+    },
+    {
+        "message_id": "c3836d69-ba47-461a-b898-1a7468179790",
+        "type": "statistics",
+        "current_viewers": 1247,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:29"
+    },
+    {
+        "message_id": "2eb2e242-109b-44c4-9a1c-e54717a6fdaa",
+        "type": "statistics",
+        "current_viewers": 1230,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:30"
+    },
+    {
+        "message_id": "614b9309-92d7-4d57-ba46-a2e0793769e7",
+        "type": "statistics",
+        "current_viewers": 1255,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:32"
+    },
+    {
+        "message_id": "6e380923-843e-4084-9251-c6768de4d4f0",
+        "type": "statistics",
+        "current_viewers": 1251,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:34"
+    },
+    {
+        "message_id": "86697017-9c2c-40be-b718-580cfb24090d",
+        "type": "statistics",
+        "current_viewers": 1264,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:36"
+    },
+    {
+        "message_id": "bcd7a8db-b3e2-449c-a485-dfa331371d3b",
+        "type": "statistics",
+        "current_viewers": 1247,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:38"
+    },
+    {
+        "message_id": "1dd0c91c-4c0f-4ab9-b954-987fee300ae5",
+        "type": "statistics",
+        "current_viewers": 1225,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:40"
+    },
+    {
+        "message_id": "934ce3e6-53d1-437a-8a4e-297b23e65c4d",
+        "type": "statistics",
+        "current_viewers": 1225,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:42"
+    },
+    {
+        "message_id": "822e66de-fb34-4ad8-8b51-fbea6fe3c726",
+        "type": "statistics",
+        "current_viewers": 1212,
+        "total_viewers": "13.4万",
+        "timestamp": "2025-02-27 02:20:44"
+    },
+    {
+        "message_id": "3546c12e-5b71-49ce-adb2-a95a4dbe27b4",
+        "type": "statistics",
+        "current_viewers": 1225,
+        "total_viewers": "13.3万",
+        "timestamp": "2025-02-27 02:20:46"
+    },
+    {
+        "message_id": "c9bd598a-6594-4b0e-89ac-d238c5dd05c1",
+        "type": "statistics",
+        "current_viewers": 1218,
+        "total_viewers": "13.4万",
+        "timestamp": "2025-02-27 02:20:52"
+    },
+    {
+        "message_id": "c2de004b-1c4c-4cc9-b046-c003e98b9004",
+        "type": "statistics",
+        "current_viewers": 1219,
+        "total_viewers": "13.4万",
+        "timestamp": "2025-02-27 02:20:54"
+    },
+    {
+        "message_id": "d32d2e56-0084-4596-89ce-a057ffb2d09f",
+        "type": "statistics",
+        "current_viewers": 1220,
+        "total_viewers": "13.4万",
+        "timestamp": "2025-02-27 02:20:56"
+    },
+    {
+        "message_id": "05c4b86a-c2cd-496a-9921-734b91b0c1a4",
+        "type": "statistics",
+        "current_viewers": 1218,
+        "total_viewers": "13.4万",
+        "timestamp": "2025-02-27 02:21:01"
+    },
+    {
+        "message_id": "5c0f01cd-b8b5-40e6-8a7f-bbb30178eedb",
+        "type": "statistics",
+        "current_viewers": 1220,
+        "total_viewers": "13.4万",
+        "timestamp": "2025-02-27 02:21:05"
+    },
+    {
+        "message_id": "938f3acb-ad08-4f35-bfe7-31dd88310fed",
+        "type": "statistics",
+        "current_viewers": 1263,
+        "total_viewers": "13.4万",
+        "timestamp": "2025-02-27 02:21:06"
+    },
+    {
+        "message_id": "1fd5a852-57df-4883-8a9b-1746a5c99da4",
+        "type": "statistics",
+        "current_viewers": 1263,
+        "total_viewers": "13.4万",
+        "timestamp": "2025-02-27 02:21:14"
+    },
+    {
+        "message_id": "b8a67351-e432-499c-8790-72ba30f8e3be",
+        "type": "statistics",
+        "current_viewers": 1322,
+        "total_viewers": "13.4万",
+        "timestamp": "2025-02-27 02:21:16"
+    },
+    {
+        "message_id": "254c244e-1f08-4d4d-9bc6-774f64dba0e3",
+        "type": "statistics",
+        "current_viewers": 1316,
+        "total_viewers": "13.4万",
+        "timestamp": "2025-02-27 02:21:20"
+    },
+    {
+        "message_id": "cdaf347b-3478-4c45-903d-e609459e2fe2",
+        "type": "statistics",
+        "current_viewers": 1390,
+        "total_viewers": "13.4万",
+        "timestamp": "2025-02-27 02:21:28"
+    },
+    {
+        "message_id": "6522cf0d-e5ed-48c8-a471-d6fb218a8edc",
+        "type": "statistics",
+        "current_viewers": 1390,
+        "total_viewers": "13.4万",
+        "timestamp": "2025-02-27 02:21:30"
+    },
+    {
+        "message_id": "22a9bc73-af44-4aae-b8dc-1c9dabb3ee66",
+        "type": "statistics",
+        "current_viewers": 1390,
+        "total_viewers": "13.4万",
+        "timestamp": "2025-02-27 02:21:34"
+    },
+    {
+        "message_id": "65ebff60-e4d2-4d9d-9123-d843a0f32930",
+        "type": "statistics",
+        "current_viewers": 1390,
+        "total_viewers": "13.4万",
+        "timestamp": "2025-02-27 02:21:36"
+    },
+    {
+        "message_id": "99aa5a00-87b8-4b2b-8684-d420a26563f7",
+        "type": "statistics",
+        "current_viewers": 1451,
+        "total_viewers": "13.4万",
+        "timestamp": "2025-02-27 02:21:38"
+    },
+    {
+        "message_id": "9ad3420a-d111-4d03-9761-1e214e487220",
+        "type": "statistics",
+        "current_viewers": 1475,
+        "total_viewers": "13.5万",
+        "timestamp": "2025-02-27 02:21:42"
+    },
+    {
+        "message_id": "6ea1d6f9-e6a5-444c-875f-8ef16fd5dd05",
+        "type": "statistics",
+        "current_viewers": 1508,
+        "total_viewers": "13.5万",
+        "timestamp": "2025-02-27 02:21:53"
+    },
+    {
+        "message_id": "bb5087a5-c376-4cc8-afa5-19a9c7aceb2d",
+        "type": "statistics",
+        "current_viewers": 1475,
+        "total_viewers": "13.5万",
+        "timestamp": "2025-02-27 02:21:54"
+    },
+    {
+        "message_id": "ad69d2e8-b962-4835-a519-ad8eb3dbc787",
+        "type": "statistics",
+        "current_viewers": 1508,
+        "total_viewers": "13.5万",
+        "timestamp": "2025-02-27 02:21:56"
+    },
+    {
+        "message_id": "b892a1d7-1c72-48ae-ac88-bf7b0e235fbd",
+        "type": "statistics",
+        "current_viewers": 1501,
+        "total_viewers": "13.5万",
+        "timestamp": "2025-02-27 02:21:58"
+    },
+    {
+        "message_id": "32b6525e-cde3-44ea-8625-5b785077a9c3",
+        "type": "statistics",
+        "current_viewers": 1513,
+        "total_viewers": "13.5万",
+        "timestamp": "2025-02-27 02:22:00"
+    },
+    {
+        "message_id": "9c5113f1-0ce1-4436-94aa-68893ee4433f",
+        "type": "statistics",
+        "current_viewers": 1490,
+        "total_viewers": "13.5万",
+        "timestamp": "2025-02-27 02:22:10"
+    },
+    {
+        "message_id": "2a71d294-2489-4d4e-b736-5ce27b634301",
+        "type": "statistics",
+        "current_viewers": 1485,
+        "total_viewers": "13.5万",
+        "timestamp": "2025-02-27 02:22:20"
+    },
+    {
+        "message_id": "b9f934a5-b4cf-446a-9d02-25eb5fadd38e",
+        "type": "statistics",
+        "current_viewers": 1480,
+        "total_viewers": "13.5万",
+        "timestamp": "2025-02-27 02:22:26"
+    },
+    {
+        "message_id": "00c5708d-3120-4878-9869-1ccb2443a26f",
+        "type": "statistics",
+        "current_viewers": 1452,
+        "total_viewers": "13.5万",
+        "timestamp": "2025-02-27 02:22:34"
+    },
+    {
+        "message_id": "09cc5be3-ce9a-4617-b149-bb5316599804",
+        "type": "statistics",
+        "current_viewers": 1452,
+        "total_viewers": "13.5万",
+        "timestamp": "2025-02-27 02:22:36"
+    },
+    {
+        "message_id": "35e8897b-a764-4cbb-92cc-ecad9979d34a",
+        "type": "statistics",
+        "current_viewers": 1456,
+        "total_viewers": "13.5万",
+        "timestamp": "2025-02-27 02:22:38"
+    },
+    {
+        "message_id": "f27ed415-90b0-4b22-bca8-87feb87a2a70",
+        "type": "statistics",
+        "current_viewers": 1456,
+        "total_viewers": "13.5万",
+        "timestamp": "2025-02-27 02:22:45"
+    },
+    {
+        "message_id": "cea2cedc-f3d7-4cfa-89bc-271e2fef134d",
+        "type": "statistics",
+        "current_viewers": 1456,
+        "total_viewers": "13.5万",
+        "timestamp": "2025-02-27 02:22:47"
+    },
+    {
+        "message_id": "2520fa1a-2b6d-4f91-8bc8-8dfa7cb227e9",
+        "type": "statistics",
+        "current_viewers": 1468,
+        "total_viewers": "13.6万",
+        "timestamp": "2025-02-27 02:22:52"
+    },
+    {
+        "message_id": "bd8ea92d-fe66-48d2-98e1-a8c6f66ea6c6",
+        "type": "statistics",
+        "current_viewers": 1453,
+        "total_viewers": "13.6万",
+        "timestamp": "2025-02-27 02:23:02"
+    },
+    {
+        "message_id": "afb40213-2561-4523-88e2-d913901c1e8c",
+        "type": "statistics",
+        "current_viewers": 1506,
+        "total_viewers": "13.6万",
+        "timestamp": "2025-02-27 02:23:10"
+    },
+    {
+        "message_id": "7886d5f6-75dc-4757-a32e-543181072737",
+        "type": "statistics",
+        "current_viewers": 1588,
+        "total_viewers": "13.6万",
+        "timestamp": "2025-02-27 02:23:12"
+    },
+    {
+        "message_id": "c724415b-57a7-4fae-9206-f88935859418",
+        "type": "statistics",
+        "current_viewers": 1596,
+        "total_viewers": "13.6万",
+        "timestamp": "2025-02-27 02:23:20"
+    },
+    {
+        "message_id": "573c732e-e1dd-45e2-aabd-dcafc7b4d1f2",
+        "type": "statistics",
+        "current_viewers": 1568,
+        "total_viewers": "13.6万",
+        "timestamp": "2025-02-27 02:23:22"
+    },
+    {
+        "message_id": "5af35a07-4930-469e-bf31-694f6b223d02",
+        "type": "statistics",
+        "current_viewers": 1670,
+        "total_viewers": "13.7万",
+        "timestamp": "2025-02-27 02:23:34"
+    },
+    {
+        "message_id": "977675f0-1161-4cbe-a410-e9d256e2d1f6",
+        "type": "statistics",
+        "current_viewers": 1688,
+        "total_viewers": "13.7万",
+        "timestamp": "2025-02-27 02:23:40"
+    },
+    {
+        "message_id": "a615dc14-a118-4a99-8a10-6f7bd5617c3b",
+        "type": "statistics",
+        "current_viewers": 1735,
+        "total_viewers": "13.7万",
+        "timestamp": "2025-02-27 02:23:42"
+    },
+    {
+        "message_id": "df14fcb2-98ff-4cb5-83c5-3bb8c699641e",
+        "type": "statistics",
+        "current_viewers": 1992,
+        "total_viewers": "13.7万",
+        "timestamp": "2025-02-27 02:23:46"
+    },
+    {
+        "message_id": "0fbe3fe1-fe62-4ab2-8e9e-29b34bd11cc6",
+        "type": "statistics",
+        "current_viewers": 1948,
+        "total_viewers": "13.7万",
+        "timestamp": "2025-02-27 02:23:48"
+    },
+    {
+        "message_id": "e1856583-0d57-48a2-b317-191c88da1112",
+        "type": "statistics",
+        "current_viewers": 2070,
+        "total_viewers": "13.7万",
+        "timestamp": "2025-02-27 02:23:52"
+    },
+    {
+        "message_id": "da8a0b78-b4cb-477b-b55a-bb1b3963fe97",
+        "type": "statistics",
+        "current_viewers": 1992,
+        "total_viewers": "13.7万",
+        "timestamp": "2025-02-27 02:23:54"
+    },
+    {
+        "message_id": "78734481-7ca4-444d-88a9-d50812a1a9fd",
+        "type": "statistics",
+        "current_viewers": 2284,
+        "total_viewers": "13.8万",
+        "timestamp": "2025-02-27 02:23:56"
+    },
+    {
+        "message_id": "b31fd9c8-07cd-4d22-8536-1e6be7c7010d",
+        "type": "statistics",
+        "current_viewers": 2240,
+        "total_viewers": "13.8万",
+        "timestamp": "2025-02-27 02:23:58"
+    },
+    {
+        "message_id": "c60c4434-b020-42eb-b0b7-a998f6d1d29c",
+        "type": "statistics",
+        "current_viewers": 2713,
+        "total_viewers": "13.8万",
+        "timestamp": "2025-02-27 02:24:08"
+    },
+    {
+        "message_id": "05b75fa7-2086-44f4-8dc0-5e445391e1fa",
+        "type": "statistics",
+        "current_viewers": 2608,
+        "total_viewers": "13.8万",
+        "timestamp": "2025-02-27 02:24:18"
+    },
+    {
+        "message_id": "bf5524f3-984c-4d6e-9708-31a352794444",
+        "type": "statistics",
+        "current_viewers": 2808,
+        "total_viewers": "13.9万",
+        "timestamp": "2025-02-27 02:24:27"
+    },
+    {
+        "message_id": "c9b2dc4b-14e1-4428-9a84-53ae14884764",
+        "type": "statistics",
+        "current_viewers": 2845,
+        "total_viewers": "13.9万",
+        "timestamp": "2025-02-27 02:24:28"
+    },
+    {
+        "message_id": "792da31c-09fb-442b-b872-a347ee5314c9",
+        "type": "statistics",
+        "current_viewers": 2808,
+        "total_viewers": "13.9万",
+        "timestamp": "2025-02-27 02:24:37"
+    },
+    {
+        "message_id": "6142759f-f9b4-46c4-bd84-cb168e0c4144",
+        "type": "statistics",
+        "current_viewers": 2653,
+        "total_viewers": "13.9万",
+        "timestamp": "2025-02-27 02:24:38"
+    },
+    {
+        "message_id": "ca08cb94-3ae5-409a-9da3-95ef6dc5e991",
+        "type": "statistics",
+        "current_viewers": 2432,
+        "total_viewers": "13.9万",
+        "timestamp": "2025-02-27 02:24:50"
+    },
+    {
+        "message_id": "23e887ae-8fa8-482e-9b02-8be59acc2c78",
+        "type": "statistics",
+        "current_viewers": 2089,
+        "total_viewers": "14.0万",
+        "timestamp": "2025-02-27 02:24:52"
+    },
+    {
+        "message_id": "8101ca6f-cc64-4f4e-9096-b7d9ae1e5991",
+        "type": "statistics",
+        "current_viewers": 2318,
+        "total_viewers": "13.9万",
+        "timestamp": "2025-02-27 02:24:58"
+    },
+    {
+        "message_id": "cd33010f-6e6f-4fdb-8a0e-fb847214a10e",
+        "type": "statistics",
+        "current_viewers": 1957,
+        "total_viewers": "14.0万",
+        "timestamp": "2025-02-27 02:25:08"
+    },
+    {
+        "message_id": "e9a95bed-ecfb-4717-85ed-118952f15334",
+        "type": "statistics",
+        "current_viewers": 1977,
+        "total_viewers": "14.0万",
+        "timestamp": "2025-02-27 02:25:10"
+    },
+    {
+        "message_id": "70b04de2-0e4d-4839-97fd-7ff72273d461",
+        "type": "statistics",
+        "current_viewers": 1928,
+        "total_viewers": "14.0万",
+        "timestamp": "2025-02-27 02:25:16"
+    },
+    {
+        "message_id": "1f17a547-dfbc-4ffc-a49c-5ea6336ae11a",
+        "type": "statistics",
+        "current_viewers": 1884,
+        "total_viewers": "14.0万",
+        "timestamp": "2025-02-27 02:25:18"
+    },
+    {
+        "message_id": "f80e6ed3-75ae-4b7f-8394-9557fba4b459",
+        "type": "statistics",
+        "current_viewers": 1896,
+        "total_viewers": "14.0万",
+        "timestamp": "2025-02-27 02:25:28"
+    },
+    {
+        "message_id": "88f6d71c-35e5-40b6-9141-615fffab10a1",
+        "type": "statistics",
+        "current_viewers": 1896,
+        "total_viewers": "14.0万",
+        "timestamp": "2025-02-27 02:25:34"
+    },
+    {
+        "message_id": "c5de65f3-eb74-48ff-8043-484e4d8faef6",
+        "type": "statistics",
+        "current_viewers": 1896,
+        "total_viewers": "14.1万",
+        "timestamp": "2025-02-27 02:25:44"
+    },
+    {
+        "message_id": "e54dfa1e-316d-4a0b-a050-ce6b258d95b2",
+        "type": "statistics",
+        "current_viewers": 1948,
+        "total_viewers": "14.1万",
+        "timestamp": "2025-02-27 02:25:46"
+    },
+    {
+        "message_id": "6404ac01-6e47-4d93-9578-1d9e0de4ab1f",
+        "type": "statistics",
+        "current_viewers": 2101,
+        "total_viewers": "14.1万",
+        "timestamp": "2025-02-27 02:25:53"
+    },
+    {
+        "message_id": "4579037b-50ec-4142-a521-0c1b4d274245",
+        "type": "statistics",
+        "current_viewers": 2019,
+        "total_viewers": "14.1万",
+        "timestamp": "2025-02-27 02:25:54"
+    }
+]

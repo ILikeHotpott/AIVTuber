@@ -1,0 +1,42 @@
+[
+    {
+        "message_id": "b48a0bc8-e563-4ebc-8873-95592858e6ba",
+        "type": "like",
+        "user": {
+            "id": 111111,
+            "name": "矿***"
+        },
+        "like_count": 6,
+        "timestamp": "2025-02-27 02:12:09"
+    },
+    {
+        "message_id": "4ea16dda-4362-41fd-a143-3f8c49c40c69",
+        "type": "like",
+        "user": {
+            "id": 111111,
+            "name": "矿***"
+        },
+        "like_count": 13,
+        "timestamp": "2025-02-27 02:12:11"
+    },
+    {
+        "message_id": "f3ba6fe6-04cc-4e46-9802-ab4c98e61ef4",
+        "type": "like",
+        "user": {
+            "id": 111111,
+            "name": "矿***"
+        },
+        "like_count": 14,
+        "timestamp": "2025-02-27 02:12:13"
+    },
+    {
+        "message_id": "94b79616-f4b9-4ab5-81ae-33dbe99692d8",
+        "type": "like",
+        "user": {
+            "id": 111111,
+            "name": "矿***"
+        },
+        "like_count": 1,
+        "timestamp": "2025-02-27 02:12:15"
+    }
+]

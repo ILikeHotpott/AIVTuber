@@ -1,0 +1,20 @@
+[
+    {
+        "message_id": "7cb9d586-ead3-4ee8-a5a4-fb567d2f2a18",
+        "type": "follow",
+        "user": {
+            "id": 104423139767,
+            "name": "想睡觉"
+        },
+        "timestamp": "2025-02-26 02:53:24"
+    },
+    {
+        "message_id": "d8d672d3-0caf-436a-8854-f0ac39751266",
+        "type": "follow",
+        "user": {
+            "id": 72925334205,
+            "name": "影风"
+        },
+        "timestamp": "2025-02-26 02:53:35"
+    }
+]

@@ -1,0 +1,86 @@
+[
+    {
+        "message_id": "b6305d36-ceda-4e0c-bc09-5c342f73e2ec",
+        "type": "gift",
+        "user": {
+            "id": 165397669885707,
+            "name": "漫游的伞",
+            "gender": "女"
+        },
+        "gift": {
+            "name": "小心心",
+            "count": 1
+        },
+        "timestamp": "2025-02-28 01:06:31"
+    },
+    {
+        "message_id": "0f6949bc-76b3-4475-9f7d-d29d17126c51",
+        "type": "gift",
+        "user": {
+            "id": 165397669885707,
+            "name": "漫游的伞",
+            "gender": "女"
+        },
+        "gift": {
+            "name": "小心心",
+            "count": 1
+        },
+        "timestamp": "2025-02-28 01:06:35"
+    },
+    {
+        "message_id": "9536dc2e-f51d-4cc3-b360-0e44ef22be8c",
+        "type": "gift",
+        "user": {
+            "id": 165397669885707,
+            "name": "漫游的伞",
+            "gender": "女"
+        },
+        "gift": {
+            "name": "小心心",
+            "count": 1
+        },
+        "timestamp": "2025-02-28 01:07:04"
+    },
+    {
+        "message_id": "5ce6a0c1-967f-4d75-b3d7-145f777982ed",
+        "type": "gift",
+        "user": {
+            "id": 165397669885707,
+            "name": "漫游的伞",
+            "gender": "女"
+        },
+        "gift": {
+            "name": "小心心",
+            "count": 1
+        },
+        "timestamp": "2025-02-28 01:07:07"
+    },
+    {
+        "message_id": "5d297780-42c8-4b8b-9e92-08493837eda6",
+        "type": "gift",
+        "user": {
+            "id": 165397669885707,
+            "name": "漫游的伞",
+            "gender": "女"
+        },
+        "gift": {
+            "name": "小心心",
+            "count": 1
+        },
+        "timestamp": "2025-02-28 01:07:16"
+    },
+    {
+        "message_id": "efe2944c-a730-4784-89fa-a16e41857fe1",
+        "type": "gift",
+        "user": {
+            "id": 165397669885707,
+            "name": "漫游的伞",
+            "gender": "女"
+        },
+        "gift": {
+            "name": "小心心",
+            "count": 1
+        },
+        "timestamp": "2025-02-28 01:07:19"
+    }
+]

@@ -1,0 +1,38 @@
+[
+    {
+        "message_id": "6c81133f-3ed3-4a25-b008-22e7134ac88a",
+        "type": "follow",
+        "user": {
+            "id": 593334479618387,
+            "name": "其会"
+        },
+        "timestamp": "2025-02-27 01:59:40"
+    },
+    {
+        "message_id": "6036a03a-8445-4fef-b5c4-44fbec6c4d5f",
+        "type": "follow",
+        "user": {
+            "id": 104148222465,
+            "name": "陈晓震"
+        },
+        "timestamp": "2025-02-27 01:59:43"
+    },
+    {
+        "message_id": "86b9c9ea-6c5c-4f88-88ac-8e7bbe40858d",
+        "type": "follow",
+        "user": {
+            "id": 96253730450,
+            "name": "♚無℡洺™適°"
+        },
+        "timestamp": "2025-02-27 01:59:58"
+    },
+    {
+        "message_id": "638230fd-1c78-4bf2-894c-bcfca0c03b2e",
+        "type": "follow",
+        "user": {
+            "id": 96383646541,
+            "name": "霸霸"
+        },
+        "timestamp": "2025-02-27 02:00:14"
+    }
+]

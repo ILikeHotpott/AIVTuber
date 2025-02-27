@@ -1,0 +1,20 @@
+[
+    {
+        "message_id": "5bedf653-07a1-4b45-a3f6-60eb1af5d87b",
+        "type": "follow",
+        "user": {
+            "id": 1737693102879134,
+            "name": "2L84U"
+        },
+        "timestamp": "2025-02-28 01:13:59"
+    },
+    {
+        "message_id": "5a3383cd-3b9a-40de-9a4f-d3d0d3a0fed9",
+        "type": "follow",
+        "user": {
+            "id": 1363040003697501,
+            "name": "中中中中中中"
+        },
+        "timestamp": "2025-02-28 01:16:48"
+    }
+]

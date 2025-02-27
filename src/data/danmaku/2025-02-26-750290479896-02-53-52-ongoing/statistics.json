@@ -1,0 +1,23 @@
+[
+    {
+        "message_id": "1070f6ba-3756-44c6-9b4a-1af23afba052",
+        "type": "statistics",
+        "current_viewers": 2346,
+        "total_viewers": "2.5万",
+        "timestamp": "2025-02-26 02:53:56"
+    },
+    {
+        "message_id": "c8787b8d-a457-49ed-9940-f788b723658d",
+        "type": "statistics",
+        "current_viewers": 2346,
+        "total_viewers": "2.5万",
+        "timestamp": "2025-02-26 02:53:56"
+    },
+    {
+        "message_id": "e8fd1d67-b2fb-48a0-872b-52e205be4ba9",
+        "type": "statistics",
+        "current_viewers": 2313,
+        "total_viewers": "2.5万",
+        "timestamp": "2025-02-26 02:54:02"
+    }
+]
