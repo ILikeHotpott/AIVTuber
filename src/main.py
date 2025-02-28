@@ -9,7 +9,6 @@ from DouyinLiveWebFetcher.liveMan import DouyinLiveWebFetcher
 
 
 def start_fetcher(live_id):
-    # 获取直播开始时间（格式为 HH-MM-SS）
     start_time = datetime.now().strftime("%H-%M-%S")
     json_storage = DanmakuJsonStorage(
         room_id=live_id,

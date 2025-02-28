@@ -44,3 +44,6 @@ betterproto~=1.2.5
 websocket-client~=1.8.0
 protobuf~=4.25.5
 TTS~=0.22.0
+langchain~=0.3.19
+pydantic~=2.7.1
+langchain-openai~=0.3.7

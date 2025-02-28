@@ -36,3 +36,7 @@ def response_to_speech(response):
 
     else:
         print(f"请求失败，状态码: {response.status_code}, 响应: {response.text}")
+
+
+if __name__ == "__main__":
+    response_to_speech("么么，谢谢老婆的真的爱你")

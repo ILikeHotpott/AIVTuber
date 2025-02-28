@@ -1,0 +1,29 @@
+[
+    {
+        "message_id": "910b22f1-b535-4d3d-a4e8-333a8f6503d5",
+        "type": "follow",
+        "user": {
+            "id": 104160964494,
+            "name": "坤嗝"
+        },
+        "timestamp": "2025-02-28 01:51:01"
+    },
+    {
+        "message_id": "1f255fc7-34e8-46f0-a512-243a975f98bf",
+        "type": "follow",
+        "user": {
+            "id": 2186274485053357,
+            "name": "一点不敢动"
+        },
+        "timestamp": "2025-02-28 01:52:30"
+    },
+    {
+        "message_id": "c803ab6b-476e-4531-bf45-5db30628be63",
+        "type": "follow",
+        "user": {
+            "id": 92776907069,
+            "name": "MinGW颖"
+        },
+        "timestamp": "2025-02-28 01:52:52"
+    }
+]
