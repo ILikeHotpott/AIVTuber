@@ -49,3 +49,4 @@ DouyinLiveWebFetcher/__pycache__/
 src/__pycache__/
 training/__pycache__/
 .env
+.idea/
