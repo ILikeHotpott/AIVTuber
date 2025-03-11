@@ -34,14 +34,12 @@ async def consume_one():
 
     async def response_wrapper():
         full_response = ""
-        # 调用你写好的chatbot流式生成器
         async for chunk in chatbot_response_stream(user_name, content):
             full_response += chunk
-            yield chunk  # 逐块返回给前端
+            yield chunk
 
         response_to_speech(full_response)
 
-    # 返回流式响应
     return StreamingResponse(response_wrapper(), media_type="text/plain")
 
 

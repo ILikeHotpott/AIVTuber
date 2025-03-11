@@ -21,7 +21,6 @@ async def chatbot_response_stream(user_name: str, content: str) -> AsyncGenerato
         """
               f"用户名: {user_name}\n消息内容: {content}\n")
 
-    # 调用OpenAI API，使用流式响应
     stream = client.chat.completions.create(
         messages=[
             {"role": "system", "content": prompt},
@@ -29,6 +28,7 @@ async def chatbot_response_stream(user_name: str, content: str) -> AsyncGenerato
         ],
         model="gpt-4o",
         stream=True,
+        temperature=1,
     )
 
     # 先发送前缀

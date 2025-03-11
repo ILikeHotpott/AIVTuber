@@ -5,7 +5,6 @@ from langchain_openai.embeddings import OpenAIEmbeddings
 from langchain.schema import Document
 from langchain_openai.chat_models import ChatOpenAI
 from langchain.chains import ConversationChain
-from langchain_core.runnables import RunnableWithMessageHistory
 
 from langchain.prompts import PromptTemplate
 from datetime import datetime, timedelta
@@ -151,7 +150,6 @@ class VTuberMemorySystem:
                 "total_gifts": 0,
                 "top_gifters": [],
                 "summary": ""
-                # 其他需要的字段可自行添加
             }
             self.save_stream_history()
 
