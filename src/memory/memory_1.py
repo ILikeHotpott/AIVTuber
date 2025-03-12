@@ -25,6 +25,7 @@ model = ChatSambaNovaCloud(
     top_p=1,
 )
 
+# ----------------------------以上没问题----------------------------
 
 # 2. 定义聊天状态
 class ChatMemory(TypedDict):
@@ -40,6 +41,7 @@ class ChatState(TypedDict):
     memory: Dict[str, ChatMemory]
 
 
+# TODO: 需要修改，不用sqlite，而是vectordb
 try:
     conn = sqlite3.connect("chat_memory.db", check_same_thread=False)
     memory_saver = SqliteSaver(conn)
