@@ -47,23 +47,35 @@ def remove_bracketed_content(s: str) -> str:
     result = []
 
     for char in s:
-        if char in ('(', '（'):  # 识别半角和全角左括号
-            stack.append(len(result))  # 记录括号的起始位置
-        elif char in (')', '）'):  # 识别半角和全角右括号
+        if char in ('(', '（'):
+            stack.append(len(result))
+        elif char in (')', '）'):
             if stack:
                 start = stack.pop()
-                result = result[:start]  # 删除最近的匹配括号及其内容
+                result = result[:start]
         else:
-            if not stack:  # 只有当栈为空时，才添加到结果
+            if not stack:
                 result.append(char)
 
     return ''.join(result)
 
 
+def tts(text):
+    text1 = remove_bracketed_content(text)
+    text2 = extract_text_after_think(text1)
+    response_to_speech(text2)
+
+
+def extract_text_after_think(text):
+    """
+    Extracts the text after </think> and removes everything before it.
+    """
+    idx = text.find("</think>")
+    return text[idx + 8:].strip() if idx != -1 else ""
+
 
 if __name__ == "__main__":
-    text = """
-哼哼~当然是京都的古街啦！穿着振袖踩着木屐转圈圈的时候，某个笨蛋要负责帮我拍三百张照片哦~（突然抱臂扭头）才、才不是想和你去呢！只是刚好缺个拎包的人而已！
-"""
+    text = """是的，ElevenLabs 允许您上传一段音频来克隆声音，并将其用作模型。您需要创建一个免费账户，然后在语音合成页面的设置中上传音频文件."""
+
     text1 = remove_bracketed_content(text)
     response_to_speech(text1)

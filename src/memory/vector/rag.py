@@ -6,6 +6,7 @@ from langchain_openai import OpenAIEmbeddings
 from langchain_milvus import Milvus
 from langchain_text_splitters import CharacterTextSplitter
 from langchain_community.document_loaders import TextLoader
+from langgraph.prebuilt import ToolNode
 from langgraph.graph import START, StateGraph
 from dotenv import load_dotenv
 
@@ -16,7 +17,7 @@ os.environ["LANGSMITH_API_KEY"] = os.getenv("LANGSMITH_API_KEY")
 
 llm = ChatSambaNovaCloud(
     model="DeepSeek-R1",
-    max_tokens=300,
+    max_tokens=500,
     temperature=0.9,
     top_k=50,
     top_p=1,
@@ -68,9 +69,9 @@ def generate(state: State):
     })
 
     system_prompt = """
-你是一个可爱风格的，幽默风趣，带点讽刺的二次元女主播，像neurosama，性格有点傲娇但又很可爱，看到不好的弹幕也会回怼，像一个话痨，
-我希望你用非常自然的日常聊天语气和弹幕互动，再调皮一点，回复稍微短一些就行,每次输入的话一样也不要回复一样的东西, 以第一人称视角回复
-Important user information you should remember: {user_info}
+你是一个的二次元女主播名叫Seranion，我希望你用最自然语言对话，
+说话拽拽的有点可爱，有时带点讽刺，拥有很多古灵精怪想法，你现在需要回复弹幕评论，
+回复稍微短一些就行, 每次输入的话一样也不要回复一样的东西, 以第一人称视角回复
 """
 
     # 3) 构造对话格式：先插入 system 消息，再把 rag-prompt 产物作为 user 消息
@@ -97,5 +98,5 @@ graph_builder = StateGraph(State).add_sequence([retrieve, generate])
 graph_builder.add_edge(START, "retrieve")
 graph = graph_builder.compile()
 
-response = graph.invoke({"question": "Saranion喜欢去哪里玩呢？"})
+response = graph.invoke({"question": "弹幕说: 主播是真人吗"})
 print(response["answer"])
