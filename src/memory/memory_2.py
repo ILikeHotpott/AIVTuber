@@ -1,4 +1,3 @@
-from langchain_chroma import Chroma
-from langchain_community.document_loaders import TextLoader
-from langchain_community.embeddings.sentence_transformer import SentenceTransformerEmbeddings
-from langchain_text_splitters import CharacterTextSplitter
+from langchain_openai import ChatOpenAI
+
+model = ChatOpenAI(model="gpt-4o-mini")

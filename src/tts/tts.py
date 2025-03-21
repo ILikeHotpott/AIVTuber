@@ -1,5 +1,4 @@
 import os
-import re
 import requests
 
 
@@ -8,20 +7,20 @@ def response_to_speech(response):
     payload = {
         "text": response,
         "text_lang": "zh",
-        "ref_audio_path": "/Users/liuyitong/projects/Seranion/src/tts/audio/neuro_sample.FLAC",
+        "ref_audio_path": "/Users/liuyitong/projects/Seranion/src/tts/audio/bear_reference.FLAC",
         "aux_ref_audio_paths": [],
         "prompt_lang": "zh",
         "prompt_text": "",
         "top_k": 5,
         "top_p": 1,
         "temperature": 0.5,
-        "text_split_method": "cut5",
+        "text_split_method": "cut0",
         "batch_size": 1,
         "batch_threshold": 0.75,
         "split_bucket": True,
         "speed_factor": 1,
         "fragment_interval": 0.3,
-        "seed": -1,
+        "seed": 123456,
         "media_type": "wav",
         "streaming_mode": False,
         "parallel_infer": True,
@@ -75,7 +74,9 @@ def extract_text_after_think(text):
 
 
 if __name__ == "__main__":
-    text = """是的，ElevenLabs 允许您上传一段音频来克隆声音，并将其用作模型。您需要创建一个免费账户，然后在语音合成页面的设置中上传音频文件."""
+    text = """
+    清晨的城市被薄雾轻轻拥抱
+"""
 
     text1 = remove_bracketed_content(text)
     response_to_speech(text1)

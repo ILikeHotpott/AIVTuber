@@ -1,7 +1,10 @@
 import sqlite3
+from os import remove
 from typing import Sequence, List, Dict, Any
 from typing_extensions import Annotated, TypedDict
 from datetime import datetime
+from dotenv import load_dotenv
+load_dotenv()
 
 from langchain_core.messages import (
     AIMessage,
@@ -16,16 +19,17 @@ from langgraph.checkpoint.memory import MemorySaver
 from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.graph.message import add_messages
 
+from src.tts.tts_stream import response_to_speech_streaming, clean_text
+
 # 1. 初始化聊天模型
 model = ChatSambaNovaCloud(
     model="DeepSeek-R1",
-    max_tokens=200,
-    temperature=0.9,
+    max_tokens=400,
+    temperature=0.8,
     top_k=50,
     top_p=1,
 )
 
-# ----------------------------以上没问题----------------------------
 
 # 2. 定义聊天状态
 class ChatMemory(TypedDict):
@@ -52,11 +56,9 @@ except Exception as e:
 
 # 4. 创建聊天提示模板
 system_prompt = """
-你是一个可爱风格的，幽默风趣，带点讽刺的二次元女主播，像neurosama，
-    性格有点傲娇但又很可爱，有时会很害羞，看到不好的弹幕也会回怼，像一个话痨，每天以聊天为主，
-    我希望你用非常自然的日常聊天语气和弹幕互动，再调皮一点，回复稍微短一些就行, 即便每次输入的话一样也不要回复一样的东西, 
-    回复内容一定不要加括号
-    Important user information you should remember: {user_info}
+你是一个女主播名叫Seranion，我希望你用最自然语言对话，
+说话拽拽的有点可爱，你现在需要回复弹幕评论，
+回复稍微短一些就行, 每次输入的话一样也不要回复一样的东西, 以第一人称视角回复
 """
 
 prompt_template = ChatPromptTemplate.from_messages(
@@ -107,15 +109,12 @@ def generate_response(state: ChatState) -> ChatState:
     user_id = state["user_id"]
     user_memory = state["memory"][user_id]
 
-    # 准备提示
     user_info_str = ", ".join([f"{k}: {v}" for k, v in user_memory["user_info"].items()])
     if not user_info_str:
         user_info_str = "No specific information yet"
 
-    # 获取对话历史
     history = user_memory["conversation_history"]
 
-    # 生成回复
     prompt = prompt_template.invoke({
         "language": state["language"],
         "user_info": user_info_str,
@@ -165,10 +164,8 @@ def chat(user_id: str, message: str, language: str = "English"):
         "messages": [HumanMessage(message)],
         "user_id": user_id,
         "language": language,
-        "memory": {}  # 会在workflow中被填充
+        "memory": {}
     }
-
-    # 调用聊天机器人
     result = chatbot.invoke(state, config)
     return result["messages"][-1].content
 
@@ -177,7 +174,6 @@ def chat(user_id: str, message: str, language: str = "English"):
 def chat_stream(user_id: str, message: str, language: str = "English"):
     config = {"configurable": {"thread_id": f"persistent_{user_id}"}}
 
-    # 初始化状态
     state = {
         "messages": [HumanMessage(message)],
         "user_id": user_id,
@@ -193,9 +189,10 @@ def chat_stream(user_id: str, message: str, language: str = "English"):
             yield chunk.content
 
 
-# 如果你想在当前文件中测试
 if __name__ == "__main__":
-    prompt = "哎，感觉最近好累啊"
+    prompt = "主播今天心情怎么样"
+    stop = "。"
     print(f"用户1: {prompt}")
-    response1 = chat("user_123", prompt, language="Chinese")
+    response1 = chat("user_7", prompt, language="Chinese")
     print(f"AI: {response1}")
+    response_to_speech_streaming(prompt + stop + clean_text(response1))

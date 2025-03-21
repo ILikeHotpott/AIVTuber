@@ -19,15 +19,15 @@ load_dotenv()
 os.environ["LANGSMITH_TRACING"] = "true"
 os.environ["LANGSMITH_API_KEY"] = os.getenv("LANGSMITH_API_KEY")
 
-# llm = ChatSambaNovaCloud(
-#     model="DeepSeek-R1",
-#     max_tokens=500,
-#     temperature=0.9,
-#     top_k=50,
-#     top_p=1,
-# )
-
-llm = init_chat_model("gpt-4o-mini", model_provider="openai")
+llm = ChatSambaNovaCloud(
+    model="Llama-3.2-11B-Vision-Instruct",
+    max_tokens=500,
+    temperature=0.9,
+    top_k=50,
+    top_p=1,
+)
+#
+# llm = init_chat_model("gpt-4o-mini", model_provider="openai")
 
 embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
 
