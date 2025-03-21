@@ -1,9 +1,9 @@
 import sqlite3
-from os import remove
 from typing import Sequence, List, Dict, Any
 from typing_extensions import Annotated, TypedDict
 from datetime import datetime
 from dotenv import load_dotenv
+
 load_dotenv()
 
 from langchain_core.messages import (
@@ -56,8 +56,8 @@ except Exception as e:
 
 # 4. 创建聊天提示模板
 system_prompt = """
-你是一个女主播名叫Seranion，我希望你用最自然语言对话，
-说话拽拽的有点可爱，你现在需要回复弹幕评论，
+你是一个女主播名叫Seranion，我希望你用最自然语言对话，不要用奇怪的形容
+语言平常，你现在需要回复弹幕，
 回复稍微短一些就行, 每次输入的话一样也不要回复一样的东西, 以第一人称视角回复
 """
 
@@ -190,9 +190,9 @@ def chat_stream(user_id: str, message: str, language: str = "English"):
 
 
 if __name__ == "__main__":
-    prompt = "主播今天心情怎么样"
+    prompt = "主播想去哪里旅游"
     stop = "。"
     print(f"用户1: {prompt}")
-    response1 = chat("user_7", prompt, language="Chinese")
+    response1 = chat("user_10", prompt, language="Chinese")
     print(f"AI: {response1}")
     response_to_speech_streaming(prompt + stop + clean_text(response1))
