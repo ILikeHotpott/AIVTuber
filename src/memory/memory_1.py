@@ -1,5 +1,6 @@
 import sqlite3
 from typing import Sequence, List, Dict, Any
+
 from typing_extensions import Annotated, TypedDict
 from datetime import datetime
 from dotenv import load_dotenv
@@ -13,6 +14,7 @@ from langchain_core.messages import (
     BaseMessage,
 )
 from langchain_sambanova import ChatSambaNovaCloud
+from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langgraph.graph import START, StateGraph, END
 from langgraph.checkpoint.memory import MemorySaver
@@ -20,6 +22,7 @@ from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.graph.message import add_messages
 
 from src.tts.tts_stream import response_to_speech_streaming, clean_text
+from src.tts.tts_opt.tts2 import tts_in_chunks
 
 # 1. 初始化聊天模型
 model = ChatSambaNovaCloud(
@@ -29,6 +32,10 @@ model = ChatSambaNovaCloud(
     top_k=50,
     top_p=1,
 )
+
+# model = ChatOpenAI(
+#     model="gpt-4o"
+# )
 
 
 # 2. 定义聊天状态
@@ -190,9 +197,10 @@ def chat_stream(user_id: str, message: str, language: str = "English"):
 
 
 if __name__ == "__main__":
-    prompt = "主播想去哪里旅游"
-    stop = "。"
+    prompt = "主播平时没事都干嘛呀"
+    prompt += "。"
     print(f"用户1: {prompt}")
-    response1 = chat("user_10", prompt, language="Chinese")
+    response1 = chat("user_14", prompt, language="Chinese")
     print(f"AI: {response1}")
-    response_to_speech_streaming(prompt + stop + clean_text(response1))
+    print("一起说呀！！！", prompt + response1)
+    tts_in_chunks(prompt + response1)

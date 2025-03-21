@@ -57,7 +57,6 @@ def stream_audio_response(response, chunk_size=1024):
     p.terminate()
 
 
-
 def response_to_speech_streaming(text):
     """
     Send text to TTS API and play the response in streaming mode.
@@ -137,8 +136,8 @@ def tts_streaming(text):
 
 if __name__ == "__main__":
     text = """
-    清晨的城市被薄雾轻轻拥抱，街角早餐铺飘来油条豆浆的香气。地铁里人潮涌动，耳机里播放着熟悉的旋律。
-    阳光逐渐穿破高楼缝隙，照亮奔忙的身影，平凡日子里，藏着生活最真实的温柔。
+    清晨的城市被薄雾轻轻拥抱，阳光透过云层洒下金色的光芒。街道上，早起的人们匆匆赶往工作。
+    小鸟在树枝间欢快地歌唱，为这个美好的早晨增添了生机！
 """
 
     text1 = clean_text(text)
