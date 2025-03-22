@@ -197,10 +197,10 @@ def chat_stream(user_id: str, message: str, language: str = "English"):
 
 
 if __name__ == "__main__":
-    prompt = "主播平时没事都干嘛呀"
+    prompt = ""
     prompt += "。"
     print(f"用户1: {prompt}")
-    response1 = chat("user_14", prompt, language="Chinese")
+    response1 = chat("user_15", prompt, language="Chinese")
     print(f"AI: {response1}")
     print("一起说呀！！！", prompt + response1)
     tts_in_chunks(prompt + response1)

@@ -1,6 +1,5 @@
 import os
 import re
-import time
 import wave
 import queue
 import pyaudio
@@ -44,7 +43,6 @@ def audio_player():
 
         wf.close()
 
-    # 播放结束，关闭流、释放资源
     if stream is not None:
         stream.stop_stream()
         stream.close()
@@ -81,7 +79,7 @@ def split_by_punctuation(text: str):
     避免空段和重复段。
     """
     text = text.strip()
-    parts = re.split(r'([，。！])', text)
+    parts = re.split(r'([，。！,.])', text)
     chunks = []
     for i in range(0, len(parts), 2):
         chunk_text = parts[i].strip()
@@ -120,8 +118,8 @@ def tts_chunk(text_chunk: str, index: int):
         "batch_threshold": 0.75,
         "split_bucket": True,
         "speed_factor": 1,
-        "fragment_interval": 0.3,
-        "seed": 123456,
+        "fragment_interval": 0.1,
+        "seed": 128123,
         "media_type": "wav",
         "streaming_mode": False,
         "parallel_infer": True,
@@ -156,7 +154,6 @@ def tts_in_chunks(text: str):
 
     os.makedirs("output", exist_ok=True)
 
-    # 启动播放线程（daemon=True 表示主线程结束时它也随之结束）
     player_thread = threading.Thread(target=audio_player, daemon=True)
     player_thread.start()
 
@@ -164,7 +161,6 @@ def tts_in_chunks(text: str):
     for i, chunk in enumerate(chunks, 1):
         tts_chunk(chunk, i)
 
-    # 全部分段生成完毕，放一个 None 表示没有后续音频
     AUDIO_QUEUE.put(None)
 
     player_thread.join()
@@ -173,7 +169,6 @@ def tts_in_chunks(text: str):
 
 if __name__ == "__main__":
     text = """
-    阳光透过窗帘洒在木地板上，咖啡机低声运转着，香气弥漫在小小的厨房。地铁呼啸而过，街边便利店已开门迎客。
-    人们步履匆匆，却不忘抬头望一眼蔚蓝的天空，手机里传来熟悉的讯息提示音，生活在平凡中，悄然闪光。
+    你好
     """
     tts_in_chunks(text)
