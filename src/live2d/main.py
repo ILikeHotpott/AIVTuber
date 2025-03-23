@@ -106,6 +106,6 @@ def start_ws(hotkey_id):
 # === 示例入口 ===
 if __name__ == "__main__":
     # 修改这里选择你想触发的热键
-    start_ws("Shock")
+    start_ws("Anim Shake")
 
 # ["Anim Shake", "Eyes Cry", "Angry Sign", "Shock Sign", "Remove Expressions", "Anim Shake", "Shock"]

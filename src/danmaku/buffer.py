@@ -2,6 +2,8 @@ import os
 import json
 from datetime import datetime
 
+
+# 用作数据分析，并不强制要求
 class DanmakuJsonStorage:
     def __init__(self, room_id: str, start_time: str, output_dir='data/danmaku', max_length=100):
         """
