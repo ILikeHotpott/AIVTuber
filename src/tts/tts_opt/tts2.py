@@ -119,7 +119,7 @@ def tts_chunk(text_chunk: str, index: int):
         "split_bucket": True,
         "speed_factor": 1,
         "fragment_interval": 0.1,
-        "seed": 128123,
+        "seed": 125235,
         "media_type": "wav",
         "streaming_mode": False,
         "parallel_infer": True,
@@ -169,6 +169,6 @@ def tts_in_chunks(text: str):
 
 if __name__ == "__main__":
     text = """
-    你好
+今天好多人来打招呼呀～你们那边天气怎么样？☀️
     """
     tts_in_chunks(text)

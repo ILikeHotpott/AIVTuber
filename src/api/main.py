@@ -5,14 +5,12 @@ import uvicorn
 from fastapi.responses import StreamingResponse
 import asyncio
 
-from chatbot.queue import ChatbotQueue
-from chatbot.chatbot import chatbot_response_stream
-from tts.tts import response_to_speech
+from src.chatbot.chatbot import chatbot_response_stream
+from src.tts.tts import response_to_speech
 
 app = FastAPI()
 
 # 全局队列
-chat_queue: ChatbotQueue = None
 
 
 @app.get("/consume_one")

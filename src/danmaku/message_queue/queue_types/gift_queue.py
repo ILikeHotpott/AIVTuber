@@ -4,16 +4,16 @@ from src.danmaku.models import Message, MessageType, User
 from .gift_mapping import gift_mapping
 
 
-class GiftQueue:
-    def __init(self):
+class GiftMessageQueue:
+    def __init__(self):
         # 只有礼物queue用的是priority queue
         self._queue = queue.PriorityQueue()
 
-    def put_message(self, gift_name: str, gift_cnt: int, user: User):
+    def put_message(self, gift_name: str, gift_count: int, user: User):
         priority = -5
         if gift_name not in gift_mapping:
             priority = -10
-        value = gift_mapping[gift_name] * gift_cnt
+        value = gift_mapping[gift_name] * gift_count
         if value < 10:
             priority = -5
         elif 10 <= value < 100:
@@ -33,5 +33,7 @@ class GiftQueue:
     def empty(self):
         return self._queue.empty()
 
-    def peek(self):
-        return self._queue.queue[0]
+    def peek(self) -> Message | None:
+        if self.empty():
+            return None
+        return self._queue[0]

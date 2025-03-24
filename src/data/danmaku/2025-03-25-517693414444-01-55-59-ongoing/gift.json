@@ -1,0 +1,30 @@
+[
+    {
+        "message_id": "c37018df-ae39-430d-a578-df71d4e55396",
+        "type": "gift",
+        "user": {
+            "id": 4059859025929056,
+            "name": "秘方",
+            "gender": "女"
+        },
+        "gift": {
+            "name": "小心心",
+            "count": 1
+        },
+        "timestamp": "2025-03-25 01:56:55"
+    },
+    {
+        "message_id": "c16bcb73-bb1c-4080-b822-c471c0180915",
+        "type": "gift",
+        "user": {
+            "id": 4059859025929056,
+            "name": "秘方",
+            "gender": "女"
+        },
+        "gift": {
+            "name": "小心心",
+            "count": 1
+        },
+        "timestamp": "2025-03-25 01:56:57"
+    }
+]

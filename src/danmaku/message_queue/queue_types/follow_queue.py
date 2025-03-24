@@ -19,5 +19,8 @@ class FollowMessageQueue:
     def empty(self) -> bool:
         return len(self._queue) == 0
 
-    def peek(self) -> Message:
+    def peek(self) -> Message | None:
+        if self.empty():
+            return None
         return self._queue[0]
+

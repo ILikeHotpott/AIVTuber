@@ -33,6 +33,7 @@ model = ChatSambaNovaCloud(
     top_p=1,
 )
 
+
 # model = ChatOpenAI(
 #     model="gpt-4o"
 # )
@@ -196,11 +197,17 @@ def chat_stream(user_id: str, message: str, language: str = "English"):
             yield chunk.content
 
 
+def chat_with_memory_and_extra_prompt(memory_config: str, extra_prompt: str):
+    extra_prompt += "。 "
+    print(f"用户1: {extra_prompt}")
+    response = chat(memory_config, extra_prompt, language="Chinese")
+    print(f"AI: {response}")
+    # tts_in_chunks(response)
+
+
 if __name__ == "__main__":
-    prompt = ""
-    prompt += "。"
-    print(f"用户1: {prompt}")
-    response1 = chat("user_15", prompt, language="Chinese")
-    print(f"AI: {response1}")
-    print("一起说呀！！！", prompt + response1)
-    tts_in_chunks(prompt + response1)
+    # prompt = "主播叫什么名字"
+    # prompt += "。"
+    # response1 = chat("user_15", prompt, language="Chinese")
+    # tts_in_chunks(response1)
+    chat_with_memory_and_extra_prompt("user_16", "你好呀")

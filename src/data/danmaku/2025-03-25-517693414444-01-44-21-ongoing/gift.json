@@ -1,0 +1,30 @@
+[
+    {
+        "message_id": "967e01b7-2c19-4710-8c4e-afa7880280ff",
+        "type": "gift",
+        "user": {
+            "id": 4438055968076541,
+            "name": "可爱男人",
+            "gender": "男"
+        },
+        "gift": {
+            "name": "人气票",
+            "count": 1
+        },
+        "timestamp": "2025-03-25 01:44:25"
+    },
+    {
+        "message_id": "0f6adac3-1c90-44aa-a780-aec530e29d72",
+        "type": "gift",
+        "user": {
+            "id": 4438055968076541,
+            "name": "可爱男人",
+            "gender": "男"
+        },
+        "gift": {
+            "name": "人气票",
+            "count": 1
+        },
+        "timestamp": "2025-03-25 01:44:25"
+    }
+]

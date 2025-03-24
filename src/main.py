@@ -1,14 +1,19 @@
 import threading
 import time
 import os
-import api.main
 from datetime import datetime
-from chatbot.queue import ChatbotQueue
 from danmaku.buffer import DanmakuJsonStorage
 from DouyinLiveWebFetcher.liveMan import DouyinLiveWebFetcher
+from src.memory.memory_1 import chat
+from src.tts.tts_opt.tts2 import tts_in_chunks
+from src.danmaku.models import Message, MessageType
 
 
 def start_fetcher(live_id):
+    """
+    启动抓取线程并返回 DouyinLiveWebFetcher 实例。
+    这里假设 DouyinLiveWebFetcher 的构造与之前相同。
+    """
     start_time = datetime.now().strftime("%H-%M-%S")
     json_storage = DanmakuJsonStorage(
         room_id=live_id,
@@ -22,36 +27,47 @@ def start_fetcher(live_id):
     return fetcher
 
 
+# 定义全局的 tts 播放同步事件
+tts_playing_event = threading.Event()
+tts_playing_event.set()  # 初始允许生成回答
+
+
+def chat_with_memory_and_extra_prompt(message: Message, memory_config: str, extra_prompt: str):
+    tts_playing_event.wait()
+    print(f"用户1: {extra_prompt}")
+    response = chat(memory_config, extra_prompt, language="Chinese")
+    print(f"AI: {response}")
+
+    tts_playing_event.clear()
+
+    # 如果是回复弹幕评论，就要先读一遍弹幕，然后再回复
+    if message.type == MessageType.DANMU:
+        tts_in_chunks(message.content + response)
+    else:
+        tts_in_chunks(response)
+
+    tts_playing_event.set()
+
+
 def main():
-    live_id = "257409809047"
-    # 1) 创建存储对象
-    json_storage = DanmakuJsonStorage(
-        room_id=live_id,
-        start_time=datetime.now().strftime("%H-%M-%S"),
-        output_dir=os.path.join("data", "danmaku"),
-        max_length=100
-    )
+    live_id = "517693414444"
 
-    chat_queue = ChatbotQueue()
-    api.main.chat_queue = chat_queue
+    # 1) 启动弹幕抓取线程
+    fetcher = start_fetcher(live_id)
 
-    fetcher = DouyinLiveWebFetcher(
-        live_id=live_id,
-        json_storage=json_storage,
-        chat_queue=chat_queue
-    )
-    fetch_thread = threading.Thread(target=fetcher.start, daemon=True)
-    fetch_thread.start()
-
-    api_thread = threading.Thread(target=api.main.start_api_server, daemon=True)
-    api_thread.start()
+    print("开始获取弹幕并播报...按 Ctrl+C 退出。")
 
     try:
         while True:
-            time.sleep(1)
+            message_obj = fetcher.get_next_message()
+            if message_obj:
+                prompt_text = message_obj.prompt
+                chat_with_memory_and_extra_prompt(message_obj, "user_18", prompt_text)
+            else:
+                print("Message对象获取失败，睡眠1秒")
+                time.sleep(1)
     except KeyboardInterrupt:
         print("收到 KeyboardInterrupt，准备退出...")
-
         if fetcher.danmaku_queue and fetcher.danmaku_queue.json_storage:
             fetcher.danmaku_queue.json_storage.flush_all()
         print("已将统计数据写入文件。")

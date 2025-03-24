@@ -136,6 +136,7 @@ def tts_streaming(text):
 
 if __name__ == "__main__":
     text = """
+    （探头）今天好多人来打招呼呀～你们那边天气怎么样？☀️
 """
 
     text1 = clean_text(text)
