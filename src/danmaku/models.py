@@ -3,12 +3,12 @@ from enum import Enum
 
 
 class MessageType(Enum):
-    GIFT = "礼物"
-    DANMU = "弹幕消息"
-    FANS = "粉丝团"
-    FOLLOW = "关注"
-    LIKE = "点赞"
-    ENTER = "进入直播间"
+    GIFT = "GIFT"
+    DANMU = "DANMU"
+    FANS = "FANS"
+    FOLLOW = "FOLLOW"
+    LIKE = "LIKE"
+    ENTER = "ENTER"
 
 
 @dataclass

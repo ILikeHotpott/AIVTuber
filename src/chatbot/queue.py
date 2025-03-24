@@ -1,13 +1,13 @@
-
-
 import asyncio
 import threading
 from collections import deque
+
 
 class ChatbotQueue:
     """
     用于给 Chatbot 进行回复的弹幕队列，仅接收文本类消息。
     """
+
     def __init__(self, max_length=200):
         self.queue = deque(maxlen=max_length)
         self.lock = threading.Lock()

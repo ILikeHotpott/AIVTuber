@@ -1,6 +1,8 @@
 from openai import OpenAI
 import asyncio
 from typing import AsyncGenerator
+from dotenv import load_dotenv
+load_dotenv()
 
 client = OpenAI()
 

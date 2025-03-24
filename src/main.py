@@ -23,7 +23,7 @@ def start_fetcher(live_id):
 
 
 def main():
-    live_id = "110577451588"
+    live_id = "257409809047"
     # 1) 创建存储对象
     json_storage = DanmakuJsonStorage(
         room_id=live_id,

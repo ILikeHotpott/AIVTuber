@@ -1,23 +1,23 @@
-import queue
+from collections import deque
 from src.danmaku.models import Message, MessageType, User
 
 
 class EnterMessageQueue:
-    def __init__(self):
-        self._queue = queue.PriorityQueue()
+    def __init__(self, max_size: int = 5):
+        self._queue: deque[Message] = deque()
+        self._max_size = max_size
 
     def put_message(self, user: User, content: str):
-        msg = Message(
-            priority=-1,
-            user=user,
-            content=content,
-            type=MessageType.LIKE
-        )
-        self._queue.put(msg)
-        print("[添加] 进入房间消息已插入")
+        if len(self._queue) >= self._max_size:
+            self._queue.popleft()
+        msg = Message(priority=-1, user=user, content=content, type=MessageType.ENTER)
+        self._queue.append(msg)
 
     def get(self) -> Message:
-        return self._queue.get()
+        return self._queue.popleft()
 
     def empty(self) -> bool:
-        return self._queue.empty()
+        return len(self._queue) == 0
+
+    def peek(self):
+        return self._queue[0]
