@@ -33,10 +33,7 @@ model = ChatSambaNovaCloud(
     top_p=1,
 )
 
-
-# model = ChatOpenAI(
-#     model="gpt-4o"
-# )
+openai_model = ChatOpenAI(model="gpt-4o")
 
 
 # 2. 定义聊天状态
@@ -161,7 +158,6 @@ def build_chatbot():
 # 7. 创建应用
 chatbot = build_chatbot()
 
-
 # 8. 简化的API调用函数
 def chat(user_id: str, message: str, language: str = "English"):
     # 使用固定的thread_id确保每次程序执行都能找回正确的会话
@@ -205,9 +201,17 @@ def chat_with_memory_and_extra_prompt(memory_config: str, extra_prompt: str):
     # tts_in_chunks(response)
 
 
+def chat_used_in_this_file(memory_config: str, extra_prompt: str):
+    extra_prompt += "。 "
+    print(f"用户1: {extra_prompt}")
+    response = chat(memory_config, extra_prompt, language="Chinese")
+    print(f"AI: {response}")
+    tts_in_chunks(response)
+
+
 if __name__ == "__main__":
-    # prompt = "主播叫什么名字"
-    # prompt += "。"
-    # response1 = chat("user_15", prompt, language="Chinese")
-    # tts_in_chunks(response1)
-    chat_with_memory_and_extra_prompt("user_16", "你好呀")
+    prompt = "主播叫什么名字"
+    prompt += "。"
+    response1 = chat("user_15", prompt, language="Chinese")
+    tts_in_chunks(response1)
+    chat_used_in_this_file("user_16", "你好呀")

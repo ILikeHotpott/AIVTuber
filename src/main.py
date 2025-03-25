@@ -50,7 +50,7 @@ def chat_with_memory_and_extra_prompt(message: Message, memory_config: str, extr
 
 
 def main():
-    live_id = "517693414444"
+    live_id = "82506711433"
 
     # 1) 启动弹幕抓取线程
     fetcher = start_fetcher(live_id)
