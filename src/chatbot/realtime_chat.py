@@ -1,21 +1,25 @@
+import threading
 from src.asr.google_asr import get_transcript_streaming
 from src.tts.tts_opt.tts2 import tts_in_chunks
-from src.memory.memory_1 import chat
+from src.memory.memory_with_me import chat
 
 
-def run_voice_chat_loop(user_id="user_001"):
+def run_voice_chat_loop():
     print("🎙️ 开始语音对话（Ctrl+C 退出）")
+    pause_event = threading.Event()
     try:
-        for transcript in get_transcript_streaming():  # 你可以封装成一个生成器
+        for transcript in get_transcript_streaming(pause_event=pause_event):
             if transcript:
                 print(f"[🗣️ 你说] {transcript}")
 
-                # 调用 chat 生成回复
-                reply = chat(user_id, transcript, language="Chinese")
+                reply = chat("user_26", transcript, language="Chinese")
                 print(f"[🤖 回复] {reply}")
 
-                # 调用 TTS 播放语音
+                # 播放前暂停识别
+                pause_event.set()
                 tts_in_chunks(reply)
+                # 播放后恢复识别
+                pause_event.clear()
 
     except KeyboardInterrupt:
         print("\n🛑 语音对话已结束")

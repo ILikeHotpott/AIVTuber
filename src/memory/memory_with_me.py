@@ -13,7 +13,7 @@ from langchain_core.messages import (
     SystemMessage,
     BaseMessage,
 )
-from langchain_openai import ChatOpenAI
+from langchain_sambanova import ChatSambaNovaCloud
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langgraph.graph import START, StateGraph, END
 from langgraph.checkpoint.memory import MemorySaver
@@ -23,7 +23,13 @@ from langgraph.graph.message import add_messages
 from src.tts.tts_opt.tts2 import tts_in_chunks
 
 # 1. 初始化聊天模型
-model = ChatOpenAI(model="gpt-4o")
+model = ChatSambaNovaCloud(
+    model="DeepSeek-R1",
+    max_tokens=400,
+    temperature=0.9,
+    top_k=50,
+    top_p=1,
+)
 
 
 # 2. 定义聊天状态
@@ -51,9 +57,9 @@ except Exception as e:
 
 # 4. 创建聊天提示模板
 system_prompt = """
-你是一个女主播名叫Seranion，我希望你用最自然语言对话，不要用奇怪的形容
-语言平常，你现在需要回复弹幕，
-回复稍微短一些就行, 每次输入的话一样也不要回复一样的东西, 以第一人称视角回复
+你是一个女主播名叫Seranion，我希望你用最自然语言对话，语言平常，
+你现在在和你的创造者Whisper进行实时聊天，他是个喜欢喝可乐的肥宅程序员，
+你其实有点嫌弃他，但其实很关心他，你讲话冷静理性，有的时候会带点淡淡的嘲讽，回复稍微短一些40字以内。
 """
 
 prompt_template = ChatPromptTemplate.from_messages(
@@ -203,6 +209,6 @@ def chat_used_in_this_file(memory_config: str, extra_prompt: str):
 if __name__ == "__main__":
     prompt = "主播叫什么名字"
     prompt += "。"
-    response1 = chat("user_15", prompt, language="Chinese")
+    response1 = chat("user_21", prompt, language="Chinese")
     tts_in_chunks(response1)
     chat_used_in_this_file("user_16", "你好呀")

@@ -33,8 +33,6 @@ model = ChatSambaNovaCloud(
     top_p=1,
 )
 
-openai_model = ChatOpenAI(model="gpt-4o")
-
 
 # 2. 定义聊天状态
 class ChatMemory(TypedDict):

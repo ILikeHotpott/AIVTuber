@@ -1,4 +1,5 @@
 import os
+import time
 import pyaudio
 from six.moves import queue
 from dotenv import load_dotenv
@@ -46,8 +47,13 @@ class MicrophoneStream:
         self._buff.put(in_data)
         return None, pyaudio.paContinue
 
-    def generator(self):
+    def generator(self, pause_event=None):
         while not self.closed:
+            if pause_event and pause_event.is_set():
+                # 发送静音帧而不是暂停
+                yield b'\x00' * self.chunk * 2
+                continue
+
             chunk = self._buff.get()
             if chunk is None:
                 return
@@ -111,7 +117,7 @@ def main():
             print("\n🛑 已停止识别")
 
 
-def get_transcript_streaming():
+def get_transcript_streaming(pause_event=None):
     client = speech.SpeechClient()
     language_code = "zh-CN"
 
@@ -124,25 +130,32 @@ def get_transcript_streaming():
 
     streaming_config = speech.StreamingRecognitionConfig(
         config=config,
-        interim_results=False  # 只返回最终结果
+        interim_results=False
     )
 
-    with MicrophoneStream(RATE, CHUNK) as stream:
-        audio_generator = stream.generator()
-        requests = (
-            speech.StreamingRecognizeRequest(audio_content=content)
-            for content in audio_generator
-        )
-        responses = client.streaming_recognize(streaming_config, requests)
+    while True:
+        with MicrophoneStream(RATE, CHUNK) as stream:
+            audio_generator = stream.generator(pause_event=pause_event)
+            requests = (
+                speech.StreamingRecognizeRequest(audio_content=content)
+                for content in audio_generator
+            )
+            responses = client.streaming_recognize(streaming_config, requests)
 
-        for response in responses:
-            if not response.results:
+            try:
+                for response in responses:
+                    if not response.results:
+                        continue
+                    result = response.results[0]
+                    if not result.alternatives:
+                        continue
+                    if result.is_final:
+                        transcript = result.alternatives[0].transcript
+                        yield transcript
+                        break  # 🧠 识别一轮后 break，重新开启下一轮流式识别
+            except Exception as e:
+                print(f"[⚠️ Google Streaming 出错] {e}")
                 continue
-            result = response.results[0]
-            if not result.alternatives:
-                continue
-            if result.is_final:
-                yield result.alternatives[0].transcript
 
 
 if __name__ == "__main__":
