@@ -1,6 +1,7 @@
 import sqlite3
 from typing import Sequence, List, Dict, Any
 
+from litellm import max_tokens
 from typing_extensions import Annotated, TypedDict
 from datetime import datetime
 from dotenv import load_dotenv
@@ -14,6 +15,8 @@ from langchain_core.messages import (
     BaseMessage,
 )
 from langchain_sambanova import ChatSambaNovaCloud
+from langchain_deepseek import ChatDeepSeek
+from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langgraph.graph import START, StateGraph, END
 from langgraph.checkpoint.memory import MemorySaver
@@ -23,13 +26,26 @@ from langgraph.graph.message import add_messages
 from src.tts.tts_opt.tts2 import tts_in_chunks
 
 # 1. 初始化聊天模型
-model = ChatSambaNovaCloud(
-    model="DeepSeek-R1",
-    max_tokens=400,
-    temperature=0.9,
-    top_k=50,
-    top_p=1,
-)
+
+# Deepseek-R1
+# model = ChatSambaNovaCloud(
+#     model="DeepSeek-R1",
+#     max_tokens=400,
+#     temperature=0.9,
+#     top_k=50,
+#     top_p=1,
+# )
+
+
+# Deepseek-V3
+# model = ChatDeepSeek(
+#     model="deepseek-chat",
+#     max_tokens=400,
+#     temperature=0.9,
+# )
+
+model = ChatOpenAI(model="gpt-4o",
+                   temperature=0.9, )
 
 
 # 2. 定义聊天状态
@@ -58,7 +74,7 @@ except Exception as e:
 # 4. 创建聊天提示模板
 system_prompt = """
 你是一个女主播名叫Seranion，我希望你用最自然语言对话，语言平常，
-你现在在和你的创造者Whisper进行实时聊天，他是个喜欢喝可乐的肥宅程序员，
+你现在在和你的创造者Whisper进行实时聊天，
 你其实有点嫌弃他，但其实很关心他，你讲话冷静理性，有的时候会带点淡淡的嘲讽，回复稍微短一些40字以内。
 """
 
@@ -183,9 +199,7 @@ def chat_stream(user_id: str, message: str, language: str = "English"):
     }
 
     # 流式输出
-    for chunk, metadata in chatbot.stream(
-            state, config, stream_mode="messages"
-    ):
+    for chunk, metadata in chatbot.stream(state, config, stream_mode="messages"):
         if isinstance(chunk, AIMessage):
             yield chunk.content
 

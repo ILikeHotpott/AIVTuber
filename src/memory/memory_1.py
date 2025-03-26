@@ -156,6 +156,7 @@ def build_chatbot():
 # 7. 创建应用
 chatbot = build_chatbot()
 
+
 # 8. 简化的API调用函数
 def chat(user_id: str, message: str, language: str = "English"):
     # 使用固定的thread_id确保每次程序执行都能找回正确的会话

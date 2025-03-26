@@ -1,173 +1,68 @@
-import os
-import re
-import wave
-import queue
-import pyaudio
+# stream_tts.py
 import requests
+import pyaudio
 import threading
+import queue
+import time
 
-# ========== 全局播放队列 ==========
-AUDIO_QUEUE = queue.Queue()
 
-
-def audio_player():
+def play_audio_chunks(audio_queue: "queue.Queue[bytes]", stop_event: threading.Event):
     """
-    独立线程：循环从 AUDIO_QUEUE 中获取音频文件路径，用 pyaudio 实现连续播放。
-    加强稳定性，防止播放过程中出现微小电流声或噪点。
+    播放音频原始 PCM 字节数据（16k/16bit/单声道）:
+    - 不断从 audio_queue 中 get 音频数据
+    - 当 stop_event.set() 或 取到 None 时结束
     """
-    import time
-
     p = pyaudio.PyAudio()
-    stream = None
-
-    while True:
-        file_path = AUDIO_QUEUE.get()  # 阻塞等待队列内容
-        if file_path is None:
-            # None 表示没有后续音频，结束播放线程
+    stream = p.open(
+        format=pyaudio.paInt16,
+        channels=1,
+        rate=16000,
+        output=True
+    )
+    while not stop_event.is_set():
+        try:
+            chunk = audio_queue.get(timeout=0.1)
+        except queue.Empty:
+            continue
+        if chunk is None:
             break
+        stream.write(chunk)
 
-        # 打开 wav 文件
-        wf = wave.open(file_path, 'rb')
-
-        # 初始化 stream 或重建（确保参数一致）
-        wf_format = p.get_format_from_width(wf.getsampwidth())
-        wf_channels = wf.getnchannels()
-        wf_rate = wf.getframerate()
-
-        if stream is None:
-            stream = p.open(
-                format=wf_format,
-                channels=wf_channels,
-                rate=wf_rate,
-                output=True
-            )
-        else:
-            # 如果当前 stream 参数不匹配，重建 stream（防止杂音）
-            if (stream._format != wf_format or
-                    stream._channels != wf_channels or
-                    stream._rate != wf_rate):
-                stream.stop_stream()
-                stream.close()
-                stream = p.open(
-                    format=wf_format,
-                    channels=wf_channels,
-                    rate=wf_rate,
-                    output=True
-                )
-
-        # 播放音频内容，使用更大 buffer 避免杂音
-        chunk_size = 2048
-        data = wf.readframes(chunk_size)
-        while data:
-            stream.write(data, exception_on_underflow=False)
-            data = wf.readframes(chunk_size)
-
-        wf.close()
-
-    # 结束播放，安全清理
-    if stream is not None:
-        stream.stop_stream()
-        time.sleep(0.1)  # 确保缓冲区播放完毕
-        stream.close()
+    stream.stop_stream()
+    stream.close()
     p.terminate()
 
 
-def split_by_punctuation(text: str):
+def stream_tts(text: str):
     """
-    按照中文逗号、句号、感叹号进行分割，并保留标点符号本身，
-    避免空段和重复段。
+    向某个支持流式返回的 TTS 服务发送请求，边读边往队列里放 PCM。
+    这个函数会阻塞，直到流式读取结束。
     """
-    text = text.strip()
-    parts = re.split(r'([，。！,.])', text)
-    chunks = []
-    for i in range(0, len(parts), 2):
-        chunk_text = parts[i].strip()
-        if not chunk_text:
-            continue
-
-        if i + 1 < len(parts):
-            punct = parts[i + 1].strip()
-            if punct:
-                chunk_text += punct
-        chunk_text = chunk_text.strip()
-
-        if chunk_text:
-            chunks.append(chunk_text)
-    return chunks
+    url = "http://localhost:9880/stream_tts"  # 假设这是你的流式TTS地址
+    payload = {"text": text}
+    # 假设服务会返回 chunked 音频流，每块都是 PCM
+    with requests.post(url, json=payload, stream=True) as r:
+        for chunk in r.iter_content(chunk_size=None):
+            if chunk:
+                yield chunk
 
 
-def tts_chunk(text_chunk: str, index: int):
+def tts_and_play(text: str):
     """
-    针对单个文本块调用 TTS 接口，并写入 output/output{index}.wav 文件。
-    然后将该文件路径放入 AUDIO_QUEUE 中。
+    用队列 + 播放线程，实现边下边播。
     """
-    url = "http://localhost:9880/tts"
-    payload = {
-        "text": text_chunk,
-        "text_lang": "zh",
-        "ref_audio_path": "/Users/liuyitong/projects/Seranion/src/tts/audio/bear_reference.FLAC",
-        "aux_ref_audio_paths": [],
-        "prompt_lang": "zh",
-        "prompt_text": "",
-        "top_k": 5,
-        "top_p": 1,
-        "temperature": 0.5,
-        "text_split_method": "cut0",
-        "batch_size": 1,
-        "batch_threshold": 0.75,
-        "split_bucket": True,
-        "speed_factor": 1,
-        "fragment_interval": 0,
-        "seed": 128123,
-        "media_type": "wav",
-        "streaming_mode": False,
-        "parallel_infer": True,
-        "repetition_penalty": 1.35
-    }
-
-    output_path = f"output/output{index}.wav"
-    try:
-        response = requests.post(url, json=payload)
-        if response.status_code == 200:
-            with open(output_path, "wb") as f:
-                f.write(response.content)
-            print(f"第 {index} 个分段 TTS 完成：{output_path}")
-            # 将音频文件路径放入播放队列
-            AUDIO_QUEUE.put(output_path)
-        else:
-            print(f"第 {index} 个分段请求失败，状态码: {response.status_code}, 响应: {response.text}")
-    except Exception as e:
-        print(f"第 {index} 个分段 TTS 异常: {e}")
-
-
-def tts_in_chunks(text: str):
-    """
-    将文本分段后，顺序执行 TTS，生成后立即将音频放入队列，让播放线程无缝播放。
-    """
-    text = clean_text(text)
-    text = text.strip()
-    chunks = split_by_punctuation(text)
-    if not chunks:
-        print("清洗后文本为空，无需处理。")
-        return
-
-    os.makedirs("output", exist_ok=True)
-
-    player_thread = threading.Thread(target=audio_player, daemon=True)
+    audio_queue = queue.Queue()
+    stop_event = threading.Event()
+    player_thread = threading.Thread(target=play_audio_chunks, args=(audio_queue, stop_event))
     player_thread.start()
 
-    # 顺序生成 TTS，每生成完一个就放进 AUDIO_QUEUE
-    for i, chunk in enumerate(chunks, 1):
-        tts_chunk(chunk, i)
+    try:
+        for audio_chunk in stream_tts(text):
+            audio_queue.put(audio_chunk)
+    except Exception as e:
+        print(f"TTS 流式播放异常: {e}")
 
-    AUDIO_QUEUE.put(None)
-
+    # 结束播放
+    audio_queue.put(None)
+    stop_event.set()
     player_thread.join()
-    print("所有分段播放完毕！")
-
-
-if __name__ == "__main__":
-    text = """
-    阳光透过窗棂，落在案头的书页上，像一场不期而至的邂逅，温柔而静谧。
-    """
-    tts_in_chunks(text)

@@ -1,6 +1,7 @@
 import threading
 from src.asr.google_asr import get_transcript_streaming
 from src.tts.tts_opt.tts2 import tts_in_chunks
+from src.tts.tts_stream import tts_streaming
 from src.memory.memory_with_me import chat
 
 
@@ -12,7 +13,7 @@ def run_voice_chat_loop():
             if transcript:
                 print(f"[🗣️ 你说] {transcript}")
 
-                reply = chat("user_26", transcript, language="Chinese")
+                reply = chat("user_30", transcript)
                 print(f"[🤖 回复] {reply}")
 
                 # 播放前暂停识别
