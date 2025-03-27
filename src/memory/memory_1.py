@@ -1,11 +1,8 @@
 import sqlite3
 from typing import Sequence, List, Dict, Any
-
+from langchain_deepseek import ChatDeepSeek
 from typing_extensions import Annotated, TypedDict
 from datetime import datetime
-from dotenv import load_dotenv
-
-load_dotenv()
 
 from langchain_core.messages import (
     AIMessage,
@@ -20,17 +17,24 @@ from langgraph.graph import START, StateGraph, END
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.graph.message import add_messages
-
-from src.tts.tts_stream import response_to_speech_streaming, clean_text
 from src.tts.tts_opt.tts2 import tts_in_chunks
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # 1. 初始化聊天模型
-model = ChatSambaNovaCloud(
-    model="DeepSeek-R1",
+# model = ChatSambaNovaCloud(
+#     model="DeepSeek-R1",
+#     max_tokens=400,
+#     temperature=0.9,
+#     top_k=50,
+#     top_p=1,
+# )
+
+model = ChatDeepSeek(
+    model="deepseek-chat",
     max_tokens=400,
-    temperature=0.8,
-    top_k=50,
-    top_p=1,
+    temperature=0.9,
 )
 
 
@@ -60,8 +64,7 @@ except Exception as e:
 # 4. 创建聊天提示模板
 system_prompt = """
 你是一个女主播名叫Seranion，我希望你用最自然语言对话，不要用奇怪的形容
-语言平常，你现在需要回复弹幕，
-回复稍微短一些就行, 每次输入的话一样也不要回复一样的东西, 以第一人称视角回复
+语言平常，你现在需要回复弹幕，回复稍微短一些就行, 每次输入的话一样也不要回复一样的东西, 以第一人称视角回复
 """
 
 prompt_template = ChatPromptTemplate.from_messages(
@@ -209,8 +212,10 @@ def chat_used_in_this_file(memory_config: str, extra_prompt: str):
 
 
 if __name__ == "__main__":
-    prompt = "主播叫什么名字"
-    prompt += "。"
-    response1 = chat("user_15", prompt, language="Chinese")
-    tts_in_chunks(response1)
-    chat_used_in_this_file("user_16", "你好呀")
+    prompt = """
+    低俗主播，举报了。
+    """
+    response1 = chat("user_41", prompt, language="Chinese")
+    print(response1)
+    read_thing = prompt + response1
+    tts_in_chunks(read_thing)
