@@ -44,3 +44,7 @@ async def chatbot_response_stream(user_name: str, content: str) -> AsyncGenerato
             yield content_chunk
             # 给FastAPI一点时间处理其他请求
             await asyncio.sleep(0.01)
+
+
+if __name__ == "__main__":
+    print(chatbot_response_stream("123", "讲讲最近王志安怎么了"))
