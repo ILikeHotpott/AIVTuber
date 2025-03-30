@@ -213,8 +213,12 @@ def chat_used_in_this_file(memory_config: str, extra_prompt: str):
 
 if __name__ == "__main__":
     prompt = """
-    低俗主播，举报了。
+    低俗主播，举报了。 普通日常对话，讲了一个事件，然后顺着这个事件聊天。
     """
+    # config types = ["user_id", 和user直接对话
+    #                 "event_id", 讲了一个事件，然后顺着这个事件聊天
+    #                 "general_id"， 普通日常对话
+    #                 ]
     response1 = chat("user_41", prompt, language="Chinese")
     print(response1)
     read_thing = prompt + response1
