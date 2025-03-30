@@ -170,6 +170,5 @@ def tts_in_chunks(text: str):
 if __name__ == "__main__":
     text = """
     阳光悄悄洒进窗台，咖啡香气弥漫，书页轻翻，生活的美好，藏在每个平凡而温柔的瞬间。
-    
 """
     tts_in_chunks(text)
