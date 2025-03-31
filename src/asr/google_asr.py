@@ -5,7 +5,6 @@ from six.moves import queue
 from dotenv import load_dotenv
 from google.cloud import speech
 
-# Load .env and set environment variable
 load_dotenv()
 GOOGLE_APPLICATION_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
@@ -85,7 +84,6 @@ def listen_print_loop(responses):
             print("你说的是：", transcript)
 
 
-# 主函数
 def main():
     language_code = "zh-CN"
     client = speech.SpeechClient()
