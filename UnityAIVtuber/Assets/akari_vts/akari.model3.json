@@ -1,0 +1,41 @@
+{
+  "Version": 3,
+  "FileReferences": {
+    "Moc": "akari.moc3",
+    "Textures": [
+      "akari.4096/texture_00.png"
+    ],
+    "Physics": "akari.physics3.json",
+    "UserData": "akari.userdata3.json",
+    "DisplayInfo": "akari.cdi3.json"
+  },
+  "Groups": [
+    {
+      "Target": "Parameter",
+      "Name": "LipSync",
+      "Ids": []
+    },
+    {
+      "Target": "Parameter",
+      "Name": "EyeBlink",
+      "Ids": []
+    }
+  ],
+  "motions": {
+    "Shock.motion3": [
+      {
+        "file": "animations/Shock.motion3.json"
+      }
+    ],
+    "Love.motion3": [
+      {
+        "file": "animations/Love.motion3.json"
+      }
+    ],
+    "Idle_2.motion3": [
+      {
+        "file": "animations/Idle_2.motion3.json"
+      }
+    ]
+  }
+}

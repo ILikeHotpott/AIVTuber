@@ -50,4 +50,45 @@ src/__pycache__/
 src/utils/keys
 training/__pycache__/
 .env
-.idea/
+Live2DModels
+
+# === Python Cache ===
+*.pyc
+*.pyo
+*.pyd
+
+# === Python Environments ===
+.venv/
+env/
+
+# === SQLite Databases ===
+*.db
+*.db-wal
+*.db-shm
+
+# === UnityAIVtuber Specific ===
+UnityAIVtuber/Library/
+UnityAIVtuber/Temp/
+UnityAIVtuber/Obj/
+UnityAIVtuber/Build/
+UnityAIVtuber/Builds/
+UnityAIVtuber/Logs/
+UnityAIVtuber/UserSettings/
+UnityAIVtuber/*.csproj
+UnityAIVtuber/*.sln
+
+# === Unity Shader Cache ===
+UnityAIVtuber/ShaderCache/
+UnityAIVtuber/MemoryCaptures/
+
+# === Live2DModels Output Cache (optional) ===
+# 如果你只手动管理模型，也可以忽略掉这些中间文件
+Live2DModels/**/__pycache__/
+Live2DModels/**/*.bak
+
+# === Output / Generated Content (Optional) ===
+*.bak
+
+# === Jupyter / Notebook Cache ===
+training/**/*.ipynb_checkpoints/
+

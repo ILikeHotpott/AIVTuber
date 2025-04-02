@@ -30,12 +30,17 @@ load_dotenv()
 #     top_k=50,
 #     top_p=1,
 # )
+# model = ChatOpenAI(
+#     model="gpt-4o"
+# )
 
 model = ChatDeepSeek(
     model="deepseek-chat",
     max_tokens=400,
     temperature=0.9,
 )
+
+
 
 
 # 2. 定义聊天状态
@@ -213,13 +218,14 @@ def chat_used_in_this_file(memory_config: str, extra_prompt: str):
 
 if __name__ == "__main__":
     prompt = """
-    低俗主播，举报了。 普通日常对话，讲了一个事件，然后顺着这个事件聊天。
+    用少于100字总结一下我们之前所有的对话，然后顺着开始一个话题
     """
-    # config types = ["user_id", 和user直接对话
+    # config roles = ["user_id", 和user直接对话
     #                 "event_id", 讲了一个事件，然后顺着这个事件聊天
+    #                 "realtime_id", 实时对话功能
     #                 "general_id"， 普通日常对话
     #                 ]
-    response1 = chat("user_41", prompt, language="Chinese")
+    response1 = chat("user_40", prompt, language="Chinese")
     print(response1)
     read_thing = prompt + response1
     tts_in_chunks(read_thing)
