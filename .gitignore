@@ -92,3 +92,22 @@ Live2DModels/**/*.bak
 # === Jupyter / Notebook Cache ===
 training/**/*.ipynb_checkpoints/
 
+# === Ignore everything in Assets except Scripts ===
+/Assets/*
+!/Assets/Scripts/
+!/Assets/Scripts/**
+
+# === Ignore everything else in UnityAIVtuber ===
+/Library/
+/Temp/
+/Obj/
+/Build/
+/Builds/
+/Logs/
+/UserSettings/
+/MemoryCaptures/
+*.csproj
+*.sln
+ShaderCache/
+
+
