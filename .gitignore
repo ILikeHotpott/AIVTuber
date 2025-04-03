@@ -109,5 +109,8 @@ training/**/*.ipynb_checkpoints/
 *.csproj
 *.sln
 ShaderCache/
-
-
+UnityAIVtuber/ProjectSettings
+UnityAIVtuber/Packages
+UnityAIVtuber/Assets/akari_vts
+UnityAIVtuber/Assets/Live2D
+UnityAIVtuber/Assets/Settings
