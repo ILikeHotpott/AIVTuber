@@ -93,24 +93,8 @@ Live2DModels/**/*.bak
 training/**/*.ipynb_checkpoints/
 
 # === Ignore everything in Assets except Scripts ===
-/Assets/*
-!/Assets/Scripts/
-!/Assets/Scripts/**
-
-# === Ignore everything else in UnityAIVtuber ===
-/Library/
-/Temp/
-/Obj/
-/Build/
-/Builds/
-/Logs/
-/UserSettings/
-/MemoryCaptures/
-*.csproj
-*.sln
-ShaderCache/
-UnityAIVtuber/ProjectSettings
-UnityAIVtuber/Packages
-UnityAIVtuber/Assets/akari_vts
-UnityAIVtuber/Assets/Live2D
-UnityAIVtuber/Assets/Settings
+UnityAIVtuber/*
+!UnityAIVtuber/Assets/
+UnityAIVtuber/Assets/*
+!UnityAIVtuber/Assets/Plugins/
+!UnityAIVtuber/Assets/Scripts/
