@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 from danmaku.buffer import DanmakuJsonStorage
 from DouyinLiveWebFetcher.liveMan import DouyinLiveWebFetcher
-from src.memory.memory_1 import chat
+from src.memory.short_term.memory_chatbot_engine import chat
 from src.tts.tts_opt.tts2 import tts_in_chunks
 from src.danmaku.models import Message, MessageType
 

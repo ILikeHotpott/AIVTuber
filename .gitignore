@@ -94,7 +94,13 @@ training/**/*.ipynb_checkpoints/
 
 # === Ignore everything in Assets except Scripts ===
 UnityAIVtuber/*
+UnityAIVtuber/BuildOutput/
 !UnityAIVtuber/Assets/
 UnityAIVtuber/Assets/*
 !UnityAIVtuber/Assets/Plugins/
 !UnityAIVtuber/Assets/Scripts/
+
+# 模型缓存
+*.pt
+*.bin
+*.ckpt

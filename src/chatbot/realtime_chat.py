@@ -1,8 +1,7 @@
 import threading
 from src.asr.google_asr import get_transcript_streaming
 from src.tts.tts_opt.tts2 import tts_in_chunks
-from src.tts.tts_stream import tts_streaming
-from src.memory.memory_with_me import chat
+from src.memory.short_term.memory_with_me import chat
 
 
 def run_voice_chat_loop():

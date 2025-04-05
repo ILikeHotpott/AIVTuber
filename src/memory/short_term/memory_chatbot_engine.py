@@ -1,4 +1,5 @@
 import sqlite3
+import os
 from typing import Sequence, List, Dict, Any
 from langchain_deepseek import ChatDeepSeek
 from typing_extensions import Annotated, TypedDict
@@ -18,29 +19,33 @@ from langgraph.checkpoint.memory import MemorySaver
 from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.graph.message import add_messages
 from src.tts.tts_opt.tts2 import tts_in_chunks
+from src.prompt.templates.general import general_settings_prompt
 from dotenv import load_dotenv
 
 load_dotenv()
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(BASE_DIR, "../../runtime/chat/chat_memory.db")
+
 # 1. 初始化聊天模型
-# model = ChatSambaNovaCloud(
-#     model="DeepSeek-R1",
-#     max_tokens=400,
-#     temperature=0.9,
-#     top_k=50,
-#     top_p=1,
-# )
+model = ChatSambaNovaCloud(
+    model="DeepSeek-R1",
+    max_tokens=400,
+    temperature=0.9,
+    top_k=50,
+    top_p=1,
+)
+
+
 # model = ChatOpenAI(
 #     model="gpt-4o"
 # )
 
-model = ChatDeepSeek(
-    model="deepseek-chat",
-    max_tokens=400,
-    temperature=0.9,
-)
-
-
+# model = ChatDeepSeek(
+#     model="deepseek-chat",
+#     max_tokens=400,
+#     temperature=0.9,
+# )
 
 
 # 2. 定义聊天状态
@@ -59,7 +64,7 @@ class ChatState(TypedDict):
 
 # TODO: 需要修改，不用sqlite，而是vectordb
 try:
-    conn = sqlite3.connect("chat_memory.db", check_same_thread=False)
+    conn = sqlite3.connect(DB_PATH, check_same_thread=False)
     memory_saver = SqliteSaver(conn)
     print("Using SqliteSaver for checkpointing...")
 except Exception as e:
@@ -67,10 +72,7 @@ except Exception as e:
     memory_saver = MemorySaver()
 
 # 4. 创建聊天提示模板
-system_prompt = """
-你是一个女主播名叫Seranion，我希望你用最自然语言对话，不要用奇怪的形容
-语言平常，你现在需要回复弹幕，回复稍微短一些就行, 每次输入的话一样也不要回复一样的东西, 以第一人称视角回复
-"""
+system_prompt = general_settings_prompt
 
 prompt_template = ChatPromptTemplate.from_messages(
     [
@@ -218,14 +220,14 @@ def chat_used_in_this_file(memory_config: str, extra_prompt: str):
 
 if __name__ == "__main__":
     prompt = """
-    用少于100字总结一下我们之前所有的对话，然后顺着开始一个话题
+    我今天真的太累了，我想早点上床休息
     """
     # config roles = ["user_id", 和user直接对话
     #                 "event_id", 讲了一个事件，然后顺着这个事件聊天
     #                 "realtime_id", 实时对话功能
     #                 "general_id"， 普通日常对话
     #                 ]
-    response1 = chat("user_40", prompt, language="Chinese")
+    response1 = chat("user_43", prompt, language="Chinese")
     print(response1)
-    read_thing = prompt + response1
+    read_thing = response1
     tts_in_chunks(read_thing)
