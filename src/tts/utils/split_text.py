@@ -6,7 +6,7 @@ def split_into_sentences(text):
     使用正则表达式，按照中英文标点分割文本，并让每个标点符号与其前面的文字一起保留在一个元素中。
     """
     # 常见的中英文标点，可按需增减
-    pattern = r'(。？！，,!?;；)'
+    pattern = r'([。？！，,!\?;；:：])'
     parts = re.split(pattern, text)
 
     # 将前后拼起来，形成带有标点的“句子”
@@ -110,6 +110,7 @@ def process_text_for_tts(text):
     return "\n".join(result_lines)
 
 
+# ------------------ 测试示例 ------------------
 if __name__ == "__main__":
     text = """
     第一句测试，刚好二十四个字。第二句只有两个字。第三句也很短。第四句凑够25字吧。

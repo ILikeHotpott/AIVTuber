@@ -131,7 +131,8 @@ def tts_streaming(text):
     """
     Process text and send to streaming TTS
     """
-    text1 = clean_text(text)
+    text1 = process_text_for_tts(clean_text(text))
+    print(text1)
     response_to_speech_streaming(text1)
 
 
@@ -139,9 +140,7 @@ if __name__ == "__main__":
     text = """这是一个示例文本，用于测试TTS流式传输优化。这里有很多标点符号。第三句话也在这里！第四句话略短。第五句话结束了。这是一个非常长的句子，它包含了很多很多的文字，目的是为了测试当句子长度超过80字符时，我们的程序能否在最接近中心的位置找到标点符号并进行分割，让TTS流式传输更加流畅。
     """
 
-    text1 = process_text_for_tts(clean_text(text))
-    print(text1)
-    response_to_speech_streaming(text1)
+    tts_streaming(text)
 
     a = """
         In a quiet town by the sea, an old lighthouse stood tall, guiding ships through the darkest nights. 
