@@ -152,7 +152,7 @@ def tts_in_chunks(text: str):
         print("清洗后文本为空，无需处理。")
         return
 
-    os.makedirs("output", exist_ok=True)
+    os.makedirs("tts_opt/output", exist_ok=True)
 
     player_thread = threading.Thread(target=audio_player, daemon=True)
     player_thread.start()
@@ -169,6 +169,8 @@ def tts_in_chunks(text: str):
 
 if __name__ == "__main__":
     text = """
-    阳光悄悄洒进窗台，咖啡香气弥漫，书页轻翻，生活的美好，藏在每个平凡而温柔的瞬间。
+    第一句测试，刚好二十四个字。第二句只有两个字。第三句也很短。第四句凑够25字吧。
+第五句开始之后，就要观察它们怎么合并了，因为已经超过了四个segment。
+
 """
     tts_in_chunks(text)

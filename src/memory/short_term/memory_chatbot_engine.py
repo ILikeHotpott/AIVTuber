@@ -1,24 +1,21 @@
 import sqlite3
 import os
 from typing import Sequence, List, Dict, Any
-from langchain_deepseek import ChatDeepSeek
 from typing_extensions import Annotated, TypedDict
 from datetime import datetime
 
 from langchain_core.messages import (
     AIMessage,
     HumanMessage,
-    SystemMessage,
     BaseMessage,
 )
 from langchain_sambanova import ChatSambaNovaCloud
-from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langgraph.graph import START, StateGraph, END
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.graph.message import add_messages
-from src.tts.tts_opt.tts2 import tts_in_chunks
+from src.tts.realtime_tts import tts_in_chunks
 from src.prompt.templates.general import general_settings_prompt
 from dotenv import load_dotenv
 

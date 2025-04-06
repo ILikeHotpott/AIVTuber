@@ -2,6 +2,35 @@ import requests
 import pyaudio
 import io
 import wave
+from src.tts.utils.split_text import process_text_for_tts
+
+
+def clean_text(text: str) -> str:
+    """
+    1. 删除 </think> 及其之前的所有内容（包括 </think>）。
+    2. 移除括号及其内部内容，支持嵌套括号，支持全角和半角。
+    """
+    # 第一步：删除 </think> 及其之前内容
+    idx = text.find("</think>")
+    if idx != -1:
+        text = text[idx + len("</think>"):].strip()
+
+    # 第二步：移除括号内容（支持嵌套，中英文括号）
+    stack = []
+    result = []
+
+    for char in text:
+        if char in ('(', '（'):
+            stack.append(len(result))
+        elif char in (')', '）'):
+            if stack:
+                start = stack.pop()
+                result = result[:start]
+        else:
+            if not stack:
+                result.append(char)
+
+    return ''.join(result)
 
 
 def stream_audio_response(response, chunk_size=1024):
@@ -81,7 +110,7 @@ def response_to_speech_streaming(text):
         "split_bucket": True,
         "speed_factor": 1.05,
         "fragment_interval": 0.3,
-        "seed": 666,
+        "seed": 123789,
         "media_type": "wav",  # Using WAV format for streaming
         "streaming_mode": True,  # Enable streaming mode
         "parallel_infer": True,
@@ -98,34 +127,6 @@ def response_to_speech_streaming(text):
         print(f"请求失败，状态码: {response.status_code}, 响应: {response.text}")
 
 
-def clean_text(text: str) -> str:
-    """
-    1. 删除 </think> 及其之前的所有内容（包括 </think>）。
-    2. 移除括号及其内部内容，支持嵌套括号，支持全角和半角。
-    """
-    # 第一步：删除 </think> 及其之前内容
-    idx = text.find("</think>")
-    if idx != -1:
-        text = text[idx + len("</think>"):].strip()
-
-    # 第二步：移除括号内容（支持嵌套，中英文括号）
-    stack = []
-    result = []
-
-    for char in text:
-        if char in ('(', '（'):
-            stack.append(len(result))
-        elif char in (')', '）'):
-            if stack:
-                start = stack.pop()
-                result = result[:start]
-        else:
-            if not stack:
-                result.append(char)
-
-    return ''.join(result)
-
-
 def tts_streaming(text):
     """
     Process text and send to streaming TTS
@@ -135,11 +136,10 @@ def tts_streaming(text):
 
 
 if __name__ == "__main__":
-    text = """
-    （打了个哈欠）啊~修仙党今天要提前下线了吗？行吧行吧，熬夜冠军的宝座就暂时让给我啦~（突然凑近镜头压低声音）不过你明天要是顶着熊猫眼出现的话...我绝对会笑超大声的哦！（快速缩回座位抱着鲨鱼抱枕偷笑）晚安啦笨蛋~(´-ωก`)
-"""
+    text = """这是一个示例文本，用于测试TTS流式传输优化。这里有很多标点符号。第三句话也在这里！第四句话略短。第五句话结束了。这是一个非常长的句子，它包含了很多很多的文字，目的是为了测试当句子长度超过80字符时，我们的程序能否在最接近中心的位置找到标点符号并进行分割，让TTS流式传输更加流畅。
+    """
 
-    text1 = clean_text(text)
+    text1 = process_text_for_tts(clean_text(text))
     print(text1)
     response_to_speech_streaming(text1)
 

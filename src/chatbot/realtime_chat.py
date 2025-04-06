@@ -1,6 +1,6 @@
 import threading
 from src.asr.google_asr import get_transcript_streaming
-from src.tts.tts_opt.tts2 import tts_in_chunks
+from src.tts.realtime_tts import tts_in_chunks
 from src.memory.short_term.memory_with_me import chat
 
 
