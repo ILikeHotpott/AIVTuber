@@ -1,5 +1,6 @@
 import queue
 from src.danmaku.models import Message, MessageType, User
+from src.danmaku.const.bilibili_mapping import price_mapping
 
 from .gift_mapping import gift_mapping
 
@@ -24,6 +25,17 @@ class GiftMessageQueue:
             priority = -30
         elif 10000 < value:
             priority = -40
+        msg = Message(priority=priority, user=user, content=gift_name, type=MessageType.GIFT)
+        self._queue.put(msg)
+
+    def put_guard_message(self, gift_name: str, user: User):
+        priority = -50
+        if gift_name == "舰长":
+            priority = -100
+        elif gift_name == "提督":
+            priority = -1000
+        elif gift_name == "总督":
+            priority = -10000
         msg = Message(priority=priority, user=user, content=gift_name, type=MessageType.GIFT)
         self._queue.put(msg)
 

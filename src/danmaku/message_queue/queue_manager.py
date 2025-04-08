@@ -1,8 +1,5 @@
 import queue
 from typing import Optional
-
-from sympy import content
-
 from src.danmaku.message_queue.queue_types.danmu_queue import DanmuMessageQueue
 from src.danmaku.message_queue.queue_types.enter_queue import EnterMessageQueue
 from src.danmaku.message_queue.queue_types.fans_queue import FansMessageQueue
@@ -23,6 +20,9 @@ class TotalMessageQueue:
 
     def put_danmu(self, user: User, content: str):
         self.danmu_queue.put_message(user, content)
+
+    def put_super_chat(self, user: User, content: str, price: int):
+        self.danmu_queue.put_superchat(user, content, price)
 
     def put_like(self, user: User, content: str):
         self.like_queue.put_message(user, content)

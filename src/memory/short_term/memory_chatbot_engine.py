@@ -10,6 +10,7 @@ from langchain_core.messages import (
     BaseMessage,
 )
 from langchain_sambanova import ChatSambaNovaCloud
+from langchain_deepseek import ChatDeepSeek
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langgraph.graph import START, StateGraph, END
 from langgraph.checkpoint.memory import MemorySaver
@@ -19,30 +20,32 @@ from src.tts.realtime_tts import tts_in_chunks
 from src.prompt.templates.general import general_settings_prompt
 from dotenv import load_dotenv
 
+from src.tts.tts_stream import tts_streaming
+
 load_dotenv()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "../../runtime/chat/chat_memory.db")
 
 # 1. 初始化聊天模型
-model = ChatSambaNovaCloud(
-    model="DeepSeek-R1",
-    max_tokens=400,
-    temperature=0.9,
-    top_k=50,
-    top_p=1,
-)
+# model = ChatSambaNovaCloud(
+#     model="DeepSeek-R1",
+#     max_tokens=400,
+#     temperature=0.9,
+#     top_k=50,
+#     top_p=1,
+# )
 
 
 # model = ChatOpenAI(
 #     model="gpt-4o"
 # )
 
-# model = ChatDeepSeek(
-#     model="deepseek-chat",
-#     max_tokens=400,
-#     temperature=0.9,
-# )
+model = ChatDeepSeek(
+    model="deepseek-chat",
+    max_tokens=400,
+    temperature=0.9,
+)
 
 
 # 2. 定义聊天状态
@@ -180,51 +183,25 @@ def chat(user_id: str, message: str, language: str = "English"):
     return result["messages"][-1].content
 
 
-# 10. 流式响应API
-def chat_stream(user_id: str, message: str, language: str = "English"):
-    config = {"configurable": {"thread_id": f"persistent_{user_id}"}}
-
-    state = {
-        "messages": [HumanMessage(message)],
-        "user_id": user_id,
-        "language": language,
-        "memory": {}  # 会在workflow中被填充
-    }
-
-    # 流式输出
-    for chunk, metadata in chatbot.stream(
-            state, config, stream_mode="messages"
-    ):
-        if isinstance(chunk, AIMessage):
-            yield chunk.content
-
-
-def chat_with_memory_and_extra_prompt(memory_config: str, extra_prompt: str):
-    extra_prompt += "。 "
+def chat_with_memory(memory_config: str, extra_prompt: str, with_tts: bool = True):
+    extra_prompt += "\n"
     print(f"用户1: {extra_prompt}")
     response = chat(memory_config, extra_prompt, language="Chinese")
     print(f"AI: {response}")
-    # tts_in_chunks(response)
-
-
-def chat_used_in_this_file(memory_config: str, extra_prompt: str):
-    extra_prompt += "。 "
-    print(f"用户1: {extra_prompt}")
-    response = chat(memory_config, extra_prompt, language="Chinese")
-    print(f"AI: {response}")
-    tts_in_chunks(response)
+    if with_tts:
+        tts_streaming(response)
 
 
 if __name__ == "__main__":
     prompt = """
-    我今天真的太累了，我想早点上床休息
+    臾少-- 进入了直播间，简短的话欢迎
     """
     # config roles = ["user_id", 和user直接对话
     #                 "event_id", 讲了一个事件，然后顺着这个事件聊天
     #                 "realtime_id", 实时对话功能
     #                 "general_id"， 普通日常对话
     #                 ]
-    response1 = chat("user_43", prompt, language="Chinese")
+    response1 = chat("user_51", prompt, language="Chinese")
     print(response1)
     read_thing = response1
-    tts_in_chunks(read_thing)
+    tts_streaming(response1)

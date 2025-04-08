@@ -14,6 +14,12 @@ class DanmuMessageQueue:
         msg = Message(priority=-3, user=user, content=content, type=MessageType.DANMU)
         self._queue.append(msg)
 
+    def put_superchat(self, user: User, content: str, price: int):
+        if len(self._queue) >= self._max_size:
+            self._queue.popleft()
+        msg = Message(priority=-price, user=user, content=content, type=MessageType.DANMU)
+        self._queue.append(msg)
+
     def get(self) -> Message:
         return self._queue.popleft()
 
@@ -24,4 +30,3 @@ class DanmuMessageQueue:
         if self.empty():
             return None
         return self._queue[0]
-
