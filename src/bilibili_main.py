@@ -11,10 +11,10 @@ from danmaku.buffer import DanmakuJsonStorage
 from src.danmaku.models import Message, MessageType
 from src.tts.tts_stream import tts_streaming
 from src.memory.short_term.memory_chatbot_engine import chat
-from blivedm.sample import MyHandler
+from external.blivedm.sample import MyHandler
 
 BILIBILI_ROOM_ID = 22889482
-MEMORY_CONFIG_NAME = "user_50"
+MEMORY_CONFIG_NAME = "user_57"
 
 # 全局的 TTS 播报同步事件，和 Douyin 代码一致
 tts_playing_event = threading.Event()
@@ -88,7 +88,7 @@ class BilibiliLiveFetcher:
         """
         import aiohttp
         import http.cookies
-        from blivedm.blivedm.clients.web import BLiveClient
+        from external.blivedm.blivedm.clients.web import BLiveClient
 
         sessdata = '930f628b%2C1752848382%2C654bd%2A11CjAphrMsUET-VvlcbVv0ew4W-ykvUZH7gMmWOly39ao-AB3kC--QchlBU4Ep1nQUBbYSVmRGSXBwNWo3X1BRVWlBak1LUW9IdmFqbms3UFQ1NWl2Wm1kR0ZJempreDZSb0g0VUh5dnNNNFoyajgyUTZwcjRlcFQzdEdONmR4TVJOellZZmx5TmpnIIEC'
         cookies = http.cookies.SimpleCookie()
@@ -145,8 +145,7 @@ def main():
         while True:
             message_obj = fetcher.get_next_message()
             if message_obj:
-                # 拿到 Message 对象，提取 prompt 文本
-                prompt_text = message_obj.prompt  # 你定义在 models.Message 里的 prompt, 或者 message_obj.content
+                prompt_text = message_obj.prompt
                 chat_with_memory_and_extra_prompt(message_obj, MEMORY_CONFIG_NAME, prompt_text)
             else:
                 print("暂时没有新弹幕，睡眠1秒...")

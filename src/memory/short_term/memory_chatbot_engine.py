@@ -11,6 +11,7 @@ from langchain_core.messages import (
 )
 from langchain_sambanova import ChatSambaNovaCloud
 from langchain_deepseek import ChatDeepSeek
+from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langgraph.graph import START, StateGraph, END
 from langgraph.checkpoint.memory import MemorySaver
@@ -37,15 +38,16 @@ DB_PATH = os.path.join(BASE_DIR, "../../runtime/chat/chat_memory.db")
 # )
 
 
-# model = ChatOpenAI(
-#     model="gpt-4o"
-# )
-
-model = ChatDeepSeek(
-    model="deepseek-chat",
-    max_tokens=400,
-    temperature=0.9,
+model = ChatOpenAI(
+    model="chatgpt-4o-latest"
 )
+
+
+# model = ChatDeepSeek(
+#     model="deepseek-chat",
+#     max_tokens=400,
+#     temperature=0.9,
+# )
 
 
 # 2. 定义聊天状态
@@ -194,14 +196,14 @@ def chat_with_memory(memory_config: str, extra_prompt: str, with_tts: bool = Tru
 
 if __name__ == "__main__":
     prompt = """
-    臾少-- 进入了直播间，简短的话欢迎
+    那你叫什么名字呢
     """
+    response1 = chat("user_56", prompt, language="Chinese")
+    print(response1)
+    tts_streaming(response1)
+
     # config roles = ["user_id", 和user直接对话
     #                 "event_id", 讲了一个事件，然后顺着这个事件聊天
     #                 "realtime_id", 实时对话功能
     #                 "general_id"， 普通日常对话
     #                 ]
-    response1 = chat("user_51", prompt, language="Chinese")
-    print(response1)
-    read_thing = response1
-    tts_streaming(response1)
