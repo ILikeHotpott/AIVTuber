@@ -1,6 +1,8 @@
 import sqlite3
 import os
 from typing import Sequence, List, Dict, Any
+
+from sympy.physics.units import temperature
 from typing_extensions import Annotated, TypedDict
 from datetime import datetime
 
@@ -20,26 +22,30 @@ from langgraph.graph.message import add_messages
 from src.tts.realtime_tts import tts_in_chunks
 from src.prompt.templates.general import general_settings_prompt
 from dotenv import load_dotenv
+from src.utils.path import find_project_root
 
 from src.tts.tts_stream import tts_streaming
 
 load_dotenv()
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.join(BASE_DIR, "../../runtime/chat/chat_memory.db")
+BASE_DIR = find_project_root()
+DB_PATH = BASE_DIR / "src" / "runtime" / "chat" / "chat_memory.db"
 
 # 1. 初始化聊天模型
-# model = ChatSambaNovaCloud(
-#     model="DeepSeek-R1",
-#     max_tokens=400,
-#     temperature=0.9,
-#     top_k=50,
-#     top_p=1,
-# )
+model = ChatSambaNovaCloud(
+    model="DeepSeek-R1",
+    max_tokens=400,
+    temperature=0.5,
+    top_k=10,
+    top_p=0.95,
+)
 
 
 model = ChatOpenAI(
-    model="chatgpt-4o-latest"
+    # model="chatgpt-4o-latest",
+    model="gpt-4.5-preview-2025-02-27",
+    # model="gpt-4o",
+    temperature=0.5,
 )
 
 
@@ -64,13 +70,12 @@ class ChatState(TypedDict):
     memory: Dict[str, ChatMemory]
 
 
-# TODO: 需要修改，不用sqlite，而是vectordb
 try:
     conn = sqlite3.connect(DB_PATH, check_same_thread=False)
     memory_saver = SqliteSaver(conn)
     print("Using SqliteSaver for checkpointing...")
 except Exception as e:
-    print(f"无法创建 SqliteSaver，回退到内存存储: {e}")
+    print(f"Unable to create SqliteSaver, falling back to in-memory storage:{e}")
     memory_saver = MemorySaver()
 
 # 4. 创建聊天提示模板
@@ -196,9 +201,9 @@ def chat_with_memory(memory_config: str, extra_prompt: str, with_tts: bool = Tru
 
 if __name__ == "__main__":
     prompt = """
-    那你叫什么名字呢
+    如果我上周洗的澡，你会和我拥抱吗
     """
-    response1 = chat("user_56", prompt, language="Chinese")
+    response1 = chat("general_13", prompt, language="Chinese")
     print(response1)
     tts_streaming(response1)
 
@@ -207,3 +212,8 @@ if __name__ == "__main__":
     #                 "realtime_id", 实时对话功能
     #                 "general_id"， 普通日常对话
     #                 ]
+
+
+class MemoryChatEngine:
+    def __init__(self):
+        self.model = model

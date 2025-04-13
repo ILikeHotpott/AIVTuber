@@ -14,11 +14,10 @@ from src.memory.short_term.memory_chatbot_engine import chat
 from external.blivedm.sample import MyHandler
 
 BILIBILI_ROOM_ID = 22889482
-MEMORY_CONFIG_NAME = "user_57"
+MEMORY_CONFIG_NAME = "user_58"
 
-# 全局的 TTS 播报同步事件，和 Douyin 代码一致
 tts_playing_event = threading.Event()
-tts_playing_event.set()  # 初始允许生成回答
+tts_playing_event.set()
 
 
 def chat_with_memory_and_extra_prompt(message: Message, memory_config: str, extra_prompt: str):

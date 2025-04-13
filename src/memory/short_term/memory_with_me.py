@@ -21,25 +21,6 @@ from langgraph.graph.message import add_messages
 
 from src.tts.realtime_tts import tts_in_chunks
 
-# 1. 初始化聊天模型
-
-# Deepseek-R1
-# model = ChatSambaNovaCloud(
-#     model="DeepSeek-R1",
-#     max_tokens=400,
-#     temperature=0.9,
-#     top_k=50,
-#     top_p=1,
-# )
-
-
-# Deepseek-V3
-# model = ChatDeepSeek(
-#     model="deepseek-chat",
-#     max_tokens=400,
-#     temperature=0.9,
-# )
-
 model = ChatOpenAI(model="gpt-4o",
                    temperature=0.9, )
 
@@ -218,7 +199,7 @@ def chat_used_in_this_file(memory_config: str, extra_prompt: str):
 
 
 if __name__ == "__main__":
-    prompt = "主播叫什么名字"
+    prompt = "Hi Zoe, today is my birthday, can you sing me a birthday song?"
     prompt += "。"
     response1 = chat("user_21", prompt, language="Chinese")
     tts_in_chunks(response1)

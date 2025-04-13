@@ -137,7 +137,8 @@ def tts_streaming(text):
 
 
 if __name__ == "__main__":
-    text = """这是一个示例文本，用于测试TTS流式传输优化。这里有很多标点符号。第三句话也在这里！第四句话略短。第五句话结束了。这是一个非常长的句子，它包含了很多很多的文字，目的是为了测试当句子长度超过80字符时，我们的程序能否在最接近中心的位置找到标点符号并进行分割，让TTS流式传输更加流畅。
+    text = """
+Of course not. Who would fight with a platypus for cookies? I’m not a saint. Besides, would it appreciate the cookies I baked? I don’t know 🙂
     """
 
     tts_streaming(text)

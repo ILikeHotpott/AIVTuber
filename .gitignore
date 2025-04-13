@@ -104,3 +104,6 @@ UnityAIVtuber/Assets/*
 *.pt
 *.bin
 *.ckpt
+
+.gitignore
+src/runtime
