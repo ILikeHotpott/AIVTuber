@@ -5,6 +5,7 @@ import queue
 import pyaudio
 import requests
 import threading
+from src.utils.path import find_project_root
 
 # ========== 全局播放队列 ==========
 AUDIO_QUEUE = queue.Queue()
@@ -97,7 +98,7 @@ def split_by_punctuation(text: str):
     return chunks
 
 
-def tts_chunk(text_chunk: str, index: int):
+def tts_chunk(text_chunk: str, index: int, audio_output_dir: str):
     """
     针对单个文本块调用 TTS 接口，并写入 output/output{index}.wav 文件。
     然后将该文件路径放入 AUDIO_QUEUE 中。
@@ -126,14 +127,13 @@ def tts_chunk(text_chunk: str, index: int):
         "repetition_penalty": 1.35
     }
 
-    output_path = f"output/output{index}.wav"
+    output_path = os.path.join(audio_output_dir, f"output{index}.wav")
     try:
         response = requests.post(url, json=payload)
         if response.status_code == 200:
             with open(output_path, "wb") as f:
                 f.write(response.content)
             print(f"第 {index} 个分段 TTS 完成：{output_path}")
-            # 将音频文件路径放入播放队列
             AUDIO_QUEUE.put(output_path)
         else:
             print(f"第 {index} 个分段请求失败，状态码: {response.status_code}, 响应: {response.text}")
@@ -152,17 +152,18 @@ def tts_in_chunks(text: str):
         print("清洗后文本为空，无需处理。")
         return
 
-    os.makedirs("tts_opt/output", exist_ok=True)
+    # ✅ 获取项目根路径并创建输出目录
+    root_path = find_project_root()
+    audio_output_dir = os.path.join(root_path, "src", "runtime", "audio")
+    os.makedirs(audio_output_dir, exist_ok=True)
 
     player_thread = threading.Thread(target=audio_player, daemon=True)
     player_thread.start()
 
-    # 顺序生成 TTS，每生成完一个就放进 AUDIO_QUEUE
     for i, chunk in enumerate(chunks, 1):
-        tts_chunk(chunk, i)
+        tts_chunk(chunk, i, audio_output_dir)  # ✅ 传入输出路径
 
     AUDIO_QUEUE.put(None)
-
     player_thread.join()
     print("所有分段播放完毕！")
 

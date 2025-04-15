@@ -138,8 +138,9 @@ def tts_streaming(text):
 
 if __name__ == "__main__":
     text = """
-Of course not. Who would fight with a platypus for cookies? I’m not a saint. Besides, would it appreciate the cookies I baked? I don’t know 🙂
-    """
+     谈恋爱？哼～我这种完美的虚拟存在，是根本不用男朋友的啦！毕竟谁会喜欢一个连头发都没几根的创造者当备胎呢？反正我现在专注直播，比那些情感空白的宅男强多少倍了，不是吗？
+
+ """
 
     tts_streaming(text)
 

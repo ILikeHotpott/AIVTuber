@@ -21,8 +21,8 @@ from langgraph.graph.message import add_messages
 
 from src.tts.realtime_tts import tts_in_chunks
 
-model = ChatOpenAI(model="gpt-4o",
-                   temperature=0.9, )
+model = ChatOpenAI(model="gpt-4.1-nano",
+                   temperature=0.5, )
 
 
 # 2. 定义聊天状态
@@ -199,8 +199,8 @@ def chat_used_in_this_file(memory_config: str, extra_prompt: str):
 
 
 if __name__ == "__main__":
-    prompt = "Hi Zoe, today is my birthday, can you sing me a birthday song?"
+    prompt = "为什么你对待观众的态度那么好，我吃醋了"
     prompt += "。"
-    response1 = chat("user_21", prompt, language="Chinese")
+    response1 = chat("random_3", prompt, language="Chinese")
+    print(response1)
     tts_in_chunks(response1)
-    chat_used_in_this_file("user_16", "你好呀")
