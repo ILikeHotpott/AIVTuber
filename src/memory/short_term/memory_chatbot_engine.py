@@ -212,8 +212,3 @@ if __name__ == "__main__":
     #                 "realtime_id", 实时对话功能
     #                 "general_id"， 普通日常对话
     #                 ]
-
-
-class MemoryChatEngine:
-    def __init__(self):
-        self.model = model

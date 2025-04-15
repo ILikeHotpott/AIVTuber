@@ -16,6 +16,7 @@ from langgraph.graph.message import add_messages
 from src.prompt.templates.general import general_settings_prompt
 from src.utils.path import find_project_root
 from src.tts.tts_stream import tts_streaming
+from src.memory.long_term.graph_rag.retriever_chain import retrieve_long_term_memory
 
 from src.chatbot import model_loader
 from dotenv import load_dotenv
@@ -55,9 +56,11 @@ class MemoryChatEngine:
         }
         self.model = self._get_model_instance()
         self.db_path = find_project_root() / "src" / "runtime" / "chat" / "chat_memory.db"
+        self.chat_with = 1
         self.prompt_template = self._init_prompt()
         self.checkpointer = self._init_checkpointer()
         self.chatbot = self._build_chatbot()
+        self.long_term_memory_prefix = "（我记得这些事好像在哪里听过，也许能用上...）"
 
     def _get_model_instance(self):
         from src.chatbot.base import MODEL_REGISTRY
@@ -115,19 +118,42 @@ class MemoryChatEngine:
     def _generate_response(self, state: ChatState) -> ChatState:
         user_id = state["user_id"]
         user_memory = state["memory"][user_id]
+
+        # 获取用户信息
         user_info_str = ", ".join([f"{k}: {v}" for k, v in user_memory["user_info"].items()])
         if not user_info_str:
             user_info_str = "No specific information yet"
+
         history = user_memory["conversation_history"]
+        user_message = state["messages"][-1].content
+
+        # ⏳ 获取长期记忆
+        long_term_context = retrieve_long_term_memory().invoke(user_message)
+
+        # ✅ 构造 messages: [长期记忆提示, 用户问题]
+        message_list = []
+        if long_term_context.strip():  # 有内容再添加
+            memory_msg = f"{self.long_term_memory_prefix}：\n{long_term_context}"
+            message_list.append(HumanMessage(content=memory_msg))
+
+        # 用户输入
+        message_list.append(HumanMessage(content=user_message))
+
+        # 🔁 构造 Prompt
         prompt = self.prompt_template.invoke({
             "language": state["language"],
             "user_info": user_info_str,
             "history": history,
-            "messages": state["messages"]
+            "messages": message_list,
         })
+
+        # 🧠 模型生成回复
         response = self.model.invoke(prompt)
+
+        # 📝 更新短期记忆
         user_memory["conversation_history"].extend(state["messages"])
         user_memory["conversation_history"].append(response)
+
         return {"messages": [response]}
 
     def _build_chatbot(self):
@@ -162,4 +188,4 @@ class MemoryChatEngine:
 
 if __name__ == "__main__":
     engine = MemoryChatEngine(model_name="DeepSeek-R1", chat_with=1)
-    engine.chat_with_memory("general_16", "")
+    engine.chat_with_memory("general_16", "主播你有男朋友吗？")
