@@ -188,4 +188,4 @@ class MemoryChatEngine:
 
 if __name__ == "__main__":
     engine = MemoryChatEngine(model_name="DeepSeek-R1", chat_with=1)
-    engine.chat_with_memory("general_16", "主播你有男朋友吗？")
+    engine.chat_with_memory("random_123123", "主播觉得全世界最帅的男人是谁")
