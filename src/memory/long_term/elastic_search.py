@@ -1,29 +1,66 @@
 from uuid import uuid4
-import dotenv
-import time
+from elasticsearch import Elasticsearch
 from langchain_openai import OpenAIEmbeddings
 from langchain_elasticsearch import ElasticsearchStore
-from src.memory.long_term.documents import docs
+from src.memory.long_term.memory_documents import docs
+from dotenv import load_dotenv
 
-dotenv.load_dotenv()
-embeddings = OpenAIEmbeddings(
-    model="text-embedding-3-large",
-    # dimensions=1024
-)
+load_dotenv()
 
-vector_store = ElasticsearchStore(
-    es_url="http://localhost:9200",
-    index_name="langchain_index",
-    embedding=embeddings,
-    es_user="elastic",
-    es_password="changeme",
-)
 
-uuids = [str(uuid4()) for _ in range(len(docs))]
-vector_store.add_documents(documents=docs, ids=uuids)
+class LongTermMemoryES:
+    def __init__(
+            self,
+            es_url="http://localhost:9200",
+            index_name="langchain_index",
+            es_user="elastic",
+            es_password="changeme",
+            embedding_model="text-embedding-3-large",
+            persist=True
+    ):
+        self.index_name = index_name
+        self.es = Elasticsearch(
+            es_url,
+            basic_auth=(es_user, es_password)
+        )
+        self.embeddings = OpenAIEmbeddings(model=embedding_model)
+        self.vector_store = ElasticsearchStore(
+            es_url=es_url,
+            index_name=index_name,
+            embedding=self.embeddings,
+            es_user=es_user,
+            es_password=es_password
+        )
 
-results = vector_store.similarity_search("主播喜欢什么电视剧", k=1)
+        if persist and not self.es.indices.exists(index=index_name):
+            print("📦 向量库未初始化，正在写入文档...")
+            self._init_index()
 
-# 打印结果
-for res in results:
-    print(f"* {res.page_content} [{res.metadata}]")
+    def _init_index(self):
+        ids = [str(abs(hash(doc.page_content)) % (10 ** 12)) for doc in docs]
+        self.vector_store.add_documents(docs, ids=ids)
+        print(f"已写入 {len(docs)} 条文档到索引 '{self.index_name}'")
+
+    def reset_index(self):
+        if self.es.indices.exists(index=self.index_name):
+            self.es.indices.delete(index=self.index_name)
+            print(f"已删除索引 '{self.index_name}'")
+        self._init_index()
+
+    def retrieve(self, query: str, k=3):
+        results = self.vector_store.similarity_search_with_score(query, k=k)
+        return [
+            {
+                "score": round(score, 4),
+                "content": doc.page_content,
+                "metadata": doc.metadata
+            }
+            for doc, score in results
+        ]
+
+
+if __name__ == "__main__":
+    ltm = LongTermMemoryES()
+    # ltm.reset_index() 添加了新记忆/需要重置记忆的时候用，平时搜索就用retrieve
+    result = ltm.retrieve("主播喜欢吃什么", k=3)
+    print(result)

@@ -1,4 +1,3 @@
-from flask.cli import load_dotenv
 from langchain_openai import OpenAIEmbeddings
 from langchain_chroma.vectorstores import Chroma
 from langchain_graph_retriever import GraphRetriever
@@ -6,7 +5,7 @@ from langchain_graph_retriever.transformers import ShreddingTransformer
 from langchain_graph_retriever.adapters.chroma import ChromaAdapter
 from graph_retriever.strategies import Eager
 from langchain_core.runnables import Runnable
-from src.memory.long_term.graph_rag.memory_docs import docs
+from src.memory.long_term.memory_documents import docs
 from dotenv import load_dotenv
 
 load_dotenv()

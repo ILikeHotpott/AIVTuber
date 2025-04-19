@@ -1,12 +1,34 @@
+from abc import ABC, abstractmethod
 from langchain_openai import ChatOpenAI
 from langchain_deepseek import ChatDeepSeek
 from langchain_sambanova import ChatSambaNovaCloud
-from src.chatbot.base import register_model, BaseModelLoader
+
+MODEL_REGISTRY = {}
+
+
+def register_model(name: str):
+    def decorator(cls):
+        MODEL_REGISTRY[name.lower()] = cls
+        return cls
+
+    return decorator
+
+
+class BaseModelLoader(ABC):
+    def __init__(self, model_name: str):
+        self.model_name = model_name
+
+    @abstractmethod
+    def load(self, **kwargs):
+        pass
 
 
 @register_model("gpt-4o")
 @register_model("gpt-4o-mini")
 @register_model("chatgpt-4o-latest")
+@register_model("gpt-4.1")
+@register_model("gpt-4.1-mini")
+@register_model("gpt-4.5-preview")
 class OpenAIModelLoader(BaseModelLoader):
     def load(self, **kwargs):
         allowed_keys = {"model", "temperature", "max_tokens"}
