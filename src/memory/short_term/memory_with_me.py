@@ -22,7 +22,7 @@ from langgraph.graph.message import add_messages
 from src.tts.realtime_tts import tts_in_chunks
 
 model = ChatOpenAI(model="gpt-4.1-nano",
-                   temperature=0.5, )
+                   temperature=0.2, )
 
 
 # 2. 定义聊天状态

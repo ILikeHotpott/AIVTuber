@@ -1,4 +1,3 @@
-from uuid import uuid4
 from elasticsearch import Elasticsearch
 from langchain_openai import OpenAIEmbeddings
 from langchain_elasticsearch import ElasticsearchStore
@@ -33,7 +32,7 @@ class LongTermMemoryES:
         )
 
         if persist and not self.es.indices.exists(index=index_name):
-            print("📦 向量库未初始化，正在写入文档...")
+            print("向量库未初始化，正在写入文档...")
             self._init_index()
 
     def _init_index(self):
@@ -47,7 +46,7 @@ class LongTermMemoryES:
             print(f"已删除索引 '{self.index_name}'")
         self._init_index()
 
-    def retrieve(self, query: str, k=3):
+    def retrieve(self, query: str, k=3, score_threshold=0.6):
         results = self.vector_store.similarity_search_with_score(query, k=k)
         return [
             {
@@ -56,11 +55,11 @@ class LongTermMemoryES:
                 "metadata": doc.metadata
             }
             for doc, score in results
+            if score >= score_threshold
         ]
 
 
 if __name__ == "__main__":
     ltm = LongTermMemoryES()
-    # ltm.reset_index() 添加了新记忆/需要重置记忆的时候用，平时搜索就用retrieve
-    result = ltm.retrieve("主播喜欢吃什么", k=3)
+    result = ltm.retrieve("我刚刚说什么了", k=3)
     print(result)

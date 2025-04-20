@@ -5,14 +5,13 @@ from langgraph.checkpoint.memory import MemorySaver
 from langgraph.checkpoint.sqlite import SqliteSaver
 from langchain_core.messages import HumanMessage, BaseMessage
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_community.vectorstores.utils import filter_complex_metadata
 
 from typing import Sequence, Dict, Any
 from src.chatbot.model_loader import MODEL_REGISTRY
-from src.memory.long_term.ltm import LongTermMemory
+from src.prompt.templates.general import general_settings_prompt
+from src.memory.long_term.elastic_search import LongTermMemoryES
+from src.tts.tts_stream import tts_streaming
 from src.chatbot.config import Config
-from langchain_openai import OpenAIEmbeddings
-from langchain_chroma.vectorstores import Chroma
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -35,7 +34,7 @@ class MemoryChatEngine:
     def __init__(self, cfg: Config):
         self.cfg = cfg
         self.model = self._load_model()
-        self.ltm = self._init_ltm()
+        self.ltm = LongTermMemoryES(persist=True)
         self.prompt = self._init_prompt()
         self.checkpointer = self._init_checkpointer()
         self.workflow = self._build_chatbot()
@@ -49,16 +48,6 @@ class MemoryChatEngine:
             top_k=self.cfg.top_k,
             top_p=self.cfg.top_p,
         )
-
-    def _init_ltm(self):
-        from src.memory.long_term.memory_documents import docs
-        docs_cleaned = filter_complex_metadata(docs)
-        vector_store = Chroma.from_documents(
-            documents=docs_cleaned,
-            embedding=OpenAIEmbeddings(),
-            collection_name="creator_roast_memory"
-        )
-        return LongTermMemory(vector_store, score_threshold=self.cfg.score_threshold, max_hits=self.cfg.max_hits)
 
     def _init_prompt(self):
         from src.prompt.templates.general import general_settings_prompt
@@ -101,18 +90,27 @@ class MemoryChatEngine:
         memory = state["memory"][uid]
         history = memory["conversation_history"]
         msg = state["messages"][-1].content
-        ltm_text = self.ltm.retrieve(msg)
-        msg_list = []
-        if ltm_text:
-            msg_list.append(HumanMessage(content=f"{self.long_term_memory_prefix}:\n{ltm_text}"))
-        msg_list.append(HumanMessage(content=msg))
-        prompt = self.prompt.invoke({
+
+        memory_docs = self.ltm.retrieve(msg, k=self.cfg.max_hits)
+        memory_text = "\n\n".join([
+            f"[score={doc['score']}] {doc['content']}" for doc in memory_docs
+        ])
+        memory_prefix = f"{self.long_term_memory_prefix}:\n{memory_text}" if memory_text else ""
+
+        prompt_template = ChatPromptTemplate.from_messages([
+            ("system", memory_prefix + "\n\n" + general_settings_prompt),
+            MessagesPlaceholder(variable_name="history"),
+            MessagesPlaceholder(variable_name="messages"),
+        ])
+
+        rendered_prompt = prompt_template.invoke({
             "language": state["language"],
             "user_info": ", ".join(f"{k}: {v}" for k, v in memory["user_info"].items()) or "N/A",
             "history": history,
-            "messages": msg_list,
+            "messages": [HumanMessage(content=msg)],
         })
-        response = self.model.invoke(prompt)
+
+        response = self.model.invoke(rendered_prompt)
         history.extend(state["messages"])
         history.append(response)
         return {"messages": [response]}
@@ -133,7 +131,6 @@ class MemoryChatEngine:
             "messages": [HumanMessage(content=message)],
             "user_id": user_id,
             "language": language,
-            "memory": {},
         }
         result = self.workflow.invoke(initial_state, {"configurable": {"thread_id": f"persistent_{user_id}"}})
         return result["messages"][-1].content
@@ -141,15 +138,17 @@ class MemoryChatEngine:
 
 if __name__ == '__main__':
     cfg = Config(
-        model_name="gpt-4o",  # 支持：gpt-4o, gpt-4.1, deepseek-chat, DeepSeek-R1 等
-        temperature=0.7,
+        # model_name="chatgpt-4o-latest",
+        model_name="gpt-4.5-preview",
+        temperature=0.2,
         max_tokens=500,
         top_k=10,
         top_p=0.95,
-        score_threshold=0.7,  # 设置向量相似度检索的阈值
-        max_hits=2,  # 每轮检索最多返回几个记忆片段
-        chat_with=1  # 选择使用哪一个 prompt 模板（目前仅支持 general_settings_prompt）
+        score_threshold=0.7,
+        max_hits=2,
+        chat_with=1
     )
     engine = MemoryChatEngine(cfg)
-    response = engine.chat("user_123", "你的创造者是谁", language="Chinese")
-    print("AI:", response)
+    I_said = "我刚才说什么了"
+    response = engine.chat("random_kokasdkfn1", I_said, language="Chinese")
+    tts_streaming(response)

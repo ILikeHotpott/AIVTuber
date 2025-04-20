@@ -9,7 +9,7 @@ class Config:
     max_tokens: int = 400
     top_k: int = 10
     top_p: float = 0.95
-    score_threshold: float = 0.8
+    score_threshold: float = 0.7
     max_hits: int = 4
     chat_with: int = 1
 

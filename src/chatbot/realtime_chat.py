@@ -10,7 +10,7 @@ def run_voice_chat_loop():
     try:
         for transcript in get_transcript_streaming(pause_event=pause_event):
             if transcript:
-                print(f"[你说] {transcript}")
+                print(f"你说： {transcript}")
 
                 reply = chat("realtime_1", transcript)
                 print(f"[回复] {reply}")

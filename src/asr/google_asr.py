@@ -112,7 +112,7 @@ def main():
         try:
             listen_print_loop(responses)
         except KeyboardInterrupt:
-            print("\n🛑 已停止识别")
+            print("\n 已停止识别")
 
 
 def get_transcript_streaming(pause_event=None):
@@ -150,9 +150,9 @@ def get_transcript_streaming(pause_event=None):
                     if result.is_final:
                         transcript = result.alternatives[0].transcript
                         yield transcript
-                        break  # 🧠 识别一轮后 break，重新开启下一轮流式识别
+                        break  # 识别一轮后 break，重新开启下一轮流式识别
             except Exception as e:
-                print(f"[⚠️ Google Streaming 出错] {e}")
+                print(f"[Google Streaming 出错] {e}")
                 continue
 
 
