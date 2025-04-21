@@ -199,7 +199,7 @@ def chat_used_in_this_file(memory_config: str, extra_prompt: str):
 
 
 if __name__ == "__main__":
-    prompt = "为什么你对待观众的态度那么好，我吃醋了"
+    prompt = "我刚刚说什么了"
     prompt += "。"
     response1 = chat("random_awdsf", prompt, language="Chinese")
     print(response1)
