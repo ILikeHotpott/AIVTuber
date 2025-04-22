@@ -154,7 +154,7 @@ class MyHandler(BaseHandler):
     def _on_interact_word(self, client: BLiveClient, message: web_models.InteractWordMessage):
         user = User(user_id=message.uid, name=message.username)
         if message.msg_type == 1:
-            # 进入房间
+            # 进入房间 （先不放了）
             self.total_queue.put_enter(user, "进入房间")
             print(f'[{client.room_id}] {message.username} 进入房间')
         elif message.msg_type == 2:
@@ -162,8 +162,8 @@ class MyHandler(BaseHandler):
             self.total_queue.put_follow(user, "关注了主播")
             print(f'[{client.room_id}] {message.username} 关注了主播')
         elif message.msg_type == 6:
-            # 点赞
-            self.total_queue.put_like(user, "点赞")
+            # 点赞 （先不放了）
+            # self.total_queue.put_like(user, "点赞")
             print(f'[{client.room_id}] {message.username} 点赞')
 
     def get_next_msg(self):

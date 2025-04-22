@@ -46,9 +46,9 @@ class LongTermMemoryES:
             print(f"已删除索引 '{self.index_name}'")
         self._init_index()
 
-    def retrieve(self, query: str, k=3, score_threshold=0.6):
+    def retrieve(self, query: str, k=3, score_threshold=0.65):
         results = self.vector_store.similarity_search_with_score(query, k=k)
-        return [
+        res = [
             {
                 "score": round(score, 4),
                 "content": doc.page_content,
@@ -57,9 +57,11 @@ class LongTermMemoryES:
             for doc, score in results
             if score >= score_threshold
         ]
+        print(res)
+        return res
 
 
 if __name__ == "__main__":
     ltm = LongTermMemoryES()
-    result = ltm.retrieve("我刚刚说什么了", k=3)
+    result = ltm.retrieve("你这么讲话你的创造者他知道吗", k=3)
     print(result)

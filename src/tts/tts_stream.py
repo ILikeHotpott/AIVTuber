@@ -86,12 +86,13 @@ def stream_audio_response(response, chunk_size=1024):
     p.terminate()
 
 
-def response_to_speech_streaming(text):
+def response_to_speech_streaming(text, speed_factor=1.05):
     """
     Send text to TTS API and play the response in streaming mode.
 
     Args:
         text: The text to be synthesized
+        speed_factor: 控制语速的倍速因子（1.0为正常语速）
     """
     url = "http://localhost:9880/tts"
     payload = {
@@ -108,11 +109,11 @@ def response_to_speech_streaming(text):
         "batch_size": 1,
         "batch_threshold": 0.75,
         "split_bucket": True,
-        "speed_factor": 1.05,
+        "speed_factor": speed_factor,
         "fragment_interval": 0.3,
         "seed": 123789,
-        "media_type": "wav",  # Using WAV format for streaming
-        "streaming_mode": True,  # Enable streaming mode
+        "media_type": "wav",
+        "streaming_mode": True,
         "parallel_infer": True,
         "repetition_penalty": 1.35
     }
@@ -127,13 +128,16 @@ def response_to_speech_streaming(text):
         print(f"请求失败，状态码: {response.status_code}, 响应: {response.text}")
 
 
-def tts_streaming(text):
+def tts_streaming(text, speed_factor=1.2):
     """
     Process text and send to streaming TTS
+    Args:
+        text: 要合成的文字
+        speed_factor: 控制语速的倍速因子（1.0为正常语速）
     """
     text1 = process_text_for_tts(clean_text(text))
     print(text1)
-    response_to_speech_streaming(text1)
+    response_to_speech_streaming(text1, speed_factor=speed_factor)
 
 
 if __name__ == "__main__":

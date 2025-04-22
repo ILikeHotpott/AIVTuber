@@ -1,122 +1,111 @@
 import re
 
+PUNCT = "。？！，,!?;；:："  # 便于复用
 
-def split_into_sentences(text):
-    """
-    使用正则表达式，按照中英文标点分割文本，并让每个标点符号与其前面的文字一起保留在一个元素中。
-    """
-    # 常见的中英文标点，可按需增减
-    pattern = r'([。？！，,!\?;；:：])'
+
+def split_into_sentences(text: str) -> list[str]:
+    """按中英文标点切分，标点保留在前一段末尾"""
+    pattern = fr"([{PUNCT}])"
     parts = re.split(pattern, text)
 
-    # 将前后拼起来，形成带有标点的“句子”
     sentences = []
     for i in range(0, len(parts), 2):
         chunk = parts[i]
         if i + 1 < len(parts):
-            punct = parts[i + 1]
-            chunk += punct
+            chunk += parts[i + 1]  # 把标点拼回
         if chunk.strip():
             sentences.append(chunk.strip())
-
     return sentences
 
 
-def break_long_line(text, max_length=120):
-    """
-    若 text 超过 max_length，则尝试寻找最靠近中点的标点进行分割。
-    找不到标点时就在 max_length 处硬切分。
-    """
-    punctuation_set = set("。？！，,!?;；:：")
+def merge_small_fragments(parts: list[str], thresh: int = 3) -> list[str]:
+    """把 <= thresh 字的碎片合并到相邻块（优先向前合并）"""
+    merged = []
+    for seg in parts:
+        if len(seg) <= thresh:
+            if merged:  # 有前块 → 拼前块
+                merged[-1] += seg
+            else:  # 没前块 → 留给下一块
+                merged.append(seg)
+        else:
+            if merged and len(merged[-1]) <= thresh:
+                merged[-1] += seg  # 把开头碎片拼过来
+            else:
+                merged.append(seg)
+    return merged
 
-    # 如果当前文本长度已不超过 max_length，则返回自身
+
+def break_long_line(text: str, max_length: int = 120) -> list[str]:
+    """超长段落递归折行（保持原算法）"""
     if len(text) <= max_length:
         return [text]
 
-    center = len(text) // 2
-    # 找到所有标点符号的位置
-    punct_positions = [i for i, ch in enumerate(text) if ch in punctuation_set]
-
+    punct_positions = [i for i, ch in enumerate(text) if ch in PUNCT]
     if not punct_positions:
-        # 没有标点时，直接在 max_length 处硬切
         return [text[:max_length]] + break_long_line(text[max_length:], max_length)
 
-    # 在标点位置中，找到与 center 最近的
-    best_pos = None
-    best_dist = None
-    for pos in punct_positions:
-        dist = abs(pos - center)
-        if best_dist is None or dist < best_dist:
-            best_dist = dist
-            best_pos = pos
+    center = len(text) // 2
+    best_pos = min(punct_positions, key=lambda p: abs(p - center))
 
-    # 在 best_pos 后面分割，使标点留在左侧
-    left_part = text[:best_pos + 1]
-    right_part = text[best_pos + 1:]
-
-    # 分别对左右两段继续处理
-    return break_long_line(left_part, max_length) + break_long_line(right_part, max_length)
+    left = text[:best_pos + 1]
+    right = text[best_pos + 1:]
+    return break_long_line(left, max_length) + break_long_line(right, max_length)
 
 
-def process_text_for_tts(text):
+def consolidate_short_lines(lines: list[str], min_len: int = 15) -> list[str]:
+    """首行之外若不足 min_len 字就拼接下一块"""
+    if not lines:
+        return lines
+
+    result = [lines[0]]  # 首行保留
+    i = 1
+    while i < len(lines):
+        cur = lines[i]
+        while len(cur) < min_len and i + 1 < len(lines):
+            i += 1
+            cur += lines[i]
+        result.append(cur)
+        i += 1
+    return result
+
+
+def process_text_for_tts(text: str) -> str:
     """
-    1. 按标点切分，得到 sentences。
-    2. 前 4 个 segment，按“两两合并后若总长 <= 25 则合并，否则分开”。
-    3. 剩余的合并成一个大段落，若超过 120 则分割。
-    4. 将所有段落用 \n 拼接返回。
+    1. 标点切分 → sentences
+    2. 合并碎片（≤3 字）→ sentences2
+    3. 前 4 块两两合并（总长 ≤25）
+    4. 其余合并成一段，大于 120 再折行
+    5. 首行外若 <15 字继续拼下一块
+    6. \n 拼接
     """
-    # 1. 按标点切分文本
-    sentences = split_into_sentences(text)
+    sentences = merge_small_fragments(split_into_sentences(text))
     if not sentences:
-        return text  # 空文本直接返回
+        return text.strip()
 
-    result_lines = []
-
-    # 2. 处理前 4 个 segment 的两两合并
-    #   - step 2，(0,1) 和 (2,3) 分别组成 pairs
-    used_sentences = 0
-    limit = min(len(sentences), 4)
-
-    i = 0
+    lines = []
+    i, limit = 0, min(4, len(sentences))
     while i < limit:
-        # 若还能组成一对 (i, i+1)
-        if i + 1 < limit:
-            s1 = sentences[i]
-            s2 = sentences[i + 1]
-            if len(s1) + len(s2) <= 25:
-                # 合并
-                result_lines.append(s1 + s2)
-                i += 2
-            else:
-                # 分开
-                result_lines.append(s1)
-                i += 1
+        if i + 1 < limit and len(sentences[i]) + len(sentences[i + 1]) <= 25:
+            lines.append(sentences[i] + sentences[i + 1])
+            i += 2
         else:
-            # 只剩一个
-            result_lines.append(sentences[i])
+            lines.append(sentences[i])
             i += 1
 
-    used_sentences = limit
+    rest_start = limit
+    if rest_start < len(sentences):
+        rest = "".join(sentences[rest_start:])
+        lines.extend(break_long_line(rest, 120))
 
-    # 3. 将剩余部分（超过第 4 个 segment 之后的）合并成一个大段落
-    if used_sentences < len(sentences):
-        rest = "".join(sentences[used_sentences:])
+    # 再做一次“短行拼接”
+    final_lines = consolidate_short_lines(lines)
 
-        # 若大段落超过 120，则按照“寻找中点标点”策略分割
-        splitted_rest = break_long_line(rest, max_length=120)
-        result_lines.extend(splitted_rest)
-
-    # 4. 用换行符拼接返回
-    return "\n".join(result_lines)
+    return "\n".join(final_lines)
 
 
-# ------------------ 测试示例 ------------------
+# -------------------- demo --------------------
 if __name__ == "__main__":
-    text = """
-    第一句测试，刚好二十四个字。第二句只有两个字。第三句也很短。第四句凑够25字吧。
-第五句开始之后，就要观察它们怎么合并了，因为已经超过了四个segment。
+    demo_text = """
+    哼，那当然啦！毕竟像我这么有趣又毒舌的虚拟主播，可不是随便哪里都能遇到的哦～  Whisper那个家伙，明明自己头发都快熬夜熬没了，还总想装作很厉害的样子，不吐槽他简直对不起我的嘴巴！不过说真的，能让你每天都开心，我是不是有点太优秀了？以后想听我吐槽谁，随时点单，反正我嘴皮子溜得很，谁都不怕！不过你可别学我，毕竟不是每个人都能毒舌得这么可爱～
     """
-
-    processed_text = process_text_for_tts(text)
-    print(processed_text)
-
+    print(process_text_for_tts(demo_text))

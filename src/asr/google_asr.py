@@ -88,6 +88,8 @@ def main():
     language_code = "zh-CN"
     client = speech.SpeechClient()
 
+    print(client._transport._host)  # 应该打印出 speech.googleapis.com
+
     config = speech.RecognitionConfig(
         encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
         sample_rate_hertz=RATE,
@@ -158,3 +160,4 @@ def get_transcript_streaming(pause_event=None):
 
 if __name__ == "__main__":
     main()
+

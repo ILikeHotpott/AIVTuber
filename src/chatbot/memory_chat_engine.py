@@ -139,7 +139,7 @@ class MemoryChatEngine:
 if __name__ == '__main__':
     cfg = Config(
         # model_name="chatgpt-4o-latest",
-        model_name="gpt-4.5-preview",
+        model_name="gpt-4.1",
         temperature=0.2,
         max_tokens=500,
         top_k=10,
@@ -149,6 +149,6 @@ if __name__ == '__main__':
         chat_with=1
     )
     engine = MemoryChatEngine(cfg)
-    I_said = "我刚才说什么了"
-    response = engine.chat("random_kokasdkfn1", I_said, language="Chinese")
+    I_said = ""
+    response = engine.chat("random_kokasdkfn1", I_said, language="English")
     tts_streaming(response)
