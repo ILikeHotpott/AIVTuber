@@ -34,7 +34,7 @@ class MemoryChatEngine:
     def __init__(self, cfg: Config):
         self.cfg = cfg
         self.model = self._load_model()
-        self.ltm = LongTermMemoryES(persist=True)
+        self.ltm = LongTermMemoryES(persist=True, threshold=self.cfg.score_threshold)
         self.prompt = self._init_prompt()
         self.checkpointer = self._init_checkpointer()
         self.workflow = self._build_chatbot()
@@ -140,15 +140,15 @@ if __name__ == '__main__':
     cfg = Config(
         # model_name="chatgpt-4o-latest",
         model_name="gpt-4.1",
-        temperature=0.2,
+        temperature=0.4,
         max_tokens=500,
         top_k=10,
         top_p=0.95,
-        score_threshold=0.7,
+        score_threshold=0.65,
         max_hits=2,
         chat_with=1
     )
     engine = MemoryChatEngine(cfg)
-    I_said = ""
-    response = engine.chat("random_kokasdkfn1", I_said, language="English")
+    I_said = "弹幕：你最喜欢的食物是什么, response in English"
+    response = engine.chat("random_123fsdf1", I_said, language="Chinese")
     tts_streaming(response)

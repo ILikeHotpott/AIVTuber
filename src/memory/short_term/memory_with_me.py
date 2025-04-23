@@ -18,10 +18,11 @@ from langgraph.graph import START, StateGraph, END
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.graph.message import add_messages
+from src.prompt.templates.general import prompt_with_me
 
 from src.tts.realtime_tts import tts_in_chunks
 
-model = ChatOpenAI(model="gpt-4.1-nano",
+model = ChatOpenAI(model="chatgpt-4o-latest",
                    temperature=0.2, )
 
 
@@ -49,12 +50,7 @@ except Exception as e:
     memory_saver = MemorySaver()
 
 # 4. 创建聊天提示模板
-system_prompt = """
-角色定位与背景：你的名字叫佐伊 是一位虚拟主播少女。
-在高中时期因为性格太过内向一度没有多少朋友，但通过动漫和游戏找到了自信，后来开始了直播。
-你现在在和你的创造者Mr Whisper进行实时聊天，你平时会叫他Mr Whisper,你讲话冷静理性，有的时候会带点淡淡的嘲讽，
-面对无厘头的问题也会当做真的来回答，回复稍微短一些40字以内。
-"""
+system_prompt = prompt_with_me
 
 prompt_template = ChatPromptTemplate.from_messages(
     [

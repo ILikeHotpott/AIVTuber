@@ -36,7 +36,6 @@ def merge_small_fragments(parts: list[str], thresh: int = 3) -> list[str]:
 
 
 def break_long_line(text: str, max_length: int = 120) -> list[str]:
-    """超长段落递归折行（保持原算法）"""
     if len(text) <= max_length:
         return [text]
 
@@ -47,8 +46,16 @@ def break_long_line(text: str, max_length: int = 120) -> list[str]:
     center = len(text) // 2
     best_pos = min(punct_positions, key=lambda p: abs(p - center))
 
+    # 避免无限递归：不能再拆时终止
+    if best_pos == -1 or best_pos == len(text) - 1 or best_pos == 0:
+        return [text]
+
     left = text[:best_pos + 1]
     right = text[best_pos + 1:]
+
+    if left == text or right == text:
+        return [text]
+
     return break_long_line(left, max_length) + break_long_line(right, max_length)
 
 

@@ -12,7 +12,7 @@ ROOT = find_project_root()
 load_dotenv()
 
 
-def analyze_image_with_gemini(image_input, prompt="中文描述这张图片", api_key="AIzaSyD-jOV0pdM1uuqEFyTfZbd-3MjzR7YHK-g"):
+def analyze_image_with_gemini(image_input, prompt="描述这张图片", api_key="AIzaSyD-jOV0pdM1uuqEFyTfZbd-3MjzR7YHK-g"):
     if isinstance(image_input, Path):
         image_input = str(image_input)
 

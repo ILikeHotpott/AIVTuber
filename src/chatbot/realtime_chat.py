@@ -12,7 +12,7 @@ def run_voice_chat_loop():
             if transcript:
                 print(f"你说： {transcript}")
 
-                reply = chat("realtime_1", transcript)
+                reply = chat("realtime_212304", transcript)
                 print(f"[回复] {reply}")
 
                 # 播放前暂停识别

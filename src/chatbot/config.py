@@ -18,3 +18,4 @@ class Config:
     @property
     def db_path(self) -> Path:
         return self.root / "src" / "runtime" / "chat" / "chat_memory.db"
+
