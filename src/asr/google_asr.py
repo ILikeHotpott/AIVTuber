@@ -160,4 +160,3 @@ def get_transcript_streaming(pause_event=None):
 
 if __name__ == "__main__":
     main()
-
