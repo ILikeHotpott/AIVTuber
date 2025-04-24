@@ -111,7 +111,7 @@ def response_to_speech_streaming(text, speed_factor=1.05):
         "split_bucket": True,
         "speed_factor": speed_factor,
         "fragment_interval": 0.3,
-        "seed": 123789,
+        "seed": 0,
         "media_type": "wav",
         "streaming_mode": True,
         "parallel_infer": True,

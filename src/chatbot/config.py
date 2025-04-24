@@ -6,7 +6,7 @@ from pathlib import Path
 class Config:
     model_name: str = "gpt-4o"
     temperature: float = 0.5
-    max_tokens: int = 400
+    max_tokens: int = 200
     top_k: int = 10
     top_p: float = 0.95
     score_threshold: float = 0.7

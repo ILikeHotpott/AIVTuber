@@ -1,45 +1,56 @@
 import sqlite3
 from datetime import datetime
+from typing import Sequence, Dict, Any
+
+from PIL import Image
+from dotenv import load_dotenv
+from langchain_core.messages import HumanMessage, BaseMessage
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langgraph.graph import StateGraph, START, END
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.checkpoint.sqlite import SqliteSaver
-from langchain_core.messages import HumanMessage, BaseMessage
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
-from typing import Sequence, Dict, Any
 from src.chatbot.model_loader import MODEL_REGISTRY
 from src.prompt.templates.general import general_settings_prompt
 from src.memory.long_term.elastic_search import LongTermMemoryES
-from src.tts.tts_stream import tts_streaming
+from src.vision.llm_proxy import _encode_img
 from src.chatbot.config import Config
-from dotenv import load_dotenv
+from src.prompt.roles.vision import vision_prompt
 
 load_dotenv()
 
 
 class ChatMemory(Dict[str, Any]):
+    """Per–user memory blob stored in ChatState."""
     conversation_history: list[BaseMessage]
     user_info: Dict[str, Any]
     last_interaction: str
 
 
 class ChatState(Dict[str, Any]):
+    """State schema for LangGraph workflow."""
     messages: Sequence[BaseMessage]
     user_id: str
     language: str
+    images: list[str]  # Base‑64 data URLs
     memory: Dict[str, ChatMemory]
 
 
 class MemoryChatEngine:
+    """Unified text & multimodal chat engine with short/long‑term memory."""
+
     def __init__(self, cfg: Config):
         self.cfg = cfg
         self.model = self._load_model()
-        self.ltm = LongTermMemoryES(persist=True, threshold=self.cfg.score_threshold)
-        self.prompt = self._init_prompt()
+        self.ltm = LongTermMemoryES(persist=True, threshold=cfg.score_threshold)
+        self.long_term_memory_prefix = "（我记得这些事好像在哪里听过，也许能用上...）\n"
+        self.prompt_text = self._init_text_prompt()
         self.checkpointer = self._init_checkpointer()
         self.workflow = self._build_chatbot()
-        self.long_term_memory_prefix = "（我记得这些事好像在哪里听过，也许能用上...）"
 
+    # ---------------------------------------------------------------------
+    # Init helpers
+    # ---------------------------------------------------------------------
     def _load_model(self):
         loader_cls = MODEL_REGISTRY[self.cfg.model_name.lower()]
         return loader_cls(self.cfg.model_name).load(
@@ -49,72 +60,81 @@ class MemoryChatEngine:
             top_p=self.cfg.top_p,
         )
 
-    def _init_prompt(self):
-        from src.prompt.templates.general import general_settings_prompt
+    def _build_system_text(self) -> str:
+        """Persona + scene rules (+ optional long‑term memory prefix)."""
+        scene_rule = vision_prompt
+        return f"{general_settings_prompt}{scene_rule}"
+
+    def _init_text_prompt(self):
+        """Prompt template for *pure‑text* chats (no image)."""
         return ChatPromptTemplate.from_messages([
-            ("system", general_settings_prompt),
-            MessagesPlaceholder(variable_name="history"),
-            MessagesPlaceholder(variable_name="messages"),
+            ("system", self._build_system_text()),
+            MessagesPlaceholder("history"),
+            MessagesPlaceholder("messages"),
         ])
 
     def _init_checkpointer(self):
         try:
             conn = sqlite3.connect(self.cfg.db_path, check_same_thread=False)
             return SqliteSaver(conn)
-        except Exception as exc:
+        except Exception as exc:  # pragma: no cover
             print("⚠️ SQLite unavailable, using in‑memory checkpoints:", exc)
             return MemorySaver()
 
+    # ---------------------------------------------------------------------
+    # Graph nodes
+    # ---------------------------------------------------------------------
     def _retrieve_memory(self, state: ChatState) -> ChatState:
-        user_id = state["user_id"]
+        uid = state["user_id"]
         memory = state.setdefault("memory", {})
-        if user_id not in memory:
-            memory[user_id] = {
+        if uid not in memory:
+            memory[uid] = {
                 "conversation_history": [],
                 "user_info": {},
-                "last_interaction": datetime.now().isoformat()
+                "last_interaction": datetime.now().isoformat(),
             }
-        memory[user_id]["last_interaction"] = datetime.now().isoformat()
+        memory[uid]["last_interaction"] = datetime.now().isoformat()
         return state
 
-    def _process_message(self, state: ChatState) -> ChatState:
-        user_id = state["user_id"]
+    def _process_message(self, state: ChatState) -> ChatState:  # demo NLP hook
+        uid = state["user_id"]
         msg = state["messages"][-1].content.lower()
         if "my name is" in msg:
             name = msg.split("my name is")[1].strip().split()[0].capitalize()
-            state["memory"][user_id]["user_info"]["name"] = name
+            state["memory"][uid]["user_info"]["name"] = name
         return state
 
     def _generate_response(self, state: ChatState) -> ChatState:
         uid = state["user_id"]
-        memory = state["memory"][uid]
-        history = memory["conversation_history"]
-        msg = state["messages"][-1].content
+        mem = state["memory"][uid]
+        history = mem["conversation_history"]
+        last_msg = state["messages"][-1].content
+        images = state.get("images", [])
 
-        memory_docs = self.ltm.retrieve(msg, k=self.cfg.max_hits)
-        memory_text = "\n\n".join([
-            f"[score={doc['score']}] {doc['content']}" for doc in memory_docs
-        ])
-        memory_prefix = f"{self.long_term_memory_prefix}:\n{memory_text}" if memory_text else ""
+        # ---------- Long‑term memory retrieval ----------
+        memory_docs = self.ltm.retrieve(last_msg, k=self.cfg.max_hits)
+        memory_txt = "\n\n".join(f"[{d['score']:.2f}] {d['content']}" for d in memory_docs)
+        prefix = f"{self.long_term_memory_prefix}{memory_txt}\n\n" if memory_txt else ""
 
-        prompt_template = ChatPromptTemplate.from_messages([
-            ("system", memory_prefix + "\n\n" + general_settings_prompt),
-            MessagesPlaceholder(variable_name="history"),
-            MessagesPlaceholder(variable_name="messages"),
-        ])
+        # ---------- Build multimodal prompt ----------
+        parts = [
+            {"type": "text", "text": self._build_system_text()},
+        ]
+        if last_msg:
+            parts.append({"type": "text", "text": last_msg})
+        for url in images:
+            parts.append({"type": "image_url", "image_url": url})
 
-        rendered_prompt = prompt_template.invoke({
-            "language": state["language"],
-            "user_info": ", ".join(f"{k}: {v}" for k, v in memory["user_info"].items()) or "N/A",
-            "history": history,
-            "messages": [HumanMessage(content=msg)],
-        })
+        response = self.model.invoke([HumanMessage(content=parts)])
 
-        response = self.model.invoke(rendered_prompt)
+        # ---------- Update short‑term memory ----------
         history.extend(state["messages"])
         history.append(response)
         return {"messages": [response]}
 
+    # ---------------------------------------------------------------------
+    # LangGraph workflow
+    # ---------------------------------------------------------------------
     def _build_chatbot(self):
         g = StateGraph(state_schema=ChatState)
         g.add_node("retrieve_memory", self._retrieve_memory)
@@ -126,29 +146,54 @@ class MemoryChatEngine:
         g.add_edge("generate_response", END)
         return g.compile(checkpointer=self.checkpointer)
 
-    def chat(self, user_id: str, message: str, language: str = "English") -> str:
-        initial_state = {
+    # ---------------------------------------------------------------------
+    # Public APIs
+    # ---------------------------------------------------------------------
+    def chat(self, user_id: str, message: str, language: str = "Chinese") -> str:
+        init = {
             "messages": [HumanMessage(content=message)],
             "user_id": user_id,
             "language": language,
         }
-        result = self.workflow.invoke(initial_state, {"configurable": {"thread_id": f"persistent_{user_id}"}})
-        return result["messages"][-1].content
+        res = self.workflow.invoke(init, {"configurable": {"thread_id": f"persist_{user_id}"}})
+        return res["messages"][-1].content
+
+    def chat_with_screen(
+            self,
+            user_id: str,
+            image: Image.Image,
+            extra_text: str = "",
+            language: str = "Chinese",
+    ) -> str:
+        data_url = _encode_img(image)
+        init = {
+            "messages": [HumanMessage(content=extra_text)],
+            "user_id": user_id,
+            "language": language,
+            "images": [data_url],
+        }
+        res = self.workflow.invoke(init, {"configurable": {"thread_id": f"persist_{user_id}"}})
+        return res["messages"][-1].content
 
 
-if __name__ == '__main__':
+# -------------------------------------------------------------------------
+# CLI quick‑test
+# -------------------------------------------------------------------------
+if __name__ == "__main__":
+    from src.tts.tts_stream import tts_streaming
+
     cfg = Config(
-        # model_name="chatgpt-4o-latest",
-        model_name="gpt-4.1",
+        model_name="gemini-1.5",
         temperature=0.4,
-        max_tokens=500,
+        max_tokens=256,
         top_k=10,
         top_p=0.95,
         score_threshold=0.65,
         max_hits=2,
-        chat_with=1
+        chat_with=1,
     )
     engine = MemoryChatEngine(cfg)
-    I_said = "弹幕：你最喜欢的食物是什么, response in English"
-    response = engine.chat("random_123fsdf1", I_said, language="Chinese")
-    tts_streaming(response)
+    txt = "弹幕：你最喜欢的食物是什么？"
+    reply = engine.chat("demo_user", txt)
+    print("LLM:", reply)
+    tts_streaming(reply)

@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from langchain_openai import ChatOpenAI
 from langchain_deepseek import ChatDeepSeek
 from langchain_sambanova import ChatSambaNovaCloud
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 MODEL_REGISTRY = {}
 
@@ -54,3 +55,12 @@ class DeepSeekModelLoader(BaseModelLoader):
         filtered = {k: v for k, v in kwargs.items() if k in allowed_keys}
         filtered["model"] = "deepseek-chat"
         return ChatDeepSeek(**filtered)
+
+
+@register_model("gemini-2.0-flash")
+class GeminiModelLoader(BaseModelLoader):
+    def load(self, **kwargs):
+        allowed_keys = {"model", "temperature", "max_tokens"}
+        filtered = {k: v for k, v in kwargs.items() if k in allowed_keys}
+        filtered["model"] = self.model_name
+        return ChatGoogleGenerativeAI(**filtered)
