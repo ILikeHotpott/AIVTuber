@@ -1,10 +1,7 @@
 import time, logging
-from PIL import Image
 from src.vision.capture_screen import grab_screen
 from src.vision.frame_differ import FrameDiffer
 from src.vision.llm_proxy import VisionLLMProxy
-from src.vision.promptor import build_prompt
-from src.vision.llm_proxy import _encode_img
 
 LOGGER = logging.getLogger("VisionEngine")
 

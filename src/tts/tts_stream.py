@@ -1,102 +1,113 @@
-import requests
-import pyaudio
+"""Streaming TTS helper.
+
+Wraps your FastAPI TTS endpoint at http://localhost:9880/tts and plays
+WAV chunks via PyAudio **with interrupt support**.
+
+Public API
+==========
+* **tts_streaming(text, speed_factor=1.2)** – blocking playback.
+* **stop_tts_playback()**              – abort current playback (called
+  by `TTSWorker.stop_current`).
+"""
+from __future__ import annotations
+
 import io
+import threading
 import wave
+from typing import Optional
+
+import pyaudio
+import requests
+
 from src.tts.utils.split_text import process_text_for_tts
 
+# ---------------------------------------------------------------------------
+# Global playback state (protected by lock)
+# ---------------------------------------------------------------------------
+_playback_lock = threading.Lock()
+_current_stream: Optional[pyaudio.Stream] = None
+_current_pyaudio: Optional[pyaudio.PyAudio] = None
+_stop_flag = threading.Event()
 
-def clean_text(text: str) -> str:
-    """
-    1. 删除 </think> 及其之前的所有内容（包括 </think>）。
-    2. 移除括号及其内部内容，支持嵌套括号，支持全角和半角。
-    """
-    # 第一步：删除 </think> 及其之前内容
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+def _clean_text(text: str) -> str:
+    """Remove </think>… and all bracketed segments."""
     idx = text.find("</think>")
     if idx != -1:
         text = text[idx + len("</think>"):].strip()
-
-    # 第二步：移除括号内容（支持嵌套，中英文括号）
-    stack = []
-    result = []
-
-    for char in text:
-        if char in ('(', '（'):
-            stack.append(len(result))
-        elif char in (')', '）'):
-            if stack:
-                start = stack.pop()
-                result = result[:start]
-        else:
-            if not stack:
-                result.append(char)
-
-    return ''.join(result)
+    stack, out = [], []
+    for ch in text:
+        if ch in ("(", "（"):
+            stack.append(len(out))
+        elif ch in (")", "）") and stack:
+            out = out[: stack.pop()]
+        elif not stack:
+            out.append(ch)
+    return "".join(out)
 
 
-def stream_audio_response(response, chunk_size=1024):
-    p = pyaudio.PyAudio()
-    audio_stream = None
-    buffer = b""
-    header_parsed = False
+def _play_chunks(resp, chunk_size: int = 1024) -> None:
+    """Stream WAV data to PyAudio, respecting _stop_flag."""
+    global _current_stream, _current_pyaudio
 
-    for chunk in response.iter_content(chunk_size=chunk_size):
-        if chunk:
-            buffer += chunk
+    pa = pyaudio.PyAudio()
+    _current_pyaudio = pa
+    hdr_buf = b""
+    header_done = False
 
-            # 等待足够数据以解析 WAV 头
-            if not header_parsed:
-                try:
-                    if len(buffer) >= 44:  # WAV header 至少需要 44 字节
-                        wav_file = io.BytesIO(buffer)
-                        with wave.open(wav_file, 'rb') as wf:
-                            audio_stream = p.open(
-                                format=p.get_format_from_width(wf.getsampwidth()),
-                                channels=wf.getnchannels(),
-                                rate=wf.getframerate(),
-                                output=True
-                            )
-                            # 跳过 header，从数据块开始播放
-                            wav_file.seek(44)  # 通常 WAV 音频数据从第 44 字节开始
-                            remaining_data = wav_file.read()
-                            if remaining_data:
-                                audio_stream.write(remaining_data)
-                        header_parsed = True
-                        buffer = b""  # 清空 buffer，只留后续音频数据
-                    continue
-                except Exception as e:
-                    print("解析WAV头失败，使用默认参数播放")
-                    audio_stream = p.open(
-                        format=pyaudio.paInt16,
-                        channels=1,
-                        rate=24000,
-                        output=True
+    try:
+        for chunk in resp.iter_content(chunk_size=chunk_size):
+            if _stop_flag.is_set():
+                break
+            if not chunk:
+                continue
+            hdr_buf += chunk
+            if not header_done and len(hdr_buf) >= 44:
+                with wave.open(io.BytesIO(hdr_buf), "rb") as wf:
+                    _current_stream = pa.open(
+                        format=pa.get_format_from_width(wf.getsampwidth()),
+                        channels=wf.getnchannels(),
+                        rate=wf.getframerate(),
+                        output=True,
                     )
-                    audio_stream.write(buffer)
-                    buffer = b""
-                    header_parsed = True
-                    continue
+                # write any audio that followed header
+                data_start = hdr_buf[44:]
+                if data_start:
+                    _current_stream.write(data_start)
+                header_done = True
+                continue
+            if header_done and _current_stream:
+                _current_stream.write(chunk)
+    except requests.exceptions.ChunkedEncodingError:
+        print("[TTS] HTTP stream closed early – finishing playback")
+    finally:
+        if _current_stream:
+            try:
+                _current_stream.stop_stream()
+                _current_stream.close()
+            except Exception:
+                pass
+        pa.terminate()
+        _current_stream = None
+        _current_pyaudio = None
+        _stop_flag.clear()
 
-            # 后续直接播放音频数据
-            if audio_stream:
-                audio_stream.write(chunk)
 
-    if audio_stream:
-        audio_stream.stop_stream()
-        audio_stream.close()
-    p.terminate()
+# ---------------------------------------------------------------------------
+# Public API
+# ---------------------------------------------------------------------------
 
+def tts_streaming(text: str, speed_factor: float = 1.2) -> None:
+    """Blocking call: send ``text`` to TTS server and play it."""
+    cleaned = _clean_text(text)
+    processed = process_text_for_tts(cleaned)
 
-def response_to_speech_streaming(text, speed_factor=1.05):
-    """
-    Send text to TTS API and play the response in streaming mode.
-
-    Args:
-        text: The text to be synthesized
-        speed_factor: 控制语速的倍速因子（1.0为正常语速）
-    """
-    url = "http://localhost:9880/tts"
     payload = {
-        "text": text,
+        "text": processed,
         "text_lang": "zh",
         "ref_audio_path": "/Users/liuyitong/projects/Seranion/src/tts/audio/bear_reference.FLAC",
         "aux_ref_audio_paths": [],
@@ -107,48 +118,56 @@ def response_to_speech_streaming(text, speed_factor=1.05):
         "temperature": 0.5,
         "text_split_method": "cut0",
         "batch_size": 1,
-        "batch_threshold": 0.75,
         "split_bucket": True,
         "speed_factor": speed_factor,
         "fragment_interval": 0.3,
-        "seed": 0,
+        "seed": 132094,
         "media_type": "wav",
         "streaming_mode": True,
         "parallel_infer": True,
-        "repetition_penalty": 1.35
+        "repetition_penalty": 1.35,
     }
 
-    response = requests.post(url, json=payload, stream=True)
+    try:
+        resp = requests.post(
+            "http://localhost:9880/tts",
+            json=payload,
+            stream=True,
+            timeout=300,
+        )
+    except Exception as exc:
+        raise RuntimeError(f"TTS HTTP request failed: {exc}") from exc
 
-    if response.status_code == 200:
-        print("开始播放流式音频...")
-        stream_audio_response(response)
-        print("音频播放完毕")
-    else:
-        print(f"请求失败，状态码: {response.status_code}, 响应: {response.text}")
+    if resp.status_code != 200:
+        raise RuntimeError(f"TTS server error {resp.status_code}: {resp.text}")
+
+    with _playback_lock:
+        _stop_flag.clear()
+    _play_chunks(resp)
 
 
-def tts_streaming(text, speed_factor=1.2):
-    """
-    Process text and send to streaming TTS
-    Args:
-        text: 要合成的文字
-        speed_factor: 控制语速的倍速因子（1.0为正常语速）
-    """
-    text1 = process_text_for_tts(clean_text(text))
-    print(text1)
-    response_to_speech_streaming(text1, speed_factor=speed_factor)
+def stop_tts_playback() -> None:
+    """Abort the current sentence (used by TTSWorker.stop_current)."""
+    with _playback_lock:
+        _stop_flag.set()
+        if _current_stream:
+            try:
+                _current_stream.stop_stream()
+                _current_stream.close()
+            except Exception:
+                pass
+            _current_stream = None
+        if _current_pyaudio:
+            try:
+                _current_pyaudio.terminate()
+            except Exception:
+                pass
+            _current_pyaudio = None
 
 
 if __name__ == "__main__":
     text = """
-     嗯。。。。。哈哈哈哈啊啊啊啊啊啊啊啊。呃呃呃呃呃
+     阳光透过窗帘缝隙洒在书桌上，空气中漂浮着轻微的灰尘，整个房间显得安静而慵懒。她坐在窗边，一边喝着热茶，一边看着手中的旧书。翻页的声音在静谧中格外清晰，仿佛时间都慢了下来。窗外的风轻轻拂过树梢，带来一阵微弱的花香。她忽然想起多年前的某个春日午后，也是这样安静、温暖，有点怀旧，有点安心。她轻轻叹了口气，嘴角却带着微笑。生活似乎没有太多波澜，却也因此多了一分安稳的味道。
  """
 
     tts_streaming(text)
-
-    a = """
-        In a quiet town by the sea, an old lighthouse stood tall, guiding ships through the darkest nights. 
-        The waves crashed against the rocky shore, whispering secrets of the deep. Seagulls soared above,
-        their cries echoing in the salty air. Life moved slowly, embraced by the ocean’s rhythm.
-    """

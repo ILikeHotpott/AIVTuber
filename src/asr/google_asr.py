@@ -1,162 +1,111 @@
 import os
-import time
+import threading
+from typing import Optional, Iterable
+
 import pyaudio
 from six.moves import queue
-from dotenv import load_dotenv
 from google.cloud import speech
+from dotenv import load_dotenv
 
+# ------------------- env & constants -------------------
 load_dotenv()
-GOOGLE_APPLICATION_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "")
 
-# 音频参数
-RATE = 16000
-CHUNK = int(RATE / 10)  # 100ms
+RATE = 16_000
+CHUNK = RATE // 10  # 100 ms
 
 
-# 麦克风流管理类
+# ------------------- microphone stream -----------------
 class MicrophoneStream:
-    def __init__(self, rate, chunk):
+    """Yield audio chunks; when pause_event is cleared, emit silence frames."""
+
+    def __init__(self, rate: int = RATE, chunk: int = CHUNK):
         self.rate = rate
         self.chunk = chunk
-        self._buff = queue.Queue()
+        self._buff: queue.Queue[bytes | None] = queue.Queue()
         self.closed = True
 
     def __enter__(self):
-        self.audio_interface = pyaudio.PyAudio()
-        self.audio_stream = self.audio_interface.open(
-            format=pyaudio.paInt16,
-            channels=1,
-            rate=self.rate,
-            input=True,
-            frames_per_buffer=self.chunk,
-            stream_callback=self._fill_buffer
+        self._pa = pyaudio.PyAudio()
+        self._stream = self._pa.open(
+            format=pyaudio.paInt16, channels=1, rate=self.rate, input=True,
+            frames_per_buffer=self.chunk, stream_callback=self._fill_buffer
         )
         self.closed = False
         return self
 
-    def __exit__(self, type, value, traceback):
-        self.audio_stream.stop_stream()
-        self.audio_stream.close()
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self._stream.stop_stream();
+        self._stream.close();
+        self._pa.terminate()
         self.closed = True
         self._buff.put(None)
-        self.audio_interface.terminate()
 
-    def _fill_buffer(self, in_data, frame_count, time_info, status_flags):
+    def _fill_buffer(self, in_data, *_):
         self._buff.put(in_data)
         return None, pyaudio.paContinue
 
-    def generator(self, pause_event=None):
+    def generator(self, pause_event: Optional[threading.Event] = None):
+        silence = b"\x00" * self.chunk * 2
         while not self.closed:
-            if pause_event and pause_event.is_set():
-                # 发送静音帧而不是暂停
-                yield b'\x00' * self.chunk * 2
+            if pause_event and not pause_event.is_set():
+                yield silence
                 continue
-
-            chunk = self._buff.get()
-            if chunk is None:
+            data = self._buff.get()
+            if data is None:
                 return
-            data = [chunk]
-
+            yield data
             while True:
                 try:
-                    chunk = self._buff.get(block=False)
-                    if chunk is None:
+                    data = self._buff.get_nowait()
+                    if data is None:
                         return
-                    data.append(chunk)
+                    yield data
                 except queue.Empty:
                     break
 
-            yield b''.join(data)
 
-
-# 处理识别结果
-def listen_print_loop(responses):
-    for response in responses:
-        if not response.results:
-            continue
-        result = response.results[0]
-        if not result.alternatives:
-            continue
-
-        transcript = result.alternatives[0].transcript
-        if result.is_final:
-            print("你说的是：", transcript)
-
-
-def main():
-    language_code = "zh-CN"
+# ------------------- streaming STT ---------------------
+def google_streaming_transcripts(
+        pause_event: threading.Event,
+        on_partial: Optional[callable] = None,
+) -> Iterable[str]:
+    """
+    Yields *final* transcripts. Calls `on_partial()` immediately when Google
+    returns an interim hypothesis—可用于立刻 stop TTS。
+    """
     client = speech.SpeechClient()
-
-    print(client._transport._host)  # 应该打印出 speech.googleapis.com
-
     config = speech.RecognitionConfig(
         encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
         sample_rate_hertz=RATE,
-        language_code=language_code,
+        language_code="zh-CN",
+        use_enhanced=True,
     )
-
     streaming_config = speech.StreamingRecognitionConfig(
         config=config,
-        interim_results=True
+        interim_results=True  # 打开 partial
     )
 
-    with MicrophoneStream(RATE, CHUNK) as stream:
-        audio_generator = stream.generator()
+    with MicrophoneStream() as mic:
         requests = (
-            speech.StreamingRecognizeRequest(audio_content=content)
-            for content in audio_generator
+            speech.StreamingRecognizeRequest(audio_content=chunk)
+            for chunk in mic.generator(pause_event=pause_event)
         )
-
         responses = client.streaming_recognize(streaming_config, requests)
 
-        print("🎤 开始说话吧（按 Ctrl+C 停止）")
         try:
-            listen_print_loop(responses)
-        except KeyboardInterrupt:
-            print("\n 已停止识别")
+            for resp in responses:
+                if not resp.results:
+                    continue
+                res = resp.results[0]
 
+                # ---------- 实时打断 ----------
+                if not res.is_final and res.alternatives and on_partial:
+                    on_partial()  # 通知外部“有人说话”
+                    continue
 
-def get_transcript_streaming(pause_event=None):
-    client = speech.SpeechClient()
-    language_code = "zh-CN"
-
-    config = speech.RecognitionConfig(
-        encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
-        sample_rate_hertz=RATE,
-        language_code=language_code,
-        use_enhanced=True
-    )
-
-    streaming_config = speech.StreamingRecognitionConfig(
-        config=config,
-        interim_results=False
-    )
-
-    while True:
-        with MicrophoneStream(RATE, CHUNK) as stream:
-            audio_generator = stream.generator(pause_event=pause_event)
-            requests = (
-                speech.StreamingRecognizeRequest(audio_content=content)
-                for content in audio_generator
-            )
-            responses = client.streaming_recognize(streaming_config, requests)
-
-            try:
-                for response in responses:
-                    if not response.results:
-                        continue
-                    result = response.results[0]
-                    if not result.alternatives:
-                        continue
-                    if result.is_final:
-                        transcript = result.alternatives[0].transcript
-                        yield transcript
-                        break  # 识别一轮后 break，重新开启下一轮流式识别
-            except Exception as e:
-                print(f"[Google Streaming 出错] {e}")
-                continue
-
-
-if __name__ == "__main__":
-    main()
+                # ---------- 最终结果 ----------
+                if res.is_final and res.alternatives:
+                    yield res.alternatives[0].transcript.strip()
+        except Exception as e:
+            print("[ASR] Error:", e)

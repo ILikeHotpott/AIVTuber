@@ -12,6 +12,7 @@ class Config:
     score_threshold: float = 0.7
     max_hits: int = 4
     chat_with: int = 1
+    use_long_term: bool = True
 
     root: Path = field(default_factory=lambda: Path(__file__).resolve().parents[2])
 
