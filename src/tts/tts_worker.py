@@ -1,15 +1,3 @@
-"""
-TTSWorker  –  background thread that plays sentences one-by-one
-via `tts_streaming()`, supports:
-
-* enqueue(text)      – 把句子加入播放队列（长度上限 max_queue）
-* stop_current()     – 立即打断正在播放的句子
-* flush_queue()      – 清空尚未播放的队列
-* stop()             – 结束线程（会先打断当前播放）
-"""
-
-from __future__ import annotations
-
 import threading
 import time
 from collections import deque
@@ -29,6 +17,8 @@ class TTSWorker(threading.Thread):
     # ---------- public API ----------
     def enqueue(self, text: str) -> None:
         """Add a sentence; drop backlog if queue is full."""
+        if text in self._queue:
+            return
         if len(self._queue) == self._queue.maxlen:
             self._queue.clear()
         self._queue.append(text)

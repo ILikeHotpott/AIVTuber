@@ -17,10 +17,10 @@ def _encode_img(img: Image.Image) -> str:
 
 
 class VisionLLMProxy:
-    """Gemini 1.5 Flash 多模态封装"""
+    """Gemini 2.0 Flash 多模态封装"""
 
     def __init__(self,
-                 model_name: str = "gemini-1.5-flash",
+                 model_name: str = "gemini-2.0-flash",
                  temperature: float = .4,
                  max_tokens: int = 256,
                  top_k: int = 10,

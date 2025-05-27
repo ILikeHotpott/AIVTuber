@@ -9,7 +9,6 @@ load_dotenv()
 # 初始化模型
 llm = ChatOpenAI(model="gpt-4.1-nano", temperature=0)
 
-# Prompt 模板（注意！示例 JSON 中的花括号要双写）
 prompt_template = PromptTemplate.from_template("""
 你是一个判断情绪的高手，现在要分析一个女孩子说的话的情绪，并给出四种情绪的评分，分数加起来为1。
 情绪类别包括：normal, shy, joy, anger，由高到低输出
@@ -28,7 +27,6 @@ prompt_template = PromptTemplate.from_template("""
 emotion_chain = prompt_template | llm
 
 
-# 分析函数
 def predict_emotion(sentence: str) -> dict:
     try:
         result = emotion_chain.invoke({"sentence": sentence})
@@ -38,7 +36,6 @@ def predict_emotion(sentence: str) -> dict:
         return {}
 
 
-# 示例
 if __name__ == "__main__":
     total_start = time()
 

@@ -1,44 +1,40 @@
-"""Streaming TTS helper.
-
-Wraps your FastAPI TTS endpoint at http://localhost:9880/tts and plays
-WAV chunks via PyAudio **with interrupt support**.
-
-Public API
-==========
-* **tts_streaming(text, speed_factor=1.2)** – blocking playback.
-* **stop_tts_playback()**              – abort current playback (called
-  by `TTSWorker.stop_current`).
 """
+流式 TTS 播放器：
+‣ tts_streaming(text)      把文本送到本地 http://localhost:9880/tts，边收边播
+‣ stop_tts_playback()      线程安全地发停止信号（不直接关句柄）
+"""
+
 from __future__ import annotations
 
 import io
 import threading
 import wave
+import logging
 from typing import Optional
 
-import pyaudio
 import requests
+import pyaudio
 
-from src.tts.utils.split_text import process_text_for_tts
+# ───────── 日志 ─────────
+LOGGER = logging.getLogger("TTSStream")
+# 若主程序未统一配置日志，可解开下一行
+# logging.basicConfig(level=logging.INFO,
+#                     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
-# ---------------------------------------------------------------------------
-# Global playback state (protected by lock)
-# ---------------------------------------------------------------------------
+# ───────── 全局播放状态 ─────────
 _playback_lock = threading.Lock()
 _current_stream: Optional[pyaudio.Stream] = None
 _current_pyaudio: Optional[pyaudio.PyAudio] = None
 _stop_flag = threading.Event()
 
 
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
-
+# ───────── 文本清洗 ─────────
 def _clean_text(text: str) -> str:
-    """Remove </think>… and all bracketed segments."""
+    """去掉 </think>… 和所有括号内容"""
     idx = text.find("</think>")
     if idx != -1:
-        text = text[idx + len("</think>"):].strip()
+        text = text[idx + len("</think>"):]
+
     stack, out = [], []
     for ch in text:
         if ch in ("(", "（"):
@@ -50,119 +46,95 @@ def _clean_text(text: str) -> str:
     return "".join(out)
 
 
-def _play_chunks(resp, chunk_size: int = 1024) -> None:
-    """Stream WAV data to PyAudio, respecting _stop_flag."""
+# ───────── 播放 WAV 流 ─────────
+def _play_chunks(resp: requests.Response, chunk_size: int = 1024) -> None:
+    """把 HTTP 响应中的 wav 字节流写进声卡；_stop_flag 为打断信号"""
     global _current_stream, _current_pyaudio
-
-    pa = pyaudio.PyAudio()
-    _current_pyaudio = pa
-    hdr_buf = b""
-    header_done = False
-
+    pa = wave_file = None
     try:
-        for chunk in resp.iter_content(chunk_size=chunk_size):
+        pa = pyaudio.PyAudio()
+        _current_pyaudio = pa
+
+        header_buf = b""
+        header_done = False
+        bytes_iter = resp.raw.stream(chunk_size, decode_content=False)
+
+        for chunk in bytes_iter:
             if _stop_flag.is_set():
+                LOGGER.info("收到停止信号，中断播放循环")
                 break
             if not chunk:
                 continue
-            hdr_buf += chunk
-            if not header_done and len(hdr_buf) >= 44:
-                with wave.open(io.BytesIO(hdr_buf), "rb") as wf:
-                    _current_stream = pa.open(
-                        format=pa.get_format_from_width(wf.getsampwidth()),
-                        channels=wf.getnchannels(),
-                        rate=wf.getframerate(),
-                        output=True,
-                    )
-                # write any audio that followed header
-                data_start = hdr_buf[44:]
-                if data_start:
-                    _current_stream.write(data_start)
-                header_done = True
-                continue
-            if header_done and _current_stream:
+
+            if not header_done:
+                header_buf += chunk
+                if len(header_buf) >= 44:  # 足够解析 wav 头
+                    try:
+                        with wave.open(io.BytesIO(header_buf), "rb") as wave_file:
+                            fmt = pa.get_format_from_width(wave_file.getsampwidth())
+                            _current_stream = pa.open(
+                                format=fmt,
+                                channels=wave_file.getnchannels(),
+                                rate=wave_file.getframerate(),
+                                output=True,
+                            )
+                        data_start = header_buf.find(b'data')
+                        if data_start != -1:
+                            data_start += 8
+                            _current_stream.write(header_buf[data_start:])
+                        header_done = True
+                    except wave.Error as e:
+                        LOGGER.error(f"WAV 头解析失败: {e}")
+                        return
+            else:
                 _current_stream.write(chunk)
-    except requests.exceptions.ChunkedEncodingError:
-        print("[TTS] HTTP stream closed early – finishing playback")
+
+        if _current_stream:
+            _current_stream.stop_stream()
+
     finally:
         if _current_stream:
-            try:
-                _current_stream.stop_stream()
-                _current_stream.close()
-            except Exception:
-                pass
-        pa.terminate()
+            _current_stream.close()
+        if _current_pyaudio:
+            _current_pyaudio.terminate()
         _current_stream = None
         _current_pyaudio = None
         _stop_flag.clear()
+        if resp:
+            resp.close()
 
 
-# ---------------------------------------------------------------------------
-# Public API
-# ---------------------------------------------------------------------------
-
+# ───────── 公开 API ─────────
 def tts_streaming(text: str, speed_factor: float = 1.2) -> None:
-    """Blocking call: send ``text`` to TTS server and play it."""
-    cleaned = _clean_text(text)
-    processed = process_text_for_tts(cleaned)
+    """阻塞：向 TTS 服务器发送文本并播放"""
+    text = _clean_text(text.strip())
+    if not text:
+        return
 
     payload = {
-        "text": processed,
+        "text": text,
         "text_lang": "zh",
         "ref_audio_path": "/Users/liuyitong/projects/Seranion/src/tts/audio/bear_reference.FLAC",
-        "aux_ref_audio_paths": [],
         "prompt_lang": "zh",
-        "prompt_text": "",
-        "top_k": 5,
-        "top_p": 1,
-        "temperature": 0.5,
-        "text_split_method": "cut0",
-        "batch_size": 1,
-        "split_bucket": True,
         "speed_factor": speed_factor,
-        "fragment_interval": 0.3,
-        "seed": 132094,
-        "media_type": "wav",
         "streaming_mode": True,
-        "parallel_infer": True,
-        "repetition_penalty": 1.35,
+        "media_type": "wav",
     }
+    url = "http://localhost:9880/tts"
+    resp = requests.post(url, json=payload, stream=True, timeout=300)
+    resp.raise_for_status()
 
-    try:
-        resp = requests.post(
-            "http://localhost:9880/tts",
-            json=payload,
-            stream=True,
-            timeout=300,
-        )
-    except Exception as exc:
-        raise RuntimeError(f"TTS HTTP request failed: {exc}") from exc
+    if resp.headers.get("Content-Type") != "audio/wav":
+        raise RuntimeError(f"TTS server did not return audio/wav (got {resp.headers.get('Content-Type')})")
 
-    if resp.status_code != 200:
-        raise RuntimeError(f"TTS server error {resp.status_code}: {resp.text}")
-
-    with _playback_lock:
+    with _playback_lock:  # 保证一次只播一条
         _stop_flag.clear()
-    _play_chunks(resp)
+        _play_chunks(resp)
 
 
 def stop_tts_playback() -> None:
-    """Abort the current sentence (used by TTSWorker.stop_current)."""
-    with _playback_lock:
-        _stop_flag.set()
-        if _current_stream:
-            try:
-                _current_stream.stop_stream()
-                _current_stream.close()
-            except Exception:
-                pass
-            _current_stream = None
-        if _current_pyaudio:
-            try:
-                _current_pyaudio.terminate()
-            except Exception:
-                pass
-            _current_pyaudio = None
+    """线程安全地请求停止播放"""
+    _stop_flag.set()
 
 
 if __name__ == "__main__":

@@ -118,7 +118,7 @@ def tts_chunk(text_chunk: str, index: int, audio_output_dir: str):
         "batch_size": 1,
         "batch_threshold": 0.75,
         "split_bucket": True,
-        "speed_factor": 1,
+        "speed_factor": 1.3,
         "fragment_interval": 0.1,
         "seed": 125235,
         "media_type": "wav",

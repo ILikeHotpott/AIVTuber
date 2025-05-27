@@ -13,10 +13,10 @@ class Config:
     max_hits: int = 4
     chat_with: int = 1
     use_long_term: bool = True
+    enable_vision: bool = False
 
     root: Path = field(default_factory=lambda: Path(__file__).resolve().parents[2])
 
     @property
     def db_path(self) -> Path:
         return self.root / "src" / "runtime" / "chat" / "chat_memory.db"
-

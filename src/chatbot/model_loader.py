@@ -29,6 +29,7 @@ class BaseModelLoader(ABC):
 @register_model("chatgpt-4o-latest")
 @register_model("gpt-4.1")
 @register_model("gpt-4.1-mini")
+@register_model("gpt-4.1-nano")
 @register_model("gpt-4.5-preview")
 class OpenAIModelLoader(BaseModelLoader):
     def load(self, **kwargs):

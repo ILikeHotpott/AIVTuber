@@ -1,21 +1,14 @@
-import queue, threading
-from typing import Callable
-
-from src.asr.google_asr import google_streaming_transcripts
+import threading, queue
+from typing import Callable, Optional
+from src.asr.model import stream_transcripts
 
 
 class ASRWorker(threading.Thread):
-    """
-    Background thread:
-      * writes final transcripts into `out_queue`
-      * calls `on_partial_callback` as soon as Google returns an interim result
-    """
-
     def __init__(
             self,
             out_queue: "queue.Queue[str]",
             pause_event: threading.Event,
-            on_partial_callback: Callable[[], None] | None = None,
+            on_partial_callback: Optional[Callable[[], None]] = None,
     ):
         super().__init__(daemon=True)
         self.out_q = out_queue
@@ -24,14 +17,22 @@ class ASRWorker(threading.Thread):
         self._stop = threading.Event()
 
     def run(self):
-        for text in google_streaming_transcripts(
+        last: str | None = None
+        for text in stream_transcripts(
                 pause_event=self.pause_event,
                 on_partial=self.on_partial_callback,
         ):
             if self._stop.is_set():
                 break
-            if text:
-                self.out_q.put(text)
+
+            text = text.strip()
+            if not text:  # ② 过滤空字符串
+                continue
+            if text == last:  # ③ 连续重复也跳过
+                continue
+
+            self.out_q.put(text)
+            last = text
 
     def stop(self):
         self._stop.set()

@@ -20,9 +20,6 @@ from src.chatbot.config import Config
 load_dotenv()
 
 
-# ---------------------------------------------------------------------------
-# State schemas
-# ---------------------------------------------------------------------------
 class ChatMemory(Dict[str, Any]):
     conversation_history: list[BaseMessage]
     user_info: Dict[str, Any]
@@ -37,9 +34,6 @@ class ChatState(Dict[str, Any]):
     memory: Dict[str, ChatMemory]
 
 
-# ---------------------------------------------------------------------------
-# Engine
-# ---------------------------------------------------------------------------
 class MemoryChatEngine:
     """Handles both text‑only and multimodal queries with short/long memory."""
 
@@ -48,6 +42,7 @@ class MemoryChatEngine:
         self.model = self._load_model()
         self.ltm = LongTermMemoryES(persist=True, threshold=cfg.score_threshold)
         self._long_prefix_header = "（我记得这些事好像在哪里听过，也许能用上...）\n"
+        self.enable_vision = cfg.enable_vision
 
         self.text_prompt = self._init_text_prompt()  # pure‑text pathway
         self.checkpointer = self._init_checkpointer()
@@ -64,8 +59,8 @@ class MemoryChatEngine:
         )
 
     def _build_system_text(self, memory_prefix: str = "") -> str:
-        """Persona + scene rules + optional long‑term memory prefix."""
-        scene_rule = vision_prompt  # 已含≤40字等指令
+        """Persona + scene rules (+ vision prompt 可选)."""
+        scene_rule = vision_prompt if self.enable_vision else ""
         return f"{memory_prefix}{general_settings_prompt}{scene_rule}"
 
     def _init_text_prompt(self):
@@ -157,6 +152,8 @@ class MemoryChatEngine:
 
     def chat_with_screen(self, user_id: str, image: Image.Image, extra_text: str = "",
                          language: str = "Chinese") -> str:
+        if not self.enable_vision:
+            raise RuntimeError("Vision 功能已被禁用（enable_vision=False）")
         data_url = _encode_img(image)
         init = {
             "messages": [HumanMessage(content=extra_text)],
@@ -168,9 +165,6 @@ class MemoryChatEngine:
         return res["messages"][-1].content
 
 
-# ---------------------------------------------------------------------------
-# CLI quick‑test
-# ---------------------------------------------------------------------------
 if __name__ == "__main__":
     from src.tts.tts_stream import tts_streaming
 
@@ -183,9 +177,10 @@ if __name__ == "__main__":
         score_threshold=0.65,
         max_hits=2,
         chat_with=1,
-        use_long_term=True,
+        use_long_term=False,
+        enable_vision=False
     )
     engine = MemoryChatEngine(cfg)
-    reply = engine.chat("demo", "弹幕：你最喜欢的食物是什么？")
+    reply = engine.chat("demoxjaf", "弹幕：你在干嘛呢？")
     print("LLM:", reply)
     tts_streaming(reply)
