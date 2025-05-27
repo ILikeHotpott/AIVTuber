@@ -81,15 +81,11 @@ UnityAIVtuber/*.sln
 UnityAIVtuber/ShaderCache/
 UnityAIVtuber/MemoryCaptures/
 
-# === Live2DModels Output Cache (optional) ===
-# 如果你只手动管理模型，也可以忽略掉这些中间文件
 Live2DModels/**/__pycache__/
 Live2DModels/**/*.bak
 
-# === Output / Generated Content (Optional) ===
 *.bak
 
-# === Jupyter / Notebook Cache ===
 training/**/*.ipynb_checkpoints/
 
 # === Ignore everything in Assets except Scripts ===
@@ -109,3 +105,11 @@ UnityAIVtuber/Assets/*
 src/runtime
 
 src/public
+
+# 忽略本地模型权重文件
+**/mlx_models/**/weights.npz
+**/mlx_models/**/config.json
+**/*.pt
+**/*.ckpt
+**/*.onnx
+**/*.pb
