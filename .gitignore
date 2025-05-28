@@ -113,3 +113,10 @@ src/public
 **/*.ckpt
 **/*.onnx
 **/*.pb
+
+# ------------- Frontend -------------
+/frontend/.idea
+/frontend/node_modules/
+/frontend/.next/
+/frontend/.vercel/
+/frontend/turbo/

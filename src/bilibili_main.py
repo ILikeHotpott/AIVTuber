@@ -10,7 +10,7 @@ from typing import Optional
 from danmaku.buffer import DanmakuJsonStorage
 from src.danmaku.models import Message, MessageType
 from src.tts.tts_stream import tts_streaming
-from src.memory.short_term.memory_chatbot_engine import chat
+from src.memory.short_term.llama_chat_engine import chat
 from external.blivedm.sample import MyHandler
 
 BILIBILI_ROOM_ID = 22889482

@@ -105,7 +105,7 @@ def _play_chunks(resp: requests.Response, chunk_size: int = 1024) -> None:
 
 
 # ───────── 公开 API ─────────
-def tts_streaming(text: str, speed_factor: float = 1.2) -> None:
+def tts_streaming(text: str, speed_factor: float = 1.1) -> None:
     """阻塞：向 TTS 服务器发送文本并播放"""
     text = _clean_text(text.strip())
     if not text:
@@ -113,9 +113,9 @@ def tts_streaming(text: str, speed_factor: float = 1.2) -> None:
 
     payload = {
         "text": text,
-        "text_lang": "zh",
-        "ref_audio_path": "/Users/liuyitong/projects/Seranion/src/tts/audio/bear_reference.FLAC",
-        "prompt_lang": "zh",
+        "text_lang": "en",
+        "ref_audio_path": "/Users/liuyitong/projects/Seranion/src/tts/audio/Ulia_ref.mp3",
+        "prompt_lang": "en",
         "speed_factor": speed_factor,
         "streaming_mode": True,
         "media_type": "wav",
@@ -139,7 +139,8 @@ def stop_tts_playback() -> None:
 
 if __name__ == "__main__":
     text = """
-     阳光透过窗帘缝隙洒在书桌上，空气中漂浮着轻微的灰尘，整个房间显得安静而慵懒。她坐在窗边，一边喝着热茶，一边看着手中的旧书。翻页的声音在静谧中格外清晰，仿佛时间都慢了下来。窗外的风轻轻拂过树梢，带来一阵微弱的花香。她忽然想起多年前的某个春日午后，也是这样安静、温暖，有点怀旧，有点安心。她轻轻叹了口气，嘴角却带着微笑。生活似乎没有太多波澜，却也因此多了一分安稳的味道。
+     In this fast-paced world, we often overlook the simplest joys in life. A ray of morning sunlight, a friend’s warm greeting, or a brief moment of rest during a busy day—these small details bring true warmth to our lives. Slow down, feel the breeze, listen to your heartbeat. You may discover that the most ordinary moments are actually the most beautiful chapters of life.
+
  """
 
     tts_streaming(text)

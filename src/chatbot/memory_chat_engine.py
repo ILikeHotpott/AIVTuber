@@ -181,6 +181,6 @@ if __name__ == "__main__":
         enable_vision=False
     )
     engine = MemoryChatEngine(cfg)
-    reply = engine.chat("demoxjaf", "弹幕：你在干嘛呢？")
+    reply = engine.chat("demoxjaf", "弹幕：我刚刚问什么了")
     print("LLM:", reply)
     tts_streaming(reply)

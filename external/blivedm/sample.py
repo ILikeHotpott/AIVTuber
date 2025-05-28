@@ -14,7 +14,7 @@ from src.danmaku.models import User
 from src.danmaku.message_queue.queue_manager import TotalMessageQueue
 from src.danmaku.const.bilibili_mapping import guard_mapping
 
-from src.memory.short_term.memory_chatbot_engine import chat_with_memory
+from src.memory.short_term.llama_chat_engine import chat_with_memory
 
 # 直播间ID的取值看直播间URL
 TEST_ROOM_IDS = [
