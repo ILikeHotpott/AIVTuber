@@ -24,7 +24,7 @@ from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
 
-from src.prompt.templates.general import general_settings_prompt
+from src.prompt.templates.general import general_settings_prompt_english
 from src.memory.long_term.elastic_search import LongTermMemoryES
 from src.tts.tts_stream import tts_streaming
 from src.utils.path import find_project_root
@@ -86,7 +86,7 @@ except Exception as e:
 
 # ───────── Prompt builder helper ─────────
 def build_prompt_template(memory_prefix: str = "") -> ChatPromptTemplate:
-    system_text = f"{memory_prefix}{general_settings_prompt}"
+    system_text = f"{memory_prefix}{general_settings_prompt_english}"
     return ChatPromptTemplate.from_messages(
         [
             ("system", system_text),
@@ -261,7 +261,7 @@ async def main():
                 break
             if not inp:
                 continue
-            await stream_chat("demo_user3", inp, language="Chinese")
+            await stream_chat("demo_user4", inp, language="Chinese")
             print()
     finally:
         # 确保 TTS 线程优雅退出

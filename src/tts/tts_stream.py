@@ -105,7 +105,7 @@ def _play_chunks(resp: requests.Response, chunk_size: int = 1024) -> None:
 
 
 # ───────── 公开 API ─────────
-def tts_streaming(text: str, speed_factor: float = 1.1) -> None:
+def tts_streaming(text: str, speed_factor: float = 1.2) -> None:
     """阻塞：向 TTS 服务器发送文本并播放"""
     text = _clean_text(text.strip())
     if not text:
@@ -139,8 +139,6 @@ def stop_tts_playback() -> None:
 
 if __name__ == "__main__":
     text = """
-     In this fast-paced world, we often overlook the simplest joys in life. A ray of morning sunlight, a friend’s warm greeting, or a brief moment of rest during a busy day—these small details bring true warmth to our lives. Slow down, feel the breeze, listen to your heartbeat. You may discover that the most ordinary moments are actually the most beautiful chapters of life.
-
  """
 
     tts_streaming(text)
