@@ -1,12 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-memory_chat_stream_tts.py — 2025-05-28 (strict-sentence-boundary)
-────────────────────────────────────────────────────────────
-• 完全依赖句末标点才播报，绝不在句中断句
-• 支持 Elasticsearch-based **长记忆检索**（--no-ltm 关闭）
-• 其余流式分句 + TTS 逻辑与旧版一致
-"""
+# TODO: Long term memory speed optimize
 
 from __future__ import annotations
 
@@ -26,7 +18,7 @@ from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
 
 from src.prompt.templates.general import general_settings_prompt_english
 from src.memory.long_term.elastic_search import LongTermMemoryES
-from src.tts.tts_stream import tts_streaming
+from src.tts.tts_stream import tts_streaming, init_unity_connection
 from src.utils.path import find_project_root
 
 # ───────── CLI & Config ─────────
@@ -98,14 +90,13 @@ def build_prompt_template(memory_prefix: str = "") -> ChatPromptTemplate:
 
 _BOUNDARY_RE = re.compile(
     r"""
-    [。！？；]                              # 中文句末
+    [。！？；]                            
     |
-    ([.!?])(?=\s|$)                         # 英文句末候选（但不排除缩写）
+    ([.!?])(?=\s|$)                        
     """,
     re.X
 )
 
-# 英文缩写列表（用于后处理）
 _ABBR = {"Mr", "Mrs", "Ms", "Dr", "Prof", "Sr", "Jr", "St"}
 
 _speak_q: queue.Queue[str] = queue.Queue()
@@ -253,6 +244,9 @@ async def stream_chat(user_id: str, msg: str, language: str = "English") -> str:
 
 # ───────── CLI interface ─────────
 async def main():
+    # 初始化Unity连接
+    init_unity_connection()
+    
     print("💬 Real-time voice chat — type something (type 'quit' to exit)\n")
     try:
         while True:
@@ -261,7 +255,7 @@ async def main():
                 break
             if not inp:
                 continue
-            await stream_chat("demo_user4", inp, language="Chinese")
+            await stream_chat("demo_user5", inp, language="Chinese")
             print()
     finally:
         # 确保 TTS 线程优雅退出
