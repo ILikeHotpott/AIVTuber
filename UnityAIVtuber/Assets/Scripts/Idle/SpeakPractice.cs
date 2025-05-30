@@ -1,7 +1,9 @@
 using UnityEngine;
 using Live2D.Cubism.Core;
 
-public class IdlePractice : MonoBehaviour
+
+// Only for practice purposes, not for production use
+public class SpeakPractice : MonoBehaviour
 {
     public CubismModel model;
 

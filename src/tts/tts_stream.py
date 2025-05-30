@@ -139,6 +139,7 @@ def stop_tts_playback() -> None:
 
 if __name__ == "__main__":
     text = """
+   ha? R U Kidding ME?
  """
 
     tts_streaming(text)

@@ -1,21 +1,10 @@
-/*
- * NaturalBlinkV7.cs ―― Live2D Cubism 眼动 / 眨眼控制
- * -----------------------------------------------------------------------------
- * 1. “完整快速眨眼” 现在 **内置于 Idle**，通过 idleBlinkChance 控制，默认 15 %
- * 2. “半闭→眨” 事件 (Half-Close) 触发率再降至 1 %，且
- *      • 半闭动作仍缓慢 (自然) ── 0.5–0.9 s
- *      • 之后的眨眼改为 **快速** 闪闭／睁开，防止“慢慢闭眼”生硬
- * 3. 其它概率保持 V6，但可在 Inspector 调参
- * -----------------------------------------------------------------------------
- */
-
 using System.Collections;
 using UnityEngine;
 using Live2D.Cubism.Core;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(CubismModel))]
-public class Blink : MonoBehaviour
+public class BlinkController : MonoBehaviour
 {
     // ───────── Cubism ─────────
     [Header("Cubism")]
@@ -54,15 +43,15 @@ public class Blink : MonoBehaviour
 
     // ───────── 特殊事件参数 ─────────
     [Header("Half-Close + Blink")]
-    public float halfCloseValue = 0.5f;
+    public float halfCloseValue = 0.7f;
     public float halfCloseHold  = 0.6f;                   // 缓慢半闭后停留
 
     [Header("Hold 0.8 / 0.55 / 0.2")]
     public float  hold08Value   = 0.8f;
     public Vector2 hold08Dur    = new(1.2f, 1.8f);
-    public Vector2 hold055Range = new(0.5f, 0.6f);
+    public Vector2 hold055Range = new(0.7f, 0.8f);
     public Vector2 hold055Dur   = new(1.2f, 1.8f);
-    public float  hold02Value   = 0.2f;
+    public float  hold02Value   = 0.7f;
     public float  hold02Dur     = 2.5f;
 
     [Header("Double Blink")]
@@ -71,12 +60,13 @@ public class Blink : MonoBehaviour
 
     // ───────── 忽闪 ─────────
     [Header("忽闪")]
-    public float  flickerChance      = 0.35f;
+    public float  flickerChance      = 0f;
     private readonly Vector2[] flickerDepths =
     {
-        new(0.50f, 0.60f),
         new(0.60f, 0.70f),
-        new(0.70f, 0.80f),
+        new(0.65f, 0.75f),
+        new(0.70f, 0.80f),  
+        new(0.75f, 0.85f),
         new(0.80f, 0.90f)
     };
     public Vector2 flickerDurRange   = new(0.6f, 1.2f);
@@ -108,14 +98,13 @@ public class Blink : MonoBehaviour
         {
             float r = Random.value;
             if      (r < chanceIdle)                               yield return IdleMicroMove();
-            else if (r < chanceIdle + chanceHalfClose)             yield return HalfCloseBlink();
-            else if (r < chanceIdle + chanceHalfClose + chanceHold08)
-                                                                 yield return HoldFixed(hold08Value, hold08Dur);
-            else if (r < chanceIdle + chanceHalfClose + chanceHold08 + chanceHold055)
-                                                                 yield return HoldRandom(hold055Range, hold055Dur);
-            else if (r < chanceIdle + chanceHalfClose + chanceHold08 + chanceHold055 + chanceHold02)
-                                                                 yield return HoldFixed(hold02Value, new Vector2(hold02Dur, hold02Dur));
-            else                                                   yield return DoubleBlink();
+            else if (r < chanceIdle + chanceHold08) yield return HoldFixed(hold08Value, hold08Dur);
+            else if (r < chanceIdle + chanceHold08 + chanceHalfClose ) yield return HalfCloseBlink();
+            else if (r < chanceIdle + chanceHold08 + chanceHalfClose + chanceHold055)
+                yield return HoldRandom(hold055Range, hold055Dur);
+            else if (r < chanceIdle + chanceHold08 + chanceHalfClose + chanceHold055 + chanceHold02)
+                yield return HoldFixed(hold02Value, new Vector2(hold02Dur, hold02Dur));
+            else yield return DoubleBlink();
         }
     }
 
@@ -127,7 +116,7 @@ public class Blink : MonoBehaviour
 
         float hold = Random.Range(idleHoldDur.x, idleHoldDur.y);
 
-        // 15 % 概率在 Idle 停顿期插入一次“正常快速眨眼”
+        // 15 % 概率在 Idle 停顿期插入一次"正常快速眨眼"
         if (Random.value < idleBlinkChance)
         {
             float half = hold * 0.5f;               // 前半段停顿
@@ -148,7 +137,7 @@ public class Blink : MonoBehaviour
     // ───────── Half-Close Event ─────────
     private IEnumerator HalfCloseBlink()
     {
-        yield return SlowMoveEyes(halfCloseValue);         // 半闭 (慢)
+        yield return FastMoveEyes(halfCloseValue);         // 半闭 (慢)
         yield return WaitWithMicroFlicker(halfCloseHold);
         yield return FastMoveEyes(0f);                     // 闭眼 (快)
         yield return FastMoveEyes(1f);                     // 睁眼 (快)
