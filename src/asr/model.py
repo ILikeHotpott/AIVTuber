@@ -1,8 +1,4 @@
-# --- dependencies ---
-# pip install sounddevice soundfile numpy webrtcvad lightning-whisper-mlx
-
-from __future__ import annotations
-import threading, time, tempfile, collections, itertools
+import threading, time, tempfile, collections
 from typing import Iterable, Callable, Optional, Deque
 
 import numpy as np, sounddevice as sd, soundfile as sf, webrtcvad
@@ -11,7 +7,7 @@ from lightning_whisper_mlx import LightningWhisperMLX
 # ---------- 参数 ----------
 SAMPLE_RATE = 16_000
 FRAME_DURATION_MS = 30  # WebRTC VAD 支持 10 / 20 / 30
-FRAME_SIZE = SAMPLE_RATE * FRAME_DURATION_MS // 1000  # samples / frame
+FRAME_SIZE = SAMPLE_RATE * FRAME_DURATION_MS // 1000
 MAX_SILENCE_FRAMES = int(0.6 * 1000 / FRAME_DURATION_MS)  # 0.6s
 MIN_SPEECH_FRAMES = int(0.3 * 1000 / FRAME_DURATION_MS)  # 0.3s
 VAD_SENSITIVITY = 2  # 0=最宽松, 3=最严格

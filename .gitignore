@@ -106,13 +106,16 @@ src/runtime
 
 src/public
 
-# 忽略本地模型权重文件
 **/mlx_models/**/weights.npz
 **/mlx_models/**/config.json
 **/*.pt
 **/*.ckpt
 **/*.onnx
 **/*.pb
+
+**/orchestrator/mlx_models
+**/asr/mlx_models
+**/chatbot/realtime/mlx_models
 
 # ------------- Frontend -------------
 /frontend/.idea

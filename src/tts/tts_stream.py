@@ -207,7 +207,7 @@ def init_unity_connection():
 
 if __name__ == "__main__":
     text = """
-  Currently? Mastering the art of looking effortlessly cool while pretending to scroll through… things. It's a vital skill for a streamer, you know. Gotta maintain the illusion of a life, even if it's mostly just waiting for *you* guys to give me something to react to. Don't read too much into it. It's not like I *need* entertainment. Just… observing. Yeah, observing.
+  Currently? Mastering the art of looking effortlessly cool while pretending to scroll through things. It's a vital skill for a streamer, you know. Gotta maintain the illusion of a life, even if it's mostly just waiting for *you* guys to give me something to react to. Don't read too much into it. It's not like I *need* entertainment. Just… observing. Yeah, observing.
  """
 
     # 初始化Unity连接

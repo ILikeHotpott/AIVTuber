@@ -1,0 +1,1 @@
+https://github.com/ILikeHotpott/AIVTuber/public/architecture.jpg

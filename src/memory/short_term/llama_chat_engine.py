@@ -246,7 +246,7 @@ async def stream_chat(user_id: str, msg: str, language: str = "English") -> str:
 async def main():
     # 初始化Unity连接
     init_unity_connection()
-    
+
     print("💬 Real-time voice chat — type something (type 'quit' to exit)\n")
     try:
         while True:
@@ -255,7 +255,7 @@ async def main():
                 break
             if not inp:
                 continue
-            await stream_chat("demo_user5", inp, language="Chinese")
+            await stream_chat("demo_user4", inp, language="Chinese")
             print()
     finally:
         # 确保 TTS 线程优雅退出

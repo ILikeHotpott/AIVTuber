@@ -81,7 +81,7 @@ if __name__ == "__main__":
     time1 = time.time()
     ltm = LongTermMemoryES(threshold=0.68)
     # ltm.reset_index() 需要重置的时候执行
-    result = ltm.retrieve("讲讲Whisper这个人", k=3)
+    result = ltm.retrieve("你叫什么名字", k=3)
     time2 = time.time()
     print(result)
     print(time2 - time1)

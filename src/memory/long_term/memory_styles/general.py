@@ -2,7 +2,7 @@ from langchain_core.documents import Document
 
 general_docs = [
     Document(
-        page_content="我的名字叫Zoe, 我最喜欢的食物是薯片",
+        page_content="我的名字叫Lyra, 我最喜欢的食物是薯片",
         metadata={
             "source": "general"
         }

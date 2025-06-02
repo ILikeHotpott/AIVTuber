@@ -47,7 +47,10 @@ class MemoryManager:
         body = {
             "query": {
                 "match": {
-                    "content": query
+                    "content": {
+                        "query": query,
+                        "analyzer": "smartcn"
+                    }
                 }
             },
             "size": top_k
@@ -64,7 +67,7 @@ class MemoryManager:
 
         return results
 
-    def reset_index(self):
+    def reload_index(self):
         if self.es.indices.exists(index=self.index_name):
             self.es.indices.delete(index=self.index_name)
         self._create_index_if_needed()
@@ -73,9 +76,11 @@ class MemoryManager:
 if __name__ == "__main__":
     time1 = time.time()
     memory = MemoryManager()
+    # reload memory if doc is changed
+    # memory.reload_index()
     memory.save(docs)
 
-    results = memory.search("你叫啥", top_k=4)
+    results = memory.search("what's your name", top_k=4)
     time2 = time.time()
     for r in results:
         print(f"[Score: {r['score']:.2f}] {r['content']}")
