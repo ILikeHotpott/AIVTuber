@@ -18,7 +18,6 @@ class ASRConfig:
     min_speech_frames: int = field(init=False)
     vad_sensitivity: int = 3  # (0-3,越高越灵敏)
 
-    # 调试
     debug: bool = False
 
     # Whisper-MLX 模型

@@ -11,7 +11,6 @@ import threading, time, queue
 from src.asr.model import stream_transcripts
 from src.chatbot.memory_chat_engine import MemoryChatEngine
 from src.chatbot.config import Config
-# from src.tts.tts_stream import tts_streaming
 from src.tts.realtime_tts import tts_in_chunks
 
 # -------------------- LLM 初始化 --------------------
@@ -55,7 +54,7 @@ def asr_worker():
 threading.Thread(target=asr_worker, daemon=True).start()
 
 # -------------------- 主循环 --------------------
-print("🎤  开始聊天 Ctrl+C 退出")
+print("开始聊天 Ctrl+C 退出")
 try:
     while True:
         user_txt = asr_q.get()
@@ -79,4 +78,4 @@ try:
 
 except KeyboardInterrupt:
     tts_stop_evt.set()
-    print("\n🛑  已退出")
+    print("\n 已退出")

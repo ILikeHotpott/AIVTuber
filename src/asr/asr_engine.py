@@ -35,7 +35,7 @@ class ASREngine:
                 batch_size=self.config.batch_size,
             )
 
-            print("✅ Whisper-MLX ready (cached in)", self.config.model_root)
+            print("Whisper-MLX ready (cached in)", self.config.model_root)
         return self.model
 
     def _stream_loop(self, on_partial: Optional[Callable[[], None]] = None):

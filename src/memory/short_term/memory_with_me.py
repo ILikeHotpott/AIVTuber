@@ -29,8 +29,8 @@ model = ChatOpenAI(model="chatgpt-4o-latest",
 # 2. 定义聊天状态
 class ChatMemory(TypedDict):
     conversation_history: List[BaseMessage]  # 完整对话历史
-    user_info: Dict[str, Any]  # 用户信息
-    last_interaction: str  # 上次互动时间
+    user_info: Dict[str, Any]
+    last_interaction: str
 
 
 class ChatState(TypedDict):

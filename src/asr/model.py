@@ -4,7 +4,7 @@ from typing import Iterable, Callable, Optional, Deque
 import numpy as np, sounddevice as sd, soundfile as sf, webrtcvad
 from lightning_whisper_mlx import LightningWhisperMLX
 
-# ---------- 参数 ----------
+# Config
 SAMPLE_RATE = 16_000
 FRAME_DURATION_MS = 30  # WebRTC VAD 支持 10 / 20 / 30
 FRAME_SIZE = SAMPLE_RATE * FRAME_DURATION_MS // 1000
@@ -19,9 +19,9 @@ _model: LightningWhisperMLX | None = None
 def _lazy_model() -> LightningWhisperMLX:
     global _model
     if _model is None:
-        print("⌛ 正在加载 Whisper-MLX…")
+        print("Loading Whisper-MLX…")
         _model = LightningWhisperMLX(model="small", batch_size=12)
-        print("✅ Whisper-MLX ready")
+        print("Whisper-MLX is ready")
     return _model
 
 
@@ -48,7 +48,7 @@ def stream_transcripts(
         spoke = False
 
         while True:
-            if not pause_event.is_set():  # 麦克风被静音
+            if not pause_event.is_set():  # microphone is muted
                 stream.read(FRAME_SIZE)
                 continue
 
@@ -87,4 +87,4 @@ def stream_transcripts(
                 buf.clear()
                 silence = speech = 0
                 spoke = False
-                if DEBUG: print()  # 换行显示
+                if DEBUG: print()

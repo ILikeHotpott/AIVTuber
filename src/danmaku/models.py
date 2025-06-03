@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import Dict, Any
-from src.danmaku.message_queue.queue_types.gift_mapping import gift_mapping
+from src.danmaku.const.gift_mapping import gift_mapping
 
 
 class MessageType(Enum):

@@ -1,8 +1,7 @@
 import queue
 from src.danmaku.models import Message, MessageType, User
-from src.danmaku.const.bilibili_mapping import price_mapping
 
-from .gift_mapping import gift_mapping
+from src.danmaku.const.gift_mapping import gift_mapping
 
 
 class GiftMessageQueue:
