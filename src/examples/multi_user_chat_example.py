@@ -20,7 +20,7 @@ import os
 from typing import Dict, List, Tuple
 
 from src.chatbot.llama.chat_engine import ChatEngine
-from src.prompt.providers.prompt_provider import SecurityLevel
+from src.prompt.builders.prompt_builder import SecurityLevel
 
 
 class MultiUserChatDemo:

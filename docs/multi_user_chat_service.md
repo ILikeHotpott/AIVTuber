@@ -71,18 +71,18 @@ DEFAULT_LANGUAGE=English
 
 ```python
 from src.chatbot.llama.chat_engine import ChatEngine
-from src.prompt.providers.prompt_provider import SecurityLevel
+from src.prompt.builders.prompt_builder import SecurityLevel
 
 # Get chat engine instance
 chat_engine = ChatEngine.get_instance()
 
 # Send chat message
 response = await chat_engine.stream_chat_multi_user(
-    user_id="user_001",
-    username="Alice",
-    message="Hello! How are you today?",
-    language="English",
-    security_level=SecurityLevel.HIGH
+   user_id="user_001",
+   username="Alice",
+   message="Hello! How are you today?",
+   language="English",
+   security_level=SecurityLevel.HIGH
 )
 
 print(f"Assistant: {response}")

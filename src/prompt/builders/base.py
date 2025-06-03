@@ -19,6 +19,12 @@ class SecurityLevel(Enum):
     MAXIMUM = 4
 
 
+class DialogueActor(Enum):
+    WHISPER = "whisper"
+    AUDIENCE = "audience"
+    HYBRID = "hybrid"
+
+
 @dataclass
 class PromptContext:
     """Prompt context data model"""
@@ -26,6 +32,6 @@ class PromptContext:
     username: str = "default_username"
     language: str = "English"
     timezone_name: str = "Australia/Adelaide"
-    security_level: SecurityLevel = SecurityLevel.HIGH
+    security_level: SecurityLevel = SecurityLevel.MEDIUM
     custom_variables: Dict[str, Any] = field(default_factory=dict)
     metadata: Dict[str, Any] = field(default_factory=dict)

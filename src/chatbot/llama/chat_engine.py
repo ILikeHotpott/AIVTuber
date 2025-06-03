@@ -7,10 +7,9 @@ Realtime LangGraph chat engine —— 带 ElasticSearch 长记忆检索 + Unity 
 作者: Yitong  · 2025-05-31
 """
 
-from __future__ import annotations
-
 import asyncio
 import os
+import queue
 import re
 import sqlite3
 import threading
@@ -27,20 +26,18 @@ from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
 from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 
+from src.prompt.builders.prompt_builder_config import PromptBuilderConfig
 from src.tts.tts_player import TTSPlayer
 from src.tts.tts_config import TTSConfig
+from src.memory.long_term.elastic_search import LongTermMemoryES
+from src.prompt.templates.general import general_settings_prompt_english
+
+from src.prompt.builders.prompt_builder import PromptBuilder
+from src.prompt.builders.base import PromptContext, DialogueActor
 
 from src.utils.path import find_project_root
 
-# ───────── Optional project imports ─────────
-try:
-    from src.memory.long_term.elastic_search import LongTermMemoryES
-    from src.prompt.templates.general import general_settings_prompt_english
-except ModuleNotFoundError:
-    LongTermMemoryES = None  # noqa: N816
-    general_settings_prompt_english = "You are a helpful assistant."
-
-# ╭───────────────────── 环境配置 ─────────────────────╮
+# Config
 load_dotenv()
 BASE_DIR = find_project_root()
 DB_PATH = BASE_DIR / "src" / "runtime" / "chat" / "chat_memory.db"
@@ -93,39 +90,34 @@ class ChatEngine:
         raise RuntimeError("Use ChatEngine.get_instance() instead.")
 
     @classmethod
-    def get_instance(cls, connect_to_unity: bool = False) -> "ChatEngine":
+    def get_instance(cls, talk_to: DialogueActor, connect_to_unity: bool = False) -> "ChatEngine":
         with cls._instance_lock:
             if cls._instance is None:
                 cls._instance = super().__new__(cls)
-                cls._instance._init_once(connect_to_unity=connect_to_unity)
+                cls._instance._init_once(talk_to=talk_to, connect_to_unity=connect_to_unity)
             return cls._instance
 
     # ───── 私有初始化 ─────
-    def _init_once(self, connect_to_unity: bool = False):
+    def _init_once(self, talk_to: DialogueActor, connect_to_unity: bool = False):
         print(f"[ChatEngine] Initializing (connect_to_unity={connect_to_unity})")
 
         # chat memory (进程内)
         self._memory: Dict[str, ChatMemory] = {}
         self._memory_lock = threading.RLock()
+        self.dialogue_actor = talk_to
 
         # TTS player & 队列
         self._tts_player = TTSPlayer(TTSConfig(connect_to_unity=connect_to_unity))
         self._speak_q: "queue.Queue[str]" = __import__("queue").Queue()
         self._start_tts_thread()
 
-        # LLM
-        # self._llm = ChatOpenAI(
-        #     openai_api_base=OPENAI_BASE,
-        #     openai_api_key=OPENAI_KEY,
-        #     model_name=MODEL_NAME,
-        #     streaming=True,
-        # )
+        # Prompt Builder
+        self.prompt_builder_config = PromptBuilderConfig(dialogue_actor=DialogueActor.AUDIENCE)
+        self.prompt_builder = PromptBuilder(self.prompt_builder_config)
+        self.context = PromptContext()
+        self.system_msg = self.prompt_builder.create_system_message(self.context)
 
-        self._llm = ChatOpenAI(
-            openai_api_key=os.getenv("OPENAI_API_KEY"),
-            model_name="chatgpt-4o-latest",
-            streaming=True,
-        )
+        self._llm = self._init_llm()
 
         # LTM
         self._ltm = (
@@ -141,18 +133,19 @@ class ChatEngine:
             print("[Checkpoint-sync] SQLite →", DB_PATH)
         except Exception as exc:  # pragma: no cover
             self._sync_saver = MemorySaver()
-            if self._sync_db_conn: # Close if SqliteSaver failed
+            if self._sync_db_conn:  # Close if SqliteSaver failed
                 self._sync_db_conn.close()
                 self._sync_db_conn = None
             print("[Checkpoint-sync] MemorySaver —", exc)
 
         # Lazy-per-loop async graphs and their savers
-        self._loop_graph_components: Dict[int, tuple[StateGraph, AsyncSqliteSaver, Any]] = {} # Stores (graph, saver, conn)
+        self._loop_graph_components: Dict[
+            int, tuple[StateGraph, AsyncSqliteSaver, Any]] = {}  # Stores (graph, saver, conn)
         self._loop_graphs_lock = threading.RLock()
 
     # ───────── 公共协程入口 ─────────
     async def stream_chat(self, user_id: str, msg: str, language: str = "English") -> str:
-        graph, _, _ = await self._graph_for_loop() # We only need the graph here
+        graph, _, _ = await self._graph_for_loop()  # We only need the graph here
         cfg = {"configurable": {"thread_id": f"persistent_{user_id}"}}
         state = {
             "messages": [HumanMessage(content=msg)],
@@ -181,7 +174,24 @@ class ChatEngine:
         self._tts_thread = threading.Thread(target=_worker, daemon=True)
         self._tts_thread.start()
 
-    # ╭───────────────────── LangGraph 节点 ─────────────────────╮
+    def _init_llm(self):
+        if self.dialogue_actor == DialogueActor.AUDIENCE:
+            # when talking to audience, use local llama cpp
+            return ChatOpenAI(
+                openai_api_base=OPENAI_BASE,
+                openai_api_key=OPENAI_KEY,
+                model_name=MODEL_NAME,
+                streaming=True,
+            )
+        else:
+            # when talking to whisper or hybrid, using high speed api
+            return ChatOpenAI(
+                openai_api_key=os.getenv("OPENAI_API_KEY"),
+                model_name="chatgpt-4o-latest",
+                streaming=True,
+            )
+
+    # LangGraph 节点
     def _retrieve_memory(self, state: ChatState) -> ChatState:
         uid = state["user_id"]
         with self._memory_lock:
@@ -252,14 +262,14 @@ class ChatEngine:
             if not final_content.strip():
                 print("\n[ChatEngine] LLM stream completed but resulted in empty/whitespace content. Using fallback.")
                 final_content = "I'm sorry, I didn't quite understand. Could you say that again?"
-                self._speak_q.put(final_content) # Send fallback to TTS
+                self._speak_q.put(final_content)  # Send fallback to TTS
 
         except Exception as e:
             # Catch any exception during the streaming process
             print(f"\n[ChatEngine _gen_response] Error during LLM stream: {type(e).__name__}: {e}")
             # Provide a fallback response if an error occurs
             final_content = "I encountered an issue while processing your request. Please try again."
-            self._speak_q.put(final_content) # Send fallback to TTS
+            self._speak_q.put(final_content)  # Send fallback to TTS
             # The exception 'e' is not re-raised, allowing graph execution to continue with fallback content.
 
         ai_msg = AIMessage(content=final_content)
@@ -268,13 +278,13 @@ class ChatEngine:
         return {"messages": [ai_msg]}
 
     # ───────── Graph cache per-loop ─────────
-    async def _graph_for_loop(self) -> tuple[StateGraph, AsyncSqliteSaver, Any]: # Return tuple
+    async def _graph_for_loop(self) -> tuple[StateGraph, AsyncSqliteSaver, Any]:  # Return tuple
         loop_id = id(asyncio.get_running_loop())
         with self._loop_graphs_lock:
             if loop_id in self._loop_graph_components:
                 return self._loop_graph_components[loop_id]
 
-        import aiosqlite # Import here as it's an async context
+        import aiosqlite  # Import here as it's an async context
 
         conn = None
         saver = None
@@ -283,10 +293,10 @@ class ChatEngine:
             saver = AsyncSqliteSaver(conn)
             print(f"[Checkpoint-async] SQLite aio → {DB_PATH} (loop {loop_id})")
         except Exception as exc:  # pragma: no cover
-            if conn: # Close connection if AsyncSqliteSaver failed
+            if conn:  # Close connection if AsyncSqliteSaver failed
                 await conn.close()
             conn = None
-            saver = MemorySaver() # Fallback to MemorySaver
+            saver = MemorySaver()  # Fallback to MemorySaver
             print("[Checkpoint-async] MemorySaver —", exc)
 
         g = StateGraph(state_schema=ChatState)
@@ -309,7 +319,7 @@ class ChatEngine:
     def _is_ellipsis(txt: str, idx: int) -> bool:
         return txt[idx] == "." and idx >= 2 and txt[idx - 2: idx + 1] == "..."
 
-    async def close(self): # Make close async
+    async def close(self):  # Make close async
         self._speak_q.put(None)
         if hasattr(self, "_tts_thread"):
             self._tts_thread.join()
@@ -325,7 +335,7 @@ class ChatEngine:
             for graph, saver, conn in self._loop_graph_components.values():
                 if isinstance(saver, AsyncSqliteSaver) and conn:
                     try:
-                        await conn.close() # Close the aiosqlite connection directly
+                        await conn.close()  # Close the aiosqlite connection directly
                         print(f"[Checkpoint-async] SQLite aio connection closed for loop {id(graph)}.")
                     except Exception as e:
                         print(f"[Checkpoint-async] Error closing SQLite aio connection: {e}")
@@ -344,8 +354,8 @@ class ChatEngine:
 
 # cli quick test
 async def _cli():
-    eng = ChatEngine.get_instance(connect_to_unity=False)
-    print("💬  Real-time voice chat — 输入文字 (quit/exit 退出)\n")
+    eng = ChatEngine.get_instance(talk_to=DialogueActor.WHISPER, connect_to_unity=False)
+    print(" Real-time voice chat — please input words (quit/exit 退出)\n")
     try:
         while True:
             inp = input("👤 > ").strip()

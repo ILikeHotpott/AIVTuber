@@ -1,14 +1,17 @@
 import re
 from dataclasses import dataclass, field
 from datetime import datetime
+from platform import system
 from typing import Any, Dict, List, Optional
 import threading
 import asyncio
 
-from src.prompt.providers.base import PromptType, SecurityLevel, PromptContext
-from src.prompt.providers.time_provider import TimeProvider
-from src.prompt.providers.character_provider import CharacterProvider
-from src.prompt.providers.anti_injection_provider import AntiInjectionProvider
+from src.prompt.builders.base import PromptType, SecurityLevel, PromptContext, DialogueActor
+from src.prompt.builders.prompt_builder_config import PromptBuilderConfig
+from src.prompt.builders.time_builder import TimeProvider
+from src.prompt.builders.character_builder import CharacterProvider
+from src.prompt.builders.anti_injection_builder import AntiInjectionProvider
+from src.prompt.builders.dialogue_actor_builder import DialogueActorBuilder
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
@@ -183,7 +186,7 @@ class PromptSecurityValidator:
         return sanitized
 
 
-class PromptProvider:
+class PromptBuilder:
     """
     Enterprise-level Prompt Provider
     
@@ -198,21 +201,20 @@ class PromptProvider:
 
     def __init__(
             self,
-            default_character: str = "default",
-            default_security_level: SecurityLevel = SecurityLevel.HIGH,
-            enable_caching: bool = True,
-            cache_ttl_seconds: int = 300  # 5 minutes
+            config: PromptBuilderConfig
     ):
-        self.default_character = default_character
-        self.default_security_level = default_security_level
-        self.enable_caching = enable_caching
-        self.cache_ttl_seconds = cache_ttl_seconds
+        self.config = config
+        self.default_character = config.default_character
+        self.default_security_level = config.default_security_level
+        self.enable_caching = config.enable_caching
+        self.cache_ttl_seconds = config.cache_ttl_seconds
 
         # Component initialization
         self.time_provider = TimeProvider()
         self.character_provider = CharacterProvider()
         self.security_validator = PromptSecurityValidator()
         self.anti_injection_provider = AntiInjectionProvider()
+        self.dialogue_actor_builder = DialogueActorBuilder(dialogue_actor=config.dialogue_actor)
 
         # Caching system
         self._prompt_cache: Dict[str, tuple[str, datetime]] = {}
@@ -246,10 +248,10 @@ class PromptProvider:
         if include_time:
             time_info = self.time_provider.get_current_time_info(context.timezone_name)
             time_prompt = f"""
-Current Time Information
-It is now {time_info['current_datetime']}, {time_info['day_of_week_en']}, in {time_info['season']} during the {time_info['time_period']}.
-Please appropriately reflect time awareness in your responses.
-"""
+                Current Time Information
+                It is now {time_info['current_datetime']}, {time_info['day_of_week_en']}, in {time_info['season']} during the {time_info['time_period']}.
+                Please appropriately reflect time awareness in your responses.
+                """
             system_content_parts.append(time_prompt)
 
         # 2. Character settings
@@ -263,7 +265,10 @@ Please appropriately reflect time awareness in your responses.
             anti_injection_prompt = self.anti_injection_provider.get_anti_injection_prompt(security_level)
             system_content_parts.append(anti_injection_prompt)
 
-        # 4. Custom additions
+        # 4. Dialogue Actor Prompt
+        system_content_parts.append(self.dialogue_actor_builder.get_dialogue_actor_prompt())
+
+        # 5. Custom additions
         if custom_additions:
             for addition in custom_additions:
                 system_content_parts.append(addition)
@@ -455,23 +460,9 @@ Please appropriately reflect time awareness in your responses.
         }
 
 
-# Factory function
-def create_prompt_provider(
-        character_name: str = "default",
-        security_level: SecurityLevel = SecurityLevel.HIGH,
-        **kwargs
-) -> PromptProvider:
-    """Factory function to create Prompt Provider"""
-    return PromptProvider(
-        default_character=character_name,
-        default_security_level=security_level,
-        enable_caching=kwargs.get("enable_caching", True),
-        cache_ttl_seconds=kwargs.get("cache_ttl_seconds", 300)
-    )
-
-
 if __name__ == "__main__":
-    prompt_provider = create_prompt_provider()
+    config = PromptBuilderConfig(dialogue_actor=DialogueActor.AUDIENCE)
+    prompt_provider = PromptBuilder(config)
     context = PromptContext()
     system_msg = prompt_provider.create_system_message(context)
     print("==== System Message ====")
