@@ -1,20 +1,3 @@
-#!/usr/bin/env python3
-"""
-Multi-User Chat Service Example
-Demonstrates enterprise-level multi-user memory management and intelligent prompt generation
-
-Environment setup:
-export USE_MULTI_USER_SERVICE=true
-export OPENAI_API_KEY="your-api-key"
-export OPENAI_BASE="https://api.openai.com/v1"
-export MODEL_NAME="gpt-4o-mini"
-export DEFAULT_TIMEZONE="Australia/Adelaide"
-export DEFAULT_LANGUAGE="English"
-
-Author: Assistant
-Date: 2025-01-10
-"""
-
 import asyncio
 import os
 from typing import Dict, List, Tuple

@@ -55,9 +55,9 @@ class TimeProvider:
             return "Noon"
         elif 14 <= hour < 17:
             return "Afternoon"
-        elif 17 <= hour < 19:
+        elif 17 <= hour < 20:
             return "Evening"
-        elif 19 <= hour < 22:
+        elif 20 <= hour < 22:
             return "Night"
         else:
             return "Late Night"

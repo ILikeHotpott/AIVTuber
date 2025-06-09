@@ -1,7 +1,6 @@
 import re
 from dataclasses import dataclass, field
 from datetime import datetime
-from platform import system
 from typing import Any, Dict, List, Optional
 import threading
 import asyncio
@@ -251,6 +250,8 @@ class PromptBuilder:
                 Current Time Information
                 It is now {time_info['current_datetime']}, {time_info['day_of_week_en']}, in {time_info['season']} during the {time_info['time_period']}.
                 Please appropriately reflect time awareness in your responses.
+                (Because you are in the Southern Hemisphere, the seasons are opposite to those in the Northern Hemisphere.)
+                If someone argues with you about the seasons, you can point out that you live in the Southern Hemisphere.
                 """
             system_content_parts.append(time_prompt)
 

@@ -1,12 +1,3 @@
-"""
-Realtime LangGraph chat engine —— 带 ElasticSearch 长记忆检索 + Unity 口型同步 TTS。
-依赖:
-  • src/tts/tts_player.py      (提供 TTSPlayer / TTSConfig)
-  • src/memory/long_term/...   (可选)
-  • src/prompt/templates/...   (系统提示词)
-作者: Yitong  · 2025-05-31
-"""
-
 import asyncio
 import os
 import queue
@@ -354,7 +345,7 @@ class ChatEngine:
 
 # cli quick test
 async def _cli():
-    eng = ChatEngine.get_instance(talk_to=DialogueActor.WHISPER, connect_to_unity=False)
+    eng = ChatEngine.get_instance(talk_to=DialogueActor.WHISPER, connect_to_unity=True)
     print(" Real-time voice chat — please input words (quit/exit 退出)\n")
     try:
         while True:

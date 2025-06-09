@@ -52,7 +52,7 @@ public class SpeechWebSocketServer : MonoBehaviour
         }
         
         // 获取嘴部参数
-        mouthOpen = model.Parameters.FindById("ParamMouthOpen");
+        mouthOpen = model.Parameters.FindById("ParamMouthOpenY");
         mouthForm = model.Parameters.FindById("ParamMouthForm");
         
         if (mouthOpen == null)

@@ -5,6 +5,7 @@ import time
 from src.asr.asr_engine import ASREngine
 from src.asr.asr_config import ASRConfig
 from src.chatbot.llama.chat_engine import ChatEngine
+from src.prompt.builders.base import DialogueActor
 
 
 class SceneOrchestrator:
@@ -14,7 +15,7 @@ class SceneOrchestrator:
         self._asr_thread = None
         self.loop = asyncio.get_event_loop()
         self.connect_to_unity = connect_to_unity
-        self.chat_engine = ChatEngine.get_instance(connect_to_unity=self.connect_to_unity)
+        self.chat_engine = ChatEngine.get_instance(connect_to_unity=self.connect_to_unity, talk_to=DialogueActor.WHISPER)
 
     def start(self):
         print("[SceneOrchestrator] Starting ASR...")
@@ -91,7 +92,7 @@ async def main(orchestrator: SceneOrchestrator):
 
 
 if __name__ == "__main__":
-    orchestrator = SceneOrchestrator(connect_to_unity=False)
+    orchestrator = SceneOrchestrator(connect_to_unity=True)
     loop = asyncio.get_event_loop()
     try:
         loop.run_until_complete(main(orchestrator))
