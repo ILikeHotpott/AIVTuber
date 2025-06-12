@@ -1,12 +1,14 @@
 from elasticsearch import Elasticsearch
 from langchain_core.documents import Document
-from src.memory.long_term.memory_documents import docs
-from typing import List
+from src.memory.long_term.memory_documents import docs_en
+from src.memory.long_term.base import MemoryRetriever
+from typing import List, Dict
 import hashlib
 import time
 
 
-class MemoryManager:
+class FastLongTermMemory(MemoryRetriever):
+
     def __init__(self, index_name="chat_memory", es_url="http://localhost:9200"):
         self.index_name = index_name
         self.es = Elasticsearch(es_url)
@@ -43,17 +45,17 @@ class MemoryManager:
                 }
             )
 
-    def search(self, query: str, top_k: int = 3) -> List[dict]:
+    def retrieve(self, query: str, k: int = 3) -> List[dict]:
         body = {
             "query": {
                 "match": {
                     "content": {
-                        "query": query,
-                        "analyzer": "smartcn"
+                        "query": query
+                        # "analyzer": "smartcn"
                     }
                 }
             },
-            "size": top_k
+            "size": k
         }
 
         res = self.es.search(index=self.index_name, body=body)
@@ -75,16 +77,11 @@ class MemoryManager:
 
 if __name__ == "__main__":
     time1 = time.time()
-    memory = MemoryManager()
-    # reload memory if doc is changed
+    memory = FastLongTermMemory()
+    # reload memory if doc is changed, only needs to be executed once
     # memory.reload_index()
-    memory.save(docs)
+    memory.save(docs_en)
 
-    results = memory.search("what's your name", top_k=4)
+    results = memory.retrieve("what's your name", k=3)
+    print("results", results)
     time2 = time.time()
-    for r in results:
-        print(f"[Score: {r['score']:.2f}] {r['content']}")
-        print(f"Metadata: {r['metadata']}")
-        print("---")
-
-    print(time2 - time1)

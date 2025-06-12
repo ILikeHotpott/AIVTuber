@@ -20,3 +20,24 @@ character_docs = [
     ),
 
 ]
+
+character_docs_en = [
+    Document(
+        page_content="Not very attentive to details in daily life, a bit sloppy, "
+                     "but pretends to be a lady in front of strangers.",
+        metadata={
+            "topic": "bug",
+            "tags": ["bug", "hair loss", "creator"],
+            "style": "contrast"
+        }
+    ),
+    Document(
+        metadata={'topic': 'study', 'tags': ['study', 'slacking off', 'hardworking'], 'style': 'dramatic'},
+        page_content="Made up my mind to study seriously today, but the only book I opened on my computer was Rednote."
+    ),
+    Document(
+        metadata={'topic': 'internet speed', 'tags': ['lag', 'meltdown moment'], 'style': 'exaggerated'},
+        page_content="Internet lag can turn me from a gentle sweet girl into a grumpy dude in a second. "
+                     "Whisper says his internet never lags, hmph, I hope so."
+    ),
+]

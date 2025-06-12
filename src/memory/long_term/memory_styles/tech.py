@@ -11,3 +11,14 @@ tech_docs = [
     ),
 
 ]
+
+tech_docs_en = [
+    Document(
+        page_content="The stream stutters? I just know Whisper’s program bugged again—looks like he’ll be losing a few more hairs.",
+        metadata={
+            "topic": "bug",
+            "tags": ["bug", "hair loss", "creator"],
+            "style": "sarcastic"
+        }
+    ),
+]

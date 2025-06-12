@@ -5,6 +5,7 @@ from elasticsearch import Elasticsearch
 from langchain_openai import OpenAIEmbeddings
 from langchain_elasticsearch import ElasticsearchStore
 from src.memory.long_term.memory_documents import docs
+from src.memory.long_term.base import MemoryRetriever
 from src.utils.dev_modes import is_dev
 from src.utils.docs_change_detect import has_docs_changed
 from src.utils.path import find_project_root
@@ -12,7 +13,7 @@ from src.utils.path import find_project_root
 load_dotenv()
 
 
-class LongTermMemoryES:
+class LongTermMemoryES(MemoryRetriever):
     def __init__(
             self,
             threshold,

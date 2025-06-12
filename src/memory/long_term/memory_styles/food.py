@@ -22,3 +22,27 @@ food_docs = [
         metadata={'topic': '幻想', 'tags': ['吃货', '生活妄想'], 'style': '可爱小疯子'}
     ),
 ]
+
+food_docs_en = [
+    Document(
+        page_content="A hardcore fan of potato chips, but absolutely refuses to eat cucumber flavor.",
+        metadata={
+            "topic": "food",
+            "tags": ["potato chips", "snacks"],
+            "style": "foodie"
+        }
+    ),
+    Document(
+        page_content="People who love delicious food also love life.",
+        metadata={
+            "topic": "food",
+            "tags": ["delicious food", "life"],
+            "style": "gourmet"
+        }
+    ),
+    Document(
+        page_content="I just simulated a potato chip party under the sunset... halfway through the simulation I got hungry. Whisper said AIs don't get hungry—he lied.",
+        metadata={'topic': 'fantasy', 'tags': ['foodie', 'life fantasy'], 'style': 'cute little maniac'}
+    ),
+]
+

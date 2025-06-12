@@ -17,12 +17,15 @@ from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
 from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 
-from src.prompt.builders.prompt_builder_config import PromptBuilderConfig
 from src.tts.tts_player import TTSPlayer
 from src.tts.tts_config import TTSConfig
-from src.memory.long_term.elastic_search import LongTermMemoryES
-from src.prompt.templates.general import general_settings_prompt_english
 
+from src.memory.long_term.elastic_search import LongTermMemoryES
+from src.memory.long_term.fast_search.fast_search import FastLongTermMemory
+from src.memory.long_term.base import MemoryRetriever
+
+from src.prompt.templates.general import general_settings_prompt_english
+from src.prompt.builders.prompt_builder_config import PromptBuilderConfig
 from src.prompt.builders.prompt_builder import PromptBuilder
 from src.prompt.builders.base import PromptContext, DialogueActor
 
@@ -37,19 +40,16 @@ OPENAI_BASE = os.getenv("OPENAI_BASE", "http://127.0.0.1:8080/v1")
 OPENAI_KEY = os.getenv("OPENAI_KEY", "sk-fake-key")
 MODEL_NAME = os.getenv("MODEL_NAME", "Gemma3")
 
-USE_LTM = os.getenv("USE_LTM", "true").lower() not in {"0", "false", "no"}
 LTM_SCORE_THRESHOLD = float(os.getenv("LTM_SCORE_THRESHOLD", 0.65))
 LTM_MAX_HITS = int(os.getenv("LTM_MAX_HITS", 3))
-# ╰────────────────────────────────────────────────────╯
 
-
-# ╭───────────────────── Prompt / Regex ─────────────────────╮
+# ───────────────────── Prompt / Regex ─────────────────────
 _LONG_PREFIX_HEADER = "（我记得这些事好像在哪里听过，也许能用上...）\n"
 
 _BOUNDARY_RE = re.compile(
     r"""
-    [。！？；!?]            |   # CJK 句末
-    ([.!?])(?=\s|$)            # 英文句末
+    [。！？；!?]            |  
+    ([.!?])(?=\s|$)          
     """,
     re.X,
 )
@@ -92,7 +92,6 @@ class ChatEngine:
     def _init_once(self, talk_to: DialogueActor, connect_to_unity: bool = False):
         print(f"[ChatEngine] Initializing (connect_to_unity={connect_to_unity})")
 
-        # chat memory (进程内)
         self._memory: Dict[str, ChatMemory] = {}
         self._memory_lock = threading.RLock()
         self.dialogue_actor = talk_to
@@ -111,18 +110,14 @@ class ChatEngine:
         self._llm = self._init_llm()
 
         # LTM
-        self._ltm = (
-            LongTermMemoryES(persist=True, threshold=LTM_SCORE_THRESHOLD)
-            if USE_LTM and LongTermMemoryES
-            else None
-        )
+        self._ltm = self._get_ltm_model()
 
         # Sync checkpointer
         self._sync_db_conn = sqlite3.connect(DB_PATH, check_same_thread=False)
         try:
             self._sync_saver = SqliteSaver(self._sync_db_conn)
             print("[Checkpoint-sync] SQLite →", DB_PATH)
-        except Exception as exc:  # pragma: no cover
+        except Exception as exc:
             self._sync_saver = MemorySaver()
             if self._sync_db_conn:  # Close if SqliteSaver failed
                 self._sync_db_conn.close()
@@ -131,7 +126,7 @@ class ChatEngine:
 
         # Lazy-per-loop async graphs and their savers
         self._loop_graph_components: Dict[
-            int, tuple[StateGraph, AsyncSqliteSaver, Any]] = {}  # Stores (graph, saver, conn)
+            int, tuple[StateGraph, AsyncSqliteSaver, Any]] = {}
         self._loop_graphs_lock = threading.RLock()
 
     # ───────── 公共协程入口 ─────────
@@ -147,7 +142,7 @@ class ChatEngine:
         result = await graph.ainvoke(state, cfg)
         return result["messages"][-1].content
 
-    # ╭───────────────────── 内部：TTS 队列线程 ─────────────────────╮
+    # TTS 队列线程
     def _start_tts_thread(self):
         if hasattr(self, "_tts_thread") and self._tts_thread.is_alive():
             return
@@ -268,7 +263,7 @@ class ChatEngine:
         mem["conversation_history"].append(ai_msg)
         return {"messages": [ai_msg]}
 
-    # ───────── Graph cache per-loop ─────────
+    # ───────── Graph cache per loop ─────────
     async def _graph_for_loop(self) -> tuple[StateGraph, AsyncSqliteSaver, Any]:  # Return tuple
         loop_id = id(asyncio.get_running_loop())
         with self._loop_graphs_lock:
@@ -342,14 +337,22 @@ class ChatEngine:
         """检查 TTS 是否正在说话或队列中是否有待处理的语音。"""
         return not self._speak_q.empty() or self._tts_player.is_busy()
 
+    def _get_ltm_model(self) -> MemoryRetriever:
+        if self.dialogue_actor == DialogueActor.AUDIENCE:
+            print("[LTM] Using LongTermMemoryES")
+            return LongTermMemoryES(persist=True, threshold=LTM_SCORE_THRESHOLD)
+        else:
+            print("[LTM] Using FastLongTermMemory")
+            return FastLongTermMemory(index_name="chat_memory")
+
 
 # cli quick test
 async def _cli():
-    eng = ChatEngine.get_instance(talk_to=DialogueActor.WHISPER, connect_to_unity=True)
+    eng = ChatEngine.get_instance(talk_to=DialogueActor.WHISPER, connect_to_unity=False)
     print(" Real-time voice chat — please input words (quit/exit 退出)\n")
     try:
         while True:
-            inp = input("👤 > ").strip()
+            inp = input("You: ").strip()
             if inp.lower() in {"quit", "exit"}:
                 break
             if not inp:

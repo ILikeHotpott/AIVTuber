@@ -92,7 +92,7 @@ async def main(orchestrator: SceneOrchestrator):
 
 
 if __name__ == "__main__":
-    orchestrator = SceneOrchestrator(connect_to_unity=True)
+    orchestrator = SceneOrchestrator(connect_to_unity=False)
     loop = asyncio.get_event_loop()
     try:
         loop.run_until_complete(main(orchestrator))
