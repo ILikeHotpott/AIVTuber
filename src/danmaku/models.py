@@ -11,13 +11,13 @@ class MessageType(Enum):
     FOLLOW = "FOLLOW"
     LIKE = "LIKE"
     ENTER = "ENTER"
+    SYSTEM_INSTRUCTION = "SYSTEM_INSTRUCTION"
 
 
 @dataclass
 class User:
     user_id: int
     name: str
-
 
 
 @dataclass(order=True)
@@ -68,14 +68,14 @@ class Message:
             elif value >= 10000:
                 return f"""用户名: {username}, 送来了{gift_count}个{gift_name}，这基本是最贵的礼物了，你表示非常震惊能够收到，用些夸张的词汇夸赞用户并感谢"""
         elif self.type == MessageType.DANMU:
-            return f"💬 {username} 发来弹幕：{content}"
-        elif self.type == MessageType.FANS:
-            return f"⭐ {username} 加入了粉丝团，请说出用户名进行简短的感谢"
+            return f" {username}: {content}"
         elif self.type == MessageType.FOLLOW:
-            return f"👣 {username} 关注了主播，请说出用户名进行简短感谢"
-        elif self.type == MessageType.LIKE:
-            return f"❤️ {username} 点了个赞，请说一些简短的感谢"
-        elif self.type == MessageType.ENTER:
-            return f"🚪 {username} 进入了直播间，简短的话欢迎"
-        else:
-            return f"{username}：{content}"
+            return f" {username} followed you，please say the username for a brief thank you"
+        # elif self.type == MessageType.FANS:
+        #     return f" {username} just subscribed, please say the username to thank "
+        # elif self.type == MessageType.LIKE:
+        #     return f" {username} thumbed up，please say the username for a brief thank you"
+        # elif self.type == MessageType.ENTER:
+        #     return f" {username} Entered the live broadcast room, a brief welcome"
+        # else:
+        #     return f"{username}：{content}"

@@ -1,37 +1,50 @@
-# src/danmaku/twitch/listener.py
-
 import asyncio
+import logging
+
 import nest_asyncio
 from twitchio.ext import commands
+
 from src.danmaku.twitch.config import TwitchConfig
+from src.danmaku.message_queue.queue_manager import TotalMessageQueue
+from src.danmaku.models import User
+
+autolog = logging.getLogger("twitch")
 
 
 class TwitchCommentListener(commands.Bot):
-    def __init__(self, config: TwitchConfig):
+    """Uses your unchanged event logic, just enqueues Danmu."""
+
+    def __init__(self, cfg: TwitchConfig, queues: TotalMessageQueue):
         super().__init__(
-            token=config.access_token,
+            token=cfg.access_token,
             prefix="!",
-            nick=config.nick,
-            initial_channels=[config.channel],
+            nick=cfg.nick,
+            initial_channels=[cfg.channel],
         )
-        self.config = config  # 保存配置对象（可选）
+        self.total_mq = queues
 
     async def event_ready(self):
         print(f"Bot 已上线：{self.nick}")
+        autolog.info("Twitch bot ready as %s", self.nick)
 
     async def event_message(self, message):
         if message.echo:
             return
-        print(f"[💬] {message.author.name}: {message.content}")
+        autolog.debug("%s: %s", message.author.name, message.content)
+        print(f"{message.author.name}: {message.content}")
+        user = User(user_id=0, name=message.author.name)
+        await self.total_mq.put_danmu(user, message.content)
 
 
-# 启动入口
-def run_twitch_listener():
+def run_twitch_listener() -> TotalMessageQueue:
     config = TwitchConfig()
-    bot = TwitchCommentListener(config)
+    queue_manager = TotalMessageQueue()
+
+    bot = TwitchCommentListener(config, queue_manager)
 
     nest_asyncio.apply()
     asyncio.get_event_loop().run_until_complete(bot.run())
+    return queue_manager
 
 
 if __name__ == "__main__":

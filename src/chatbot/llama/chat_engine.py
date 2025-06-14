@@ -17,6 +17,8 @@ from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
 from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 
+from src.chatbot.openrouter.chat_openrouter import ChatOpenRouter
+
 from src.tts.tts_player import TTSPlayer
 from src.tts.tts_config import TTSConfig
 
@@ -36,15 +38,15 @@ load_dotenv()
 BASE_DIR = find_project_root()
 DB_PATH = BASE_DIR / "src" / "runtime" / "chat" / "chat_memory.db"
 
-OPENAI_BASE = os.getenv("OPENAI_BASE", "http://127.0.0.1:8080/v1")
-OPENAI_KEY = os.getenv("OPENAI_KEY", "sk-fake-key")
-MODEL_NAME = os.getenv("MODEL_NAME", "Gemma3")
+# OPENAI_BASE = os.getenv("OPENAI_BASE", "http://127.0.0.1:8080/v1")
+# OPENAI_KEY = os.getenv("OPENAI_KEY", "sk-fake-key")
+MODEL_NAME = os.getenv("MODEL_NAME", "google/gemma-3-27b-it:free")
 
 LTM_SCORE_THRESHOLD = float(os.getenv("LTM_SCORE_THRESHOLD", 0.65))
 LTM_MAX_HITS = int(os.getenv("LTM_MAX_HITS", 3))
 
 # ───────────────────── Prompt / Regex ─────────────────────
-_LONG_PREFIX_HEADER = "（我记得这些事好像在哪里听过，也许能用上...）\n"
+_LONG_PREFIX_HEADER = "（I seem to have heard these things somewhere, maybe they can be useful...）\n"
 
 _BOUNDARY_RE = re.compile(
     r"""
@@ -57,18 +59,21 @@ _BOUNDARY_RE = re.compile(
 _ABBR = {"Mr", "Mrs", "Ms", "Dr", "Prof", "Sr", "Jr", "St"}
 
 
-# ───────── 类型定义 ─────────
 class ChatMemory(TypedDict):
     conversation_history: List[BaseMessage]
     user_info: Dict[str, Any]
     last_interaction: str
 
 
-class ChatState(TypedDict):
+class ChatState(TypedDict, total=False):
+    """State passed through LangGraph. Optional keys (like system_prompt) are marked via total=False."""
+
     messages: Annotated[Sequence[BaseMessage], add_messages]
     user_id: str
     language: str
     memory: Dict[str, ChatMemory]
+    # Optional per-request system prompt override
+    system_prompt: str | None
 
 
 class ChatEngine:
@@ -130,7 +135,14 @@ class ChatEngine:
         self._loop_graphs_lock = threading.RLock()
 
     # ───────── 公共协程入口 ─────────
-    async def stream_chat(self, user_id: str, msg: str, language: str = "English") -> str:
+    async def stream_chat(
+            self,
+            user_id: str,
+            msg: str,
+            language: str = "English",
+            *,
+            system_prompt: str | None = None,
+    ) -> str:
         graph, _, _ = await self._graph_for_loop()  # We only need the graph here
         cfg = {"configurable": {"thread_id": f"persistent_{user_id}"}}
         state = {
@@ -139,6 +151,11 @@ class ChatEngine:
             "language": language,
             "memory": self._memory,
         }
+
+        # Attach system_prompt only if caller supplied one
+        if system_prompt is not None:
+            state["system_prompt"] = system_prompt
+
         result = await graph.ainvoke(state, cfg)
         return result["messages"][-1].content
 
@@ -163,9 +180,7 @@ class ChatEngine:
     def _init_llm(self):
         if self.dialogue_actor == DialogueActor.AUDIENCE:
             # when talking to audience, use local llama cpp
-            return ChatOpenAI(
-                openai_api_base=OPENAI_BASE,
-                openai_api_key=OPENAI_KEY,
+            return ChatOpenRouter(
                 model_name=MODEL_NAME,
                 streaming=True,
             )
@@ -208,9 +223,18 @@ class ChatEngine:
                 body = "\n\n".join(f"[{d['score']:.2f}] {d['content']}" for d in docs)
                 prefix = f"{_LONG_PREFIX_HEADER}{body}\n\n"
 
+        # ---------------- System Prompt ----------------
+        # 1) Use override provided by caller if any.
+        # 2) Otherwise, build fresh prompt via PromptBuilder so that changes take effect per request.
+        if state.get("system_prompt") is not None:
+            base_system_prompt: str = state["system_prompt"]  # type: ignore[assignment]
+        else:
+            # Build prompt dynamically for every request to capture latest builder settings.
+            base_system_prompt = self.prompt_builder.create_system_message(self.context).content
+
         prompt_obj = ChatPromptTemplate.from_messages(
             [
-                ("system", f"{prefix}{general_settings_prompt_english}"),
+                ("system", f"{prefix}{base_system_prompt}"),
                 MessagesPlaceholder("history"),
                 MessagesPlaceholder("messages"),
             ]
@@ -348,7 +372,7 @@ class ChatEngine:
 
 # cli quick test
 async def _cli():
-    eng = ChatEngine.get_instance(talk_to=DialogueActor.WHISPER, connect_to_unity=False)
+    eng = ChatEngine.get_instance(talk_to=DialogueActor.AUDIENCE, connect_to_unity=True)
     print(" Real-time voice chat — please input words (quit/exit 退出)\n")
     try:
         while True:
@@ -357,7 +381,7 @@ async def _cli():
                 break
             if not inp:
                 continue
-            await eng.stream_chat("demo_user601", inp, language="English")
+            await eng.stream_chat("demo_user602", inp, language="English")
             print()
     finally:
         await eng.close()

@@ -1,32 +1,11 @@
-# danmu_queue.py
-from collections import deque
+from src.danmaku.message_queue.base_queue import BaseQueue
 from src.danmaku.models import Message, MessageType, User
 
 
-class DanmuMessageQueue:
-    def __init__(self, max_size: int = 20):
-        self._queue: deque[Message] = deque()
-        self._max_size = max_size
+class DanmuMessageQueue(BaseQueue):
+    async def put_danmu(self, user: User, content: str) -> None:
+        await self.put(Message(priority=-3, user=user, content=content, type=MessageType.DANMU))
 
-    def put_message(self, user: User, content: str):
-        if len(self._queue) >= self._max_size:
-            self._queue.popleft()
-        msg = Message(priority=-3, user=user, content=content, type=MessageType.DANMU)
-        self._queue.append(msg)
-
-    def put_superchat(self, user: User, content: str, price: int):
-        if len(self._queue) >= self._max_size:
-            self._queue.popleft()
-        msg = Message(priority=-price, user=user, content=content, type=MessageType.DANMU)
-        self._queue.append(msg)
-
-    def get(self) -> Message:
-        return self._queue.popleft()
-
-    def empty(self) -> bool:
-        return len(self._queue) == 0
-
-    def peek(self) -> Message | None:
-        if self.empty():
-            return None
-        return self._queue[0]
+    async def put_superchat(self, user: User, content: str, price: int) -> None:
+        # SuperChat is treated as boosted Danmu – we still label it DANMU.
+        await self.put(Message(priority=-price, user=user, content=content, type=MessageType.DANMU))

@@ -47,4 +47,5 @@ class GiftMessageQueue:
     def peek(self) -> Message | None:
         if self.empty():
             return None
-        return self._queue[0]
+        # PriorityQueue 不支持下标访问，需要从内部 queue 列表取出
+        return self._queue.queue[0]
