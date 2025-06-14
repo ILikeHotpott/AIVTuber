@@ -277,7 +277,6 @@ class ChatEngine:
         except Exception as e:
             # Catch any exception during the streaming process
             print(f"\n[ChatEngine _gen_response] Error during LLM stream: {type(e).__name__}: {e}")
-            # Provide a fallback response if an error occurs
             final_content = "I encountered an issue while processing your request. Please try again."
             self._speak_q.put(final_content)  # Send fallback to TTS
             # The exception 'e' is not re-raised, allowing graph execution to continue with fallback content.

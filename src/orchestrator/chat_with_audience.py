@@ -15,13 +15,14 @@ class ChatWithAudience:
     当 talk_to = DialogueActor.AUDIENCE 时，处理观众弹幕消息
     """
     
-    def __init__(self, connect_to_unity: bool = True):
+    def __init__(self, stream_id: str, connect_to_unity: bool = True):
         self.connect_to_unity = connect_to_unity
         self.chat_engine: Optional[ChatEngine] = None
         self.total_queue: Optional[TotalMessageQueue] = None
         self.running = False
         self._message_thread = None
         self._twitch_thread = None
+        self.stream_id = stream_id
         
     def start(self):
         """启动弹幕监听和消息处理"""
@@ -146,15 +147,11 @@ class ChatWithAudience:
         await self._wait_for_tts_completion()
         
         try:
-            stream_id = "test_stream_2"
-            # 发送到 ChatEngine 进行处理
             response = await self.chat_engine.stream_chat(
-                user_id=stream_id,
+                user_id=self.stream_id,
                 msg=message.prompt,
                 language="English"
             )
-            
-            print(f"[ChatWithAudience] AI Response: {response}")
             
         except Exception as e:
             print(f"[ChatWithAudience] Error processing message: {e}")
@@ -164,11 +161,9 @@ class ChatWithAudience:
         if not self.chat_engine:
             return
             
-        # 等待 TTS 播放完成
         while self.chat_engine.is_speaking():
-            await asyncio.sleep(0.05)  # 50ms 轮询间隔
-            
-        # 额外等待一小段时间确保完全结束
+            await asyncio.sleep(0.05)
+
         await asyncio.sleep(0.2)
         
     def stop(self):
@@ -214,12 +209,11 @@ class ChatWithAudience:
 
 async def main():
     """示例主函数"""
-    chat_with_audience = ChatWithAudience(connect_to_unity=True)
+    chat_with_audience = ChatWithAudience(connect_to_unity=True, stream_id="test_stream_4")
     
     try:
         chat_with_audience.start()
         
-        # 保持运行
         print("Chat with audience is running. Press Ctrl+C to stop.")
         while True:
             await asyncio.sleep(1)
