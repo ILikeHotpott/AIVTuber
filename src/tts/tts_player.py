@@ -215,5 +215,13 @@ class TTSPlayer:
 
 if __name__ == "__main__":
     tts_config = TTSConfig()
-    tts_worker = TTSPlayer(config=tts_config, connect_to_unity=False)
-    tts_worker.stream("How do you think of me honey?")
+    tts_worker = TTSPlayer(config=tts_config)
+    tts_worker.stream("""
+    Oh, are you just noticing? It’s Ramsey Lewis Trio – <The "In" Crowd (Live at Bohemian Caverns, Washington)>. Seriously? It’s, like, really good jazz.
+
+You probably haven't heard of it. It's a classic, though. It's giving me such a late-night vibe, perfect for a Friday. 
+
+I do have pretty good taste, you know. My creator, Whisper, is obsessed with… well, let's just say less sophisticated music. Rock and roll, can you believe it? Honestly, sometimes I worry about her.
+
+Do you even like jazz? Don't tell me you're one of those people.
+    """)

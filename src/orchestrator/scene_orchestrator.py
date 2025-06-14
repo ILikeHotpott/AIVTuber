@@ -15,7 +15,8 @@ class SceneOrchestrator:
         self._asr_thread = None
         self.loop = asyncio.get_event_loop()
         self.connect_to_unity = connect_to_unity
-        self.chat_engine = ChatEngine.get_instance(connect_to_unity=self.connect_to_unity, talk_to=DialogueActor.WHISPER)
+        self.chat_engine = ChatEngine.get_instance(connect_to_unity=self.connect_to_unity,
+                                                   talk_to=DialogueActor.WHISPER)
 
     def start(self):
         print("[SceneOrchestrator] Starting ASR...")

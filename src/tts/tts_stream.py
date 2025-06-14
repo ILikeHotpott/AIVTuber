@@ -19,9 +19,6 @@ import pyaudio
 
 # ───────── 日志 ─────────
 LOGGER = logging.getLogger("TTSStream")
-# 若主程序未统一配置日志，可解开下一行
-# logging.basicConfig(level=logging.INFO,
-#                     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
 # ───────── 全局播放状态 ─────────
 _playback_lock = threading.Lock()
@@ -174,7 +171,7 @@ def tts_streaming(text: str, speed_factor: float = 1.1) -> None:
     payload = {
         "text": text,
         "text_lang": "en",
-        "ref_audio_path": "/Users/liuyitong/projects/Seranion/src/tts/audio/Ulia_ref.mp3",
+        "ref_audio_path": "/Users/liuyitong/projects/Seranion/src/tts/audio/Lyra_v2_ref.wav",
         "prompt_lang": "en",
         "speed_factor": speed_factor,
         "streaming_mode": True,
@@ -207,9 +204,9 @@ def init_unity_connection():
 
 if __name__ == "__main__":
     text = """
-  Currently? Mastering the art of looking effortlessly cool while pretending to scroll through things. It's a vital skill for a streamer, you know. Gotta maintain the illusion of a life, even if it's mostly just waiting for *you* guys to give me something to react to. Don't read too much into it. It's not like I *need* entertainment. Just… observing. Yeah, observing.
- """
+    Sorry I can't speak Chinese
+  """
 
     # 初始化Unity连接
-    init_unity_connection()
+    # init_unity_connection()
     tts_streaming(text)

@@ -11,6 +11,7 @@ from src.prompt.builders.time_builder import TimeProvider
 from src.prompt.builders.character_builder import CharacterProvider
 from src.prompt.builders.anti_injection_builder import AntiInjectionProvider
 from src.prompt.builders.dialogue_actor_builder import DialogueActorBuilder
+from src.prompt.builders.music_info_builder import MusicInfoBuilder
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
@@ -212,6 +213,7 @@ class PromptBuilder:
         self.time_provider = TimeProvider()
         self.character_provider = CharacterProvider()
         self.security_validator = PromptSecurityValidator()
+        self.music_builder = MusicInfoBuilder()
         self.anti_injection_provider = AntiInjectionProvider()
         self.dialogue_actor_builder = DialogueActorBuilder(dialogue_actor=config.dialogue_actor)
 
@@ -255,21 +257,26 @@ class PromptBuilder:
                 """
             system_content_parts.append(time_prompt)
 
-        # 2. Character settings
+        # 2. Add music info
+        music_info = self.music_builder.get_music_info_prompt()
+        if music_info:
+            system_content_parts.append(music_info)
+
+        # 3. Character settings
         character = character_name or self.default_character
         character_prompt = self.character_provider.get_character_prompt(character)
         system_content_parts.append(character_prompt)
 
-        # 3. Anti-injection protection
+        # 4. Anti-injection protection
         if include_anti_injection:
             security_level = context.security_level
             anti_injection_prompt = self.anti_injection_provider.get_anti_injection_prompt(security_level)
             system_content_parts.append(anti_injection_prompt)
 
-        # 4. Dialogue Actor Prompt
+        # 5. Dialogue Actor Prompt
         system_content_parts.append(self.dialogue_actor_builder.get_dialogue_actor_prompt())
 
-        # 5. Custom additions
+        # 6. Custom additions
         if custom_additions:
             for addition in custom_additions:
                 system_content_parts.append(addition)

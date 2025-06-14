@@ -173,7 +173,7 @@ class ChatEngine:
             # when talking to whisper or hybrid, using high speed api
             return ChatOpenAI(
                 openai_api_key=os.getenv("OPENAI_API_KEY"),
-                model_name="chatgpt-4o-latest",
+                model_name="gpt-4o-mini",
                 streaming=True,
             )
 
@@ -357,7 +357,7 @@ async def _cli():
                 break
             if not inp:
                 continue
-            await eng.stream_chat("demo_user60", inp, language="English")
+            await eng.stream_chat("demo_user601", inp, language="English")
             print()
     finally:
         await eng.close()
